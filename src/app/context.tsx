@@ -15,6 +15,7 @@ export interface ChatContextProps {
   userPrompt: string;
   promptGuardEnabled: boolean;
   dataGuardEnabled: boolean;
+  authzEnabled: boolean;
   sidePanelOpen: boolean;
   auditPanelOpen: boolean;
   loginOpen: boolean;
@@ -23,6 +24,7 @@ export interface ChatContextProps {
   setUserPrompt: (value: string) => void;
   setPromptGuardEnabled: (value: boolean) => void;
   setDataGuardEnabled: (value: boolean) => void;
+  setAuthzEnabled: (value: boolean) => void;
   setSidePanelOpen: (value: boolean) => void;
   setAuditPanelOpen: (value: boolean) => void;
   setLoginOpen: (value: boolean) => void;
@@ -34,6 +36,7 @@ const ChatContext = createContext<ChatContextProps>({
   userPrompt: "",
   promptGuardEnabled: true,
   dataGuardEnabled: true,
+  authzEnabled: false,
   sidePanelOpen: true,
   auditPanelOpen: false,
   loginOpen: false,
@@ -42,6 +45,7 @@ const ChatContext = createContext<ChatContextProps>({
   setUserPrompt: () => {},
   setPromptGuardEnabled: () => {},
   setDataGuardEnabled: () => {},
+  setAuthzEnabled: () => {},
   setSidePanelOpen: () => {},
   setAuditPanelOpen: () => {},
   setLoginOpen: () => {},
@@ -74,6 +78,7 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
   const [userPrompt, setUserPrompt] = useState("");
   const [promptGuardEnabled, setPromptGuardEnabled] = useState(true);
   const [dataGuardEnabled, setDataGuardEnabled] = useState(true);
+  const [authzEnabled, setAuthzEnabled] = useState(false);
   const [sidePanelOpen, setSidePanelOpen] = useState(true);
   const [auditPanelOpen, setAuditPanelOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
@@ -109,6 +114,7 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
       userPrompt,
       promptGuardEnabled,
       dataGuardEnabled,
+      authzEnabled,
       sidePanelOpen,
       auditPanelOpen,
       loginOpen,
@@ -117,6 +123,7 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
       setUserPrompt,
       setPromptGuardEnabled,
       setDataGuardEnabled,
+      setAuthzEnabled,
       setSidePanelOpen,
       setAuditPanelOpen,
       setLoginOpen,
@@ -127,6 +134,7 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
       userPrompt,
       promptGuardEnabled,
       dataGuardEnabled,
+      authzEnabled,
       sidePanelOpen,
       auditPanelOpen,
       loginOpen,
@@ -135,6 +143,7 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
       setUserPrompt,
       setPromptGuardEnabled,
       setDataGuardEnabled,
+      setAuthzEnabled,
       setSidePanelOpen,
       setAuditPanelOpen,
       setLoginOpen,

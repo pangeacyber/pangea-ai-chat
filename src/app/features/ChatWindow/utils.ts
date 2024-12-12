@@ -9,8 +9,10 @@ export const sendUserMessage = async (
   token: string,
   message: string,
   system: string,
+  authz = false,
 ): Promise<string> => {
   const response = await aiProxyRequest(token, {
+    authz,
     userPrompt: message,
     systemPrompt: system,
   });
