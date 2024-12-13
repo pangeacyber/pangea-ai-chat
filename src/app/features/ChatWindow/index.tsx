@@ -44,6 +44,7 @@ const ChatWindow = () => {
     loading,
     promptGuardEnabled,
     dataGuardEnabled,
+    authzEnabled,
     systemPrompt,
     userPrompt,
     setUserPrompt,
@@ -171,7 +172,12 @@ const ChatWindow = () => {
     let llmResponse = "";
 
     try {
-      llmResponse = await sendUserMessage(token, llmUserPrompt, systemPrompt);
+      llmResponse = await sendUserMessage(
+        token,
+        llmUserPrompt,
+        systemPrompt,
+        authzEnabled,
+      );
 
       // decrement daily remaining count
       setRemaining((curVal) => curVal - 1);

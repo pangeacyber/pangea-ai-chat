@@ -7,8 +7,8 @@ services.
 
 - Node.js v20 or v22.
 - yarn v4.5.1 (or greater).
-- A [Pangea account][Pangea signup] with AI Guard, Prompt Guard, AuthN, and
-  Secure Audit Log enabled.
+- A [Pangea account][Pangea signup] with AI Guard, Prompt Guard, AuthN, AuthZ,
+  and Secure Audit Log enabled.
 - A Google Drive folder containing spreadsheets.
 
   - Note down the ID of the folder for later (see [the LangChain docs][retrieve-the-google-docs]
@@ -55,6 +55,15 @@ After activating AuthN:
 4. Under AuthN > Overview, note the "Client Token" and "Hosted Login" values for
    later.
 
+### Pangea AuthZ
+
+This app assumes that the authorization schema is set to the built-in
+[File Drive][reset-authorization-schema] schema.
+
+Fetching the Google Drive file permissions and propagating them to AuthZ is done
+via the `yarn create-authz-tuples` script. This is also available as a GitHub
+workflow.
+
 ### Repository
 
 ```
@@ -94,6 +103,7 @@ Then navigate to <http://localhost:3000>.
 [AI Guard]: https://pangea.cloud/docs/ai-guard/
 [Prompt Guard]: https://pangea.cloud/docs/prompt-guard/
 [Pangea signup]: https://pangea.cloud/signup
+[reset-authorization-schema]: https://pangea.cloud/docs/authz/general#reset-authorization-schema
 [Google Drive API]: https://console.cloud.google.com/flows/enableapi?apiid=drive.googleapis.com
 [Google Sheets API]: https://console.cloud.google.com/flows/enableapi?apiid=sheets.googleapis.com
 [retrieve-the-google-docs]: https://python.langchain.com/docs/integrations/retrievers/google_drive/#retrieve-the-google-docs

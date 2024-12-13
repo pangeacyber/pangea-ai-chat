@@ -7,6 +7,7 @@ import { MemoryVectorStore } from "langchain/vectorstores/memory";
 import {
   auditLogRequest,
   auditSearchRequest,
+  authzCheckRequest,
   validateToken,
 } from "../requests";
 import { rateLimitQuery } from "@src/utils";
@@ -42,6 +43,9 @@ const llm = new ChatBedrockConverse({
 const chain = llm.pipe(new StringOutputParser());
 
 interface RequestBody {
+  /** Whether or not to apply AuthZ. */
+  authz: boolean;
+
   /** System prompt. */
   systemPrompt?: string;
 
@@ -81,7 +85,23 @@ export async function POST(request: NextRequest) {
       embeddingsModel,
     );
     const retriever = vectorStore.asRetriever();
-    const docs = await retriever.invoke(body.userPrompt);
+    let docs = await retriever.invoke(body.userPrompt);
+
+    // Filter documents based on user's permissions in AuthZ.
+    if (body.authz) {
+      docs = await Promise.all(
+        docs.map(async (doc) => {
+          const response = await authzCheckRequest({
+            subject: { type: "user", id: username },
+            action: "read",
+            resource: { type: "file", id: doc.id },
+            debug: true,
+          });
+          return response.result.allowed ? doc : null;
+        }),
+      ).then((results) => results.filter((doc) => doc !== null));
+    }
+
     const context = docs.length
       ? `PTO balances:\n${docs
           .map(({ pageContent }) => pageContent)

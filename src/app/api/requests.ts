@@ -1,4 +1,5 @@
 import type { NextRequest } from "next/server";
+import type { AuthZ } from "pangea-node-sdk";
 
 import { delay } from "@src/utils";
 
@@ -16,16 +17,25 @@ export async function validateToken(
     return { success: false, username: undefined, profile: undefined };
   }
 
-    const url = getUrl("authn", "v2/client/token/check");
-    const body = { token };
+  const url = getUrl("authn", "v2/client/token/check");
+  const body = { token };
 
-    const { success, response } = await postRequest(url, body, true);
+  const { success, response } = await postRequest(url, body, true);
 
   return {
     success,
     username: response?.result?.owner,
     profile: response?.result?.profile,
   };
+}
+
+export interface ResponseObject<T> {
+  request_id: string;
+  request_time: string;
+  response_time: string;
+  status: string;
+  result: T;
+  summary: string;
 }
 
 export async function auditLogRequest(data: { event: Record<string, string> }) {
@@ -59,6 +69,22 @@ export async function auditSearchRequest(data: object) {
   } else {
     return response.result;
   }
+}
+
+export async function authzCheckRequest(
+  data: AuthZ.CheckRequest,
+): Promise<
+  ResponseObject<AuthZ.CheckResult> | { result: { allowed: boolean } }
+> {
+  const url = getUrl("authz", "v1/check");
+  const { success, response } = await postRequest(url, data);
+
+  if (!success) {
+    console.log("AUTHZ CHECK ERROR:", response.result.errors);
+    return { result: { allowed: false } };
+  }
+
+  return response;
 }
 
 export async function postRequest(

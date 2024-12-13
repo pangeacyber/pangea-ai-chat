@@ -1,0 +1,44 @@
+name: Update AuthZ tuples
+
+on:
+  workflow_dispatch:
+    inputs:
+      domain:
+        type: string
+        required: true
+        default: aws.us.pangea.cloud
+        description: Pangea API domain.
+      wipe:
+        type: boolean
+        required: true
+        default: false
+        description: Whether or not to wipe all existing tuples before creating new ones.
+
+jobs:
+  authz-tuples:
+    name: Update AuthZ tuples
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.1.0
+        with:
+          node-version: 22
+          cache: yarn
+          cache-dependency-path: ./yarn.lock
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Update AuthZ tuples
+        run: yarn create-authz-tuples --wipe ${{ inputs.wipe }}
+        env:
+          PANGEA_SERVICE_TOKEN: ${{ secrets.PANGEA_SERVICE_TOKEN }}
+          GOOGLE_DRIVE_CREDENTIALS: ${{ secrets.GOOGLE_DRIVE_CREDENTIALS }}
+          GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+          NEXT_PUBLIC_PANGEA_BASE_DOMAIN: ${{ inputs.domain }}
