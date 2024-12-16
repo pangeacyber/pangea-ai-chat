@@ -1,5 +1,5 @@
 import { Box, Button, Drawer, Modal, Stack, Typography } from "@mui/material";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 
 import { useAuth } from "@pangeacyber/react-auth";
 
@@ -8,6 +8,7 @@ import SideBar from "@app/components/SideBar";
 import AuditViewer from "../AuditViewer";
 import SidePanel from "../SidePanel";
 import ChatWindow from "../ChatWindow";
+import ResponsesSidePanel from "../ResponsesSidePanel";
 import { useChatContext } from "@app/context";
 import PangeaLogo from "@src/app/components/Logo";
 
@@ -78,6 +79,22 @@ const Layout = () => {
             <AuditViewer />
           </Stack>
         </Main>
+        <Drawer
+          sx={{
+            width: panelOpenWidth * 1.5,
+            flexShrink: 0,
+            "& .MuiDrawer-paper": {
+              width: panelOpenWidth * 1.5,
+              boxSizing: "border-box",
+              borderLeft: "none",
+            },
+          }}
+          open={true}
+          variant="permanent"
+          anchor="right"
+        >
+          <ResponsesSidePanel open={true} onClose={() => {}} />
+        </Drawer>
       </Box>
       <Modal open={loginOpen} onClose={handleLoginClose}>
         <Stack alignItems="center" justifyContent="center" height="100vh">

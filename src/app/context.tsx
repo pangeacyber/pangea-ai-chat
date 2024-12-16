@@ -1,3 +1,5 @@
+import type { DocumentInterface } from "@langchain/core/documents";
+import { PangeaResponse } from "@src/types";
 import {
   FC,
   ReactNode,
@@ -19,6 +21,13 @@ export interface ChatContextProps {
   sidePanelOpen: boolean;
   auditPanelOpen: boolean;
   loginOpen: boolean;
+  promptGuardResponse: Partial<PangeaResponse<unknown>>;
+  aiGuardResponses: readonly [
+    Partial<PangeaResponse<unknown>>,
+    Partial<PangeaResponse<unknown>>,
+  ];
+  authzResponses: readonly PangeaResponse<unknown>[];
+  documents: readonly DocumentInterface[];
   setLoading: (value: boolean) => void;
   setSystemPrompt: (value: string) => void;
   setUserPrompt: (value: string) => void;
@@ -28,6 +37,12 @@ export interface ChatContextProps {
   setSidePanelOpen: (value: boolean) => void;
   setAuditPanelOpen: (value: boolean) => void;
   setLoginOpen: (value: boolean) => void;
+  setPromptGuardResponse: (value: PangeaResponse<unknown>) => void;
+  setAiGuardResponses: (
+    value: readonly [PangeaResponse<unknown>, PangeaResponse<unknown>],
+  ) => void;
+  setAuthzResponses: (value: readonly PangeaResponse<unknown>[]) => void;
+  setDocuments: (value: readonly DocumentInterface[]) => void;
 }
 
 const ChatContext = createContext<ChatContextProps>({
@@ -40,6 +55,10 @@ const ChatContext = createContext<ChatContextProps>({
   sidePanelOpen: true,
   auditPanelOpen: false,
   loginOpen: false,
+  promptGuardResponse: {},
+  aiGuardResponses: [{}, {}],
+  authzResponses: [],
+  documents: [],
   setLoading: () => {},
   setSystemPrompt: () => {},
   setUserPrompt: () => {},
@@ -49,6 +68,10 @@ const ChatContext = createContext<ChatContextProps>({
   setSidePanelOpen: () => {},
   setAuditPanelOpen: () => {},
   setLoginOpen: () => {},
+  setPromptGuardResponse: () => {},
+  setAiGuardResponses: () => {},
+  setAuthzResponses: () => {},
+  setDocuments: () => {},
 });
 
 export interface ChatProviderProps {
@@ -82,6 +105,17 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
   const [sidePanelOpen, setSidePanelOpen] = useState(true);
   const [auditPanelOpen, setAuditPanelOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
+  const [promptGuardResponse, setPromptGuardResponse] = useState({});
+  const [aiGuardResponses, setAiGuardResponses] = useState<
+    readonly [
+      Partial<PangeaResponse<unknown>>,
+      Partial<PangeaResponse<unknown>>,
+    ]
+  >([{}, {}]);
+  const [authzResponses, setAuthzResponses] = useState<
+    readonly PangeaResponse<unknown>[]
+  >([]);
+  const [documents, setDocuments] = useState<readonly DocumentInterface[]>([]);
 
   useEffect(() => {
     if (!mounted.current) {
@@ -118,6 +152,10 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
       sidePanelOpen,
       auditPanelOpen,
       loginOpen,
+      promptGuardResponse,
+      aiGuardResponses,
+      authzResponses,
+      documents,
       setLoading,
       setSystemPrompt,
       setUserPrompt,
@@ -127,6 +165,10 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
       setSidePanelOpen,
       setAuditPanelOpen,
       setLoginOpen,
+      setPromptGuardResponse,
+      setAiGuardResponses,
+      setAuthzResponses,
+      setDocuments,
     }),
     [
       loading,
@@ -138,6 +180,10 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
       sidePanelOpen,
       auditPanelOpen,
       loginOpen,
+      promptGuardResponse,
+      aiGuardResponses,
+      authzResponses,
+      documents,
       setLoading,
       setSystemPrompt,
       setUserPrompt,
