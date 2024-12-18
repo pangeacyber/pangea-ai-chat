@@ -14,6 +14,7 @@ import {
 import { useTheme } from "@mui/material/styles";
 import SendIcon from "@mui/icons-material/Send";
 import { useAuth } from "@pangeacyber/react-auth";
+import type { AIGuard } from "pangea-node-sdk";
 
 import { DAILY_MAX_MESSAGES, PROMPT_MAX_CHARS } from "@src/const";
 import { useChatContext, ChatMessage } from "@src/app/context";
@@ -27,6 +28,7 @@ import {
 } from "./utils";
 import ChatScroller from "./components/ChatScroller";
 import { Colors } from "@src/app/theme";
+import type { PangeaResponse } from "@src/types";
 import { rateLimitQuery } from "@src/utils";
 
 function hashCode(str: string) {
@@ -50,6 +52,10 @@ const ChatWindow = () => {
     setUserPrompt,
     setLoading,
     setLoginOpen,
+    setPromptGuardResponse,
+    setAiGuardResponses,
+    setAuthzResponses,
+    setDocuments,
   } = useChatContext();
   const { authenticated, user, logout } = useAuth();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -119,6 +125,7 @@ const ChatWindow = () => {
 
       try {
         const promptResp = await callPromptGuard(token, userPrompt, "");
+        setPromptGuardResponse(promptResp);
         const pgMsg: ChatMessage = {
           hash: hashCode(JSON.stringify(promptResp)),
           type: "prompt_guard",
@@ -127,7 +134,7 @@ const ChatWindow = () => {
         setMessages((prevMessages) => [...prevMessages, pgMsg]);
 
         // don't send to the llm if prompt is malicious
-        if (promptResp?.detected) {
+        if (promptResp.result.detected) {
           processingError("Processing halted: suspicious prompt");
           return;
         }
@@ -139,20 +146,25 @@ const ChatWindow = () => {
     }
 
     let llmUserPrompt = userPrompt;
+    let guardedInput: PangeaResponse<AIGuard.TextGuardResult>;
 
     if (dataGuardEnabled) {
       setProcessing("Checking user prompt with AI Guard");
 
       try {
-        const dataResp = await callInputDataGuard(token, userPrompt);
+        guardedInput = await callInputDataGuard(token, userPrompt);
+        setAiGuardResponses([
+          guardedInput,
+          {} as PangeaResponse<AIGuard.TextGuardResult>,
+        ]);
         const dgiMsg: ChatMessage = {
-          hash: hashCode(JSON.stringify(dataResp)),
+          hash: hashCode(JSON.stringify(guardedInput)),
           type: "ai_guard",
-          findings: JSON.stringify(dataResp.findings),
+          findings: JSON.stringify(guardedInput.result.findings),
         };
         setMessages((prevMessages) => [...prevMessages, dgiMsg]);
 
-        llmUserPrompt = dataResp.redacted_prompt;
+        llmUserPrompt = guardedInput.result.redacted_prompt;
       } catch (err) {
         const status = err instanceof Response ? err.status : 0;
         processingError("AI Guard call failed, please try again", status);
@@ -172,12 +184,15 @@ const ChatWindow = () => {
     let llmResponse = "";
 
     try {
-      llmResponse = await sendUserMessage(
+      const llmResponseObj = await sendUserMessage(
         token,
         llmUserPrompt,
         systemPrompt,
         authzEnabled,
       );
+      llmResponse = llmResponseObj.content;
+      setAuthzResponses(llmResponseObj.authzResponses);
+      setDocuments(llmResponseObj.documents);
 
       // decrement daily remaining count
       setRemaining((curVal) => curVal - 1);
@@ -192,14 +207,15 @@ const ChatWindow = () => {
 
       try {
         const dataResp = await callResponseDataGuard(token, llmResponse);
+        setAiGuardResponses([guardedInput!, dataResp]);
         const dgrMsg: ChatMessage = {
           hash: hashCode(JSON.stringify(dataResp)),
           type: "ai_guard",
-          findings: JSON.stringify(dataResp.findings),
+          findings: JSON.stringify(dataResp.result.findings),
         };
         dataGuardMessages.push(dgrMsg);
 
-        llmResponse = dataResp.redacted_prompt;
+        llmResponse = dataResp.result.redacted_prompt;
       } catch (err) {
         const status = err instanceof Response ? err.status : 0;
         processingError("AI Guard call failed, please try again", status);

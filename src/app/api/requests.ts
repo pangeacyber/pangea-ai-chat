@@ -2,6 +2,7 @@ import type { NextRequest } from "next/server";
 import type { AuthZ } from "pangea-node-sdk";
 
 import { delay } from "@src/utils";
+import { PangeaResponse } from "@src/types";
 
 type ValidatedToken =
   | { success: true; username: string; profile: Record<string, string> }
@@ -27,15 +28,6 @@ export async function validateToken(
     username: response?.result?.owner,
     profile: response?.result?.profile,
   };
-}
-
-export interface ResponseObject<T> {
-  request_id: string;
-  request_time: string;
-  response_time: string;
-  status: string;
-  result: T;
-  summary: string;
 }
 
 export async function auditLogRequest(data: { event: Record<string, string> }) {
@@ -74,7 +66,7 @@ export async function auditSearchRequest(data: object) {
 export async function authzCheckRequest(
   data: AuthZ.CheckRequest,
 ): Promise<
-  ResponseObject<AuthZ.CheckResult> | { result: { allowed: boolean } }
+  PangeaResponse<AuthZ.CheckResult> | { result: { allowed: boolean } }
 > {
   const url = getUrl("authz", "v1/check");
   const { success, response } = await postRequest(url, data);
@@ -127,7 +119,7 @@ export async function getRequest(url: string) {
 
 async function handleAsync(response: Response): Promise<Response> {
   const data = await response.json();
-  const url = `https://${process.env.NEXT_PUBLIC_PANGEA_BASE_DOMAIN}/request/${data?.request_id}`;
+  const url = data.result.location;
   const maxRetries = 3;
   let retryCount = 1;
 

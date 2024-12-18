@@ -10,20 +10,19 @@ export const sendUserMessage = async (
   message: string,
   system: string,
   authz = false,
-): Promise<string> => {
-  const response = await aiProxyRequest(token, {
+) => {
+  return await aiProxyRequest(token, {
     authz,
     userPrompt: message,
     systemPrompt: system,
   });
-  return response.content;
 };
 
 export const callPromptGuard = async (
   token: string,
   userPrompt: string,
   systemPrompt: string,
-): Promise<any> => {
+) => {
   const messages = [
     {
       content: userPrompt,
@@ -38,10 +37,7 @@ export const callPromptGuard = async (
   return await promptGuardProxyRequest(token, { messages });
 };
 
-export const callInputDataGuard = async (
-  token: string,
-  userPrompt: string,
-): Promise<any> => {
+export const callInputDataGuard = async (token: string, userPrompt: string) => {
   const payload = {
     recipe: "pangea_prompt_guard",
     text: userPrompt,
@@ -53,7 +49,7 @@ export const callInputDataGuard = async (
 export const callResponseDataGuard = async (
   token: string,
   llmResponse: string,
-): Promise<any> => {
+) => {
   const payload = {
     recipe: "pangea_llm_response_guard",
     text: llmResponse,

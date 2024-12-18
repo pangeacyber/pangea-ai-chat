@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { IconButton, Stack, Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import ViewSidebarOutlinedIcon from "@mui/icons-material/ViewSidebarOutlined";
 
 import SecurityControls from "./components/SecurityControls";
@@ -8,19 +7,12 @@ import SystemPrompt from "./components/SystemPrompt";
 import PangeaLogo from "@app/components/Logo";
 import { Colors } from "@app/theme";
 import LoginWidget from "@app/components/LoginWidget";
+import PanelHeader from "@app/components/PanelHeader";
 
 interface Props {
   open: boolean;
   onClose: () => void;
 }
-
-const PanelHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  padding: theme.spacing(0, 1),
-  ...theme.mixins.toolbar,
-  justifyContent: "space-between",
-}));
 
 const SidePanel: FC<Props> = ({ onClose }) => {
   return (

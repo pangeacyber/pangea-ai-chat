@@ -3,6 +3,7 @@ import { BedrockEmbeddings, ChatBedrockConverse } from "@langchain/aws";
 import { HumanMessage, SystemMessage } from "@langchain/core/messages";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
+import type { AuthZ } from "pangea-node-sdk";
 
 import {
   auditLogRequest,
@@ -10,6 +11,7 @@ import {
   authzCheckRequest,
   validateToken,
 } from "../requests";
+import type { PangeaResponse } from "@src/types";
 import { rateLimitQuery } from "@src/utils";
 import { DAILY_MAX_MESSAGES, PROMPT_MAX_CHARS } from "@src/const";
 import { GoogleDriveRetriever } from "@src/google";
@@ -88,6 +90,7 @@ export async function POST(request: NextRequest) {
     let docs = await retriever.invoke(body.userPrompt);
 
     // Filter documents based on user's permissions in AuthZ.
+    const authzResponses: PangeaResponse<AuthZ.CheckResult>[] = [];
     if (body.authz) {
       docs = await Promise.all(
         docs.map(async (doc) => {
@@ -97,6 +100,16 @@ export async function POST(request: NextRequest) {
             resource: { type: "file", id: doc.id },
             debug: true,
           });
+          if ("request_id" in response) {
+            authzResponses.push({
+              request_id: response.request_id,
+              request_time: response.request_time,
+              response_time: response.response_time,
+              result: response.result,
+              status: response.status,
+              summary: response.summary,
+            });
+          }
           return response.result.allowed ? doc : null;
         }),
       ).then((results) => results.filter((doc) => doc !== null));
@@ -130,7 +143,15 @@ Context: ${context}`),
 
     await auditLogRequest(auditLogData);
 
-    return Response.json({ content: text });
+    return Response.json({
+      content: text,
+      authzResponses,
+      documents: docs.map(({ id, metadata, pageContent }) => ({
+        id,
+        metadata,
+        pageContent,
+      })),
+    });
   } catch (err) {
     console.log("Error:", err);
     return new Response(`{"error": "ConverseCommand failed"}`, {

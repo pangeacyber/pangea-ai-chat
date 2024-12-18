@@ -38,8 +38,8 @@ export async function POST(request: NextRequest) {
       await auditLogRequest(auditLogData);
     } catch (_) {}
 
-    return new Response(JSON.stringify(response.result));
+    return Response.json(response);
   } else {
-    return new Response(JSON.stringify(response.result), { status: 400 });
+    return Response.json(response, { status: 400 });
   }
 }
