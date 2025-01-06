@@ -1,5 +1,8 @@
 import type { NextRequest } from "next/server";
 
+import type { AIGuardResult, PangeaResponse } from "@src/types";
+import { isAIGuardResultV2 } from "@src/utils";
+
 import {
   auditLogRequest,
   getUrl,
@@ -22,19 +25,34 @@ export async function POST(request: NextRequest) {
   const endpoint = `${API_VERSION}/text/guard`;
   const url = getUrl(SERVICE_NAME, endpoint);
 
-  const { success, response } = await postRequest(url, body);
+  const {
+    success,
+    response,
+  }: { success: boolean; response: PangeaResponse<AIGuardResult> } =
+    await postRequest(url, body);
 
   if (success) {
     const auditLogData = {
       event: {
         event_input: body.text,
-        event_output: JSON.stringify(response.result.redacted_prompt),
+        event_output: JSON.stringify(
+          isAIGuardResultV2(response.result)
+            ? response.result.prompt
+            : response.result.redacted_prompt,
+        ),
         event_type: "ai_guard",
         event_context: JSON.stringify({
           recipe: body.recipe,
         }),
-        event_findings: JSON.stringify(response.result.findings),
-        malicious_entity_count: response.result.findings?.malicious_count || 0,
+        event_findings: JSON.stringify(
+          isAIGuardResultV2(response.result)
+            ? response.result.detectors
+            : response.result.findings,
+        ),
+        malicious_entity_count: isAIGuardResultV2(response.result)
+          ? response.result.detectors.malicious_entity?.data?.entities
+              ?.length || 0
+          : response.result.findings?.malicious_count || 0,
         actor: username,
       },
     };

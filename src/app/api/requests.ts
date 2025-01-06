@@ -30,7 +30,9 @@ export async function validateToken(
   };
 }
 
-export async function auditLogRequest(data: { event: Record<string, string> }) {
+export async function auditLogRequest(data: {
+  event: Record<string, string | number>;
+}) {
   const url = getUrl("audit", "v1/log");
   const now = new Date();
 
