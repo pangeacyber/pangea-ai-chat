@@ -129,7 +129,7 @@ const ChatWindow = () => {
         const pgMsg: ChatMessage = {
           hash: hashCode(JSON.stringify(promptResp)),
           type: "prompt_guard",
-          output: JSON.stringify(promptResp),
+          output: JSON.stringify(promptResp?.result),
         };
         setMessages((prevMessages) => [...prevMessages, pgMsg]);
 
