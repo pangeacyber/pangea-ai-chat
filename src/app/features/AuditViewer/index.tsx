@@ -61,8 +61,13 @@ const schema: any = {
 const AuditViewer = () => {
   const theme = useTheme();
   const { authenticated, user } = useAuth();
-  const { sidePanelOpen, auditPanelOpen, setAuditPanelOpen, setLoginOpen } =
-    useChatContext();
+  const {
+    sidePanelOpen,
+    rightPanelOpen,
+    auditPanelOpen,
+    setAuditPanelOpen,
+    setLoginOpen,
+  } = useChatContext();
 
   const handleSearch = async (body: Audit.SearchRequest) => {
     const token = user?.active_token?.token || "";
@@ -120,9 +125,14 @@ const AuditViewer = () => {
         <Stack
           gap={2}
           sx={{
-            width: sidePanelOpen
-              ? "calc(100vw - 860px)"
-              : "calc(100vw - 580px)",
+            width:
+              sidePanelOpen && rightPanelOpen
+                ? "calc(100vw - 850px)"
+                : sidePanelOpen && !rightPanelOpen
+                ? "calc(100vw - 430px)"
+                : !sidePanelOpen && rightPanelOpen
+                ? "calc(100vw - 580px)"
+                : "100%",
             marginBottom: "20px",
             padding: "20px",
             borderRadius: "10px",
