@@ -1829,7 +1829,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pangeacyber/react-mui-audit-log-viewer@npm:^1.0.5":
+"@pangeacyber/react-mui-audit-log-viewer@npm:^1.0.6":
   version: 1.0.6
   resolution: "@pangeacyber/react-mui-audit-log-viewer@npm:1.0.6"
   dependencies:
@@ -6701,7 +6701,7 @@ __metadata:
     "@mui/icons-material": "npm:6.1.10"
     "@mui/material": "npm:6.1.10"
     "@pangeacyber/react-auth": "npm:^0.0.14"
-    "@pangeacyber/react-mui-audit-log-viewer": "npm:^1.0.5"
+    "@pangeacyber/react-mui-audit-log-viewer": "npm:^1.0.6"
     "@types/node": "npm:^22.10.1"
     "@types/react": "npm:^18.3.14"
     "@types/react-dom": "npm:^18.3.2"
