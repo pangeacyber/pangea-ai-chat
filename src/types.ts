@@ -1,3 +1,5 @@
+import type { MessageFieldWithRole } from "@langchain/core/messages";
+
 export interface PangeaResponse<T = unknown> {
   request_id: string;
   request_time: string;
@@ -25,4 +27,5 @@ export interface AIGuardResult {
     }>;
   };
   prompt_text: string;
+  prompt_messages: MessageFieldWithRole[];
 }

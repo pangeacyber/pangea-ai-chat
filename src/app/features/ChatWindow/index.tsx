@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import SendIcon from "@mui/icons-material/Send";
+import type { DocumentInterface } from "@langchain/core/documents";
 import { useAuth } from "@pangeacyber/react-auth";
 import type { AIGuard } from "pangea-node-sdk";
 
@@ -24,12 +25,13 @@ import {
   callInputDataGuard,
   callResponseDataGuard,
   callPromptGuard,
-  sendUserMessage,
+  generateCompletions,
+  fetchDocuments,
 } from "./utils";
 import ChatScroller from "./components/ChatScroller";
 import { Colors } from "@src/app/theme";
 import type { AIGuardResult, PangeaResponse } from "@src/types";
-import { rateLimitQuery } from "@src/utils";
+import { constructLlmInput, rateLimitQuery } from "@src/utils";
 
 function hashCode(str: string) {
   let hash = 0;
@@ -145,14 +147,35 @@ const ChatWindow = () => {
       }
     }
 
-    let llmUserPrompt = userPrompt;
+    setProcessing("Fetching documents");
+    let docs: DocumentInterface[] = [];
+    try {
+      const docsResponse = await fetchDocuments(
+        token,
+        userPrompt,
+        authzEnabled,
+      );
+      docs = docsResponse.documents;
+      setAuthzResponses(docsResponse.authzResponses);
+      setDocuments(docs);
+    } catch (_) {
+      setAuthzResponses([]);
+      setDocuments([]);
+    }
+
+    let llmInput = constructLlmInput({
+      systemPrompt,
+      userPrompt,
+      documents: docs,
+      profile: user!.profile,
+    });
     let guardedInput: PangeaResponse<AIGuardResult>;
 
     if (dataGuardEnabled) {
       setProcessing("Checking user prompt with AI Guard");
 
       try {
-        guardedInput = await callInputDataGuard(token, userPrompt);
+        guardedInput = await callInputDataGuard(token, llmInput);
         setAiGuardResponses([
           guardedInput,
           {} as PangeaResponse<AIGuard.TextGuardResult>,
@@ -164,18 +187,18 @@ const ChatWindow = () => {
         };
         setMessages((prevMessages) => [...prevMessages, dgiMsg]);
 
-        llmUserPrompt = guardedInput.result.prompt_text;
+        llmInput = guardedInput.result.prompt_messages;
+
+        // Stop on prompt injections.
+        if (guardedInput.result.detectors.prompt_injection.detected) {
+          processingError("Processing halted: suspicious prompt");
+          return;
+        }
       } catch (err) {
         const status = err instanceof Response ? err.status : 0;
         processingError("AI Guard call failed, please try again", status);
         return;
       }
-    }
-
-    // don't send empty prompt
-    if (!llmUserPrompt) {
-      processingError("Processing halted: suspicious prompt");
-      return;
     }
 
     setProcessing("Waiting for LLM response");
@@ -184,15 +207,13 @@ const ChatWindow = () => {
     let llmResponse = "";
 
     try {
-      const llmResponseObj = await sendUserMessage(
+      const llmResponseObj = await generateCompletions(
         token,
-        llmUserPrompt,
+        llmInput,
         systemPrompt,
-        authzEnabled,
+        userPrompt,
       );
       llmResponse = llmResponseObj.content;
-      setAuthzResponses(llmResponseObj.authzResponses);
-      setDocuments(llmResponseObj.documents);
 
       // decrement daily remaining count
       setRemaining((curVal) => curVal - 1);
