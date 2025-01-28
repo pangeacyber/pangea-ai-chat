@@ -1,5 +1,3 @@
-import { type AIGuard } from "pangea-node-sdk";
-
 export interface PangeaResponse<T = unknown> {
   request_id: string;
   request_time: string;
@@ -9,13 +7,12 @@ export interface PangeaResponse<T = unknown> {
   result: T;
 }
 
-export type AIGuardResultV1 = AIGuard.TextGuardResult;
-
 export interface AIGuardDetector<T> {
   detected: boolean;
   data: T | null;
 }
-export interface AIGuardResultV2 {
+
+export interface AIGuardResult {
   detectors: {
     prompt_injection: AIGuardDetector<{
       analyzer_responses: { analyzer: string; confidence: number }[];
@@ -27,7 +24,5 @@ export interface AIGuardResultV2 {
       entities: unknown[];
     }>;
   };
-  prompt: string;
+  prompt_text: string;
 }
-
-export type AIGuardResult = AIGuardResultV1 | AIGuardResultV2;
