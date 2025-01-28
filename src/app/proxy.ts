@@ -1,11 +1,24 @@
 import type { DocumentInterface } from "@langchain/core/documents";
 import type { AuthZ, PromptGuard } from "pangea-node-sdk";
 
+import type { RequestBody as AiRequestBody } from "@src/app/api/ai/route";
+import type { RequestBody as AiGuardRequestBody } from "@src/app/api/data/route";
+import type { RequestBody as DocsRequestBody } from "@src/app/api/docs/route";
 import type { AIGuardResult, PangeaResponse } from "@src/types";
+
+export const docsProxyRequest = async (
+  token: string,
+  body: DocsRequestBody,
+): Promise<{
+  authzResponses: PangeaResponse<AuthZ.CheckResult>[];
+  documents: DocumentInterface[];
+}> => {
+  return baseProxyRequest(token, "docs", "", body);
+};
 
 export const dataGuardProxyRequest = async (
   token: string,
-  body: unknown,
+  body: AiGuardRequestBody,
 ): Promise<PangeaResponse<AIGuardResult>> => {
   return baseProxyRequest(token, "data", "", body);
 };
@@ -27,12 +40,8 @@ export const auditProxyRequest = async (
 
 export const aiProxyRequest = async (
   token: string,
-  body: unknown,
-): Promise<{
-  content: string;
-  authzResponses: PangeaResponse<AuthZ.CheckResult>[];
-  documents: DocumentInterface[];
-}> => {
+  body: AiRequestBody,
+): Promise<{ content: string }> => {
   return baseProxyRequest(token, "ai", "", body);
 };
 

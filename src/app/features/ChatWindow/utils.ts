@@ -1,20 +1,31 @@
+import type { MessageFieldWithRole } from "@langchain/core/messages";
+
 import {
   aiProxyRequest,
   auditProxyRequest,
   dataGuardProxyRequest,
+  docsProxyRequest,
   promptGuardProxyRequest,
 } from "@src/app/proxy";
 
-export const sendUserMessage = async (
+export const fetchDocuments = async (
   token: string,
-  message: string,
-  system: string,
+  userPrompt: string,
   authz = false,
 ) => {
+  return await docsProxyRequest(token, { userPrompt, authz });
+};
+
+export const generateCompletions = async (
+  token: string,
+  messages: MessageFieldWithRole[],
+  systemPrompt: string,
+  userPrompt: string,
+) => {
   return await aiProxyRequest(token, {
-    authz,
-    userPrompt: message,
-    systemPrompt: system,
+    input: messages,
+    systemPrompt,
+    userPrompt,
   });
 };
 
@@ -37,10 +48,13 @@ export const callPromptGuard = async (
   return await promptGuardProxyRequest(token, { messages });
 };
 
-export const callInputDataGuard = async (token: string, userPrompt: string) => {
+export const callInputDataGuard = async (
+  token: string,
+  messages: readonly MessageFieldWithRole[],
+) => {
   const payload = {
-    recipe: "pangea_prompt_guard",
-    text: userPrompt,
+    recipe: "pangea_llm_prompt_guard",
+    messages,
   };
 
   return await dataGuardProxyRequest(token, payload);
