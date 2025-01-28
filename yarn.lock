@@ -762,9 +762,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dotenvx/dotenvx@npm:1.29.0":
-  version: 1.29.0
-  resolution: "@dotenvx/dotenvx@npm:1.29.0"
+"@dotenvx/dotenvx@npm:1.34.0":
+  version: 1.34.0
+  resolution: "@dotenvx/dotenvx@npm:1.34.0"
   dependencies:
     commander: "npm:^11.1.0"
     dotenv: "npm:^16.4.5"
@@ -778,7 +778,7 @@ __metadata:
   bin:
     dotenvx: src/cli/dotenvx.js
     git-dotenvx: src/cli/dotenvx.js
-  checksum: 10c0/67d984a84a98e7a693ebf69337367d1fc98a3ada8fd83935e1010dbd29f8c5ac95e8e5ebfdd1894905121941d91cce7c674e6c3e900f5ba62a0024a8cd09812f
+  checksum: 10c0/18508420c06900c2405fd77fe6e6357e6dcf28a7c9ec0363fb0011f8f2ffb2347294d4822a7e09183a142708484f56f5df52fef8e50d13361913d90e21e8e7c2
   languageName: node
   linkType: hard
 
@@ -6689,7 +6689,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "pangea-ai-example@workspace:."
   dependencies:
-    "@dotenvx/dotenvx": "npm:1.29.0"
+    "@dotenvx/dotenvx": "npm:1.34.0"
     "@emotion/css": "npm:11.13.5"
     "@emotion/react": "npm:^11.13.5"
     "@emotion/styled": "npm:^11.13.5"
