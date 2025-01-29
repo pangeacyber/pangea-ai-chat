@@ -5,8 +5,8 @@ import {
   auditProxyRequest,
   dataGuardProxyRequest,
   docsProxyRequest,
-  promptGuardProxyRequest,
 } from "@src/app/proxy";
+import type { DetectorOverrides } from "@src/types";
 
 export const fetchDocuments = async (
   token: string,
@@ -29,32 +29,15 @@ export const generateCompletions = async (
   });
 };
 
-export const callPromptGuard = async (
-  token: string,
-  userPrompt: string,
-  systemPrompt: string,
-) => {
-  const messages = [
-    {
-      content: userPrompt,
-      role: "user",
-    },
-  ];
-
-  if (!!systemPrompt) {
-    messages.push({ content: systemPrompt, role: "system" });
-  }
-
-  return await promptGuardProxyRequest(token, { messages });
-};
-
 export const callInputDataGuard = async (
   token: string,
   messages: readonly MessageFieldWithRole[],
+  overrides?: DetectorOverrides,
 ) => {
   const payload = {
     recipe: "pangea_llm_prompt_guard",
     messages,
+    overrides,
   };
 
   return await dataGuardProxyRequest(token, payload);
@@ -63,10 +46,12 @@ export const callInputDataGuard = async (
 export const callResponseDataGuard = async (
   token: string,
   llmResponse: string,
+  overrides?: DetectorOverrides,
 ) => {
   const payload = {
     recipe: "pangea_llm_response_guard",
     text: llmResponse,
+    overrides,
   };
 
   return await dataGuardProxyRequest(token, payload);

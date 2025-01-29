@@ -29,3 +29,18 @@ export interface AIGuardResult {
   prompt_text: string;
   prompt_messages: MessageFieldWithRole[];
 }
+
+export interface Detector {
+  name: string;
+  description: string;
+  enabled: boolean;
+}
+
+export interface DetectorOverrides {
+  prompt_injection: { action: "detect_only" | "block" };
+  malicious_entity: {
+    domain_action: "detect_only" | "defang" | "disabled" | "block";
+    ip_address_action: "detect_only" | "defang" | "disabled" | "block";
+    url_action: "detect_only" | "defang" | "disabled" | "block";
+  };
+}

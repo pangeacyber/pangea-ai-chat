@@ -6,7 +6,6 @@ import {
   UserPromptMessage,
   LlmResponse,
   AiGuardMessage,
-  PromptGuardMessage,
 } from "../ChatMessages";
 import { useAuth } from "@pangeacyber/react-auth";
 import { Colors } from "@src/app/theme";
@@ -58,13 +57,6 @@ const ChatScroller: FC<Props> = ({ messages }) => {
                 <AiGuardMessage
                   findings={message.findings || "{}"}
                   key={`message-${message.hash || idx}`}
-                />
-              );
-            case "prompt_guard":
-              return (
-                <PromptGuardMessage
-                  findings={message.output || "{}"}
-                  key={`message-${message.hash}`}
                 />
               );
             default:

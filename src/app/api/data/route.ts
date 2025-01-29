@@ -1,7 +1,11 @@
 import type { NextRequest } from "next/server";
 import type { MessageFieldWithRole } from "@langchain/core/messages";
 
-import type { AIGuardResult, PangeaResponse } from "@src/types";
+import type {
+  AIGuardResult,
+  DetectorOverrides,
+  PangeaResponse,
+} from "@src/types";
 
 import {
   auditLogRequest,
@@ -37,6 +41,7 @@ export type RequestBody = (
    * text, such as defang malicious URLs.
    */
   recipe?: string;
+  overrides?: DetectorOverrides;
 };
 
 export async function POST(request: NextRequest) {
