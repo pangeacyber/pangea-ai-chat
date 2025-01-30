@@ -83,7 +83,7 @@ export const AiGuardMessage: FC<AiGuardProps> = ({ findings }) => {
     findingsJSON?.prompt_injection?.data?.analyzer_responses?.length || 0;
   const redacted =
     findingsJSON?.pii_entity?.data?.entities?.filter(
-      (entity) => entity.redacted,
+      (entity) => entity.action === "redacted",
     ).length || 0;
 
   let result = "Findings: ";
