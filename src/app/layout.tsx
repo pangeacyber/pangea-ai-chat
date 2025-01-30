@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Pangea - AI Playground",
-  description: "Pangea Prompt Guard and AI Guard integration",
+  description: "Pangea AI Guard integration",
 };
 
 export default function RootLayout({

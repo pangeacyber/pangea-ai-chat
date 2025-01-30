@@ -141,8 +141,7 @@ const Layout = () => {
             </Stack>
             <Typography variant="h5">Unlock Pangea Chat</Typography>
             <Typography variant="body2">
-              Unlock access to try out Pangea AI Guard and Prompt Guard
-              Services.
+              Unlock access to try out Pangea AI Guard.
             </Typography>
             <Button variant="outlined" onClick={login}>
               Sign up or log in

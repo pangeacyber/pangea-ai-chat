@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Avatar, Box, Stack, Typography } from "@mui/material";
-import { MediationOutlined, ReviewsOutlined } from "@mui/icons-material";
+import { ReviewsOutlined } from "@mui/icons-material";
 
 import PangeaLogo from "@src/app/components/Logo";
 import { Colors } from "@src/app/theme";
@@ -12,10 +12,6 @@ interface UserPromptProps {
 }
 
 interface AiGuardProps {
-  findings: string;
-}
-
-interface PromptGuardProps {
   findings: string;
 }
 
@@ -135,41 +131,6 @@ export const AiGuardMessage: FC<AiGuardProps> = ({ findings }) => {
         AI Guard
       </Typography>
       <Typography variant="body2">{result}</Typography>
-    </Stack>
-  );
-};
-
-export const PromptGuardMessage: FC<PromptGuardProps> = ({ findings }) => {
-  const findingsJSON = JSON.parse(findings);
-  const verdict = findingsJSON?.detected ? "Detected" : "Benign";
-  const confidence = findingsJSON?.confidence
-    ? `${findingsJSON.confidence}%`
-    : "";
-
-  return (
-    <Stack
-      direction="row"
-      gap={1}
-      alignItems="center"
-      justifyContent="space-between"
-      sx={{
-        marginBottom: "2px",
-        padding: "12px 20px",
-        borderRadius: "10px",
-        background: Colors.card,
-      }}
-    >
-      <Stack direction="row" alignItems="center" gap={1}>
-        <MediationOutlined sx={{ color: Colors.secondary }} />
-        <Typography
-          variant="body1"
-          sx={{ fontSize: "14px", whiteSpace: "nowrap" }}
-        >
-          Prompt Guard
-        </Typography>
-        <Typography variant="body2">{verdict}</Typography>
-      </Stack>
-      <Typography variant="body2">{confidence}</Typography>
     </Stack>
   );
 };

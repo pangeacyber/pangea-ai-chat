@@ -8,11 +8,11 @@ import CollapsablePanel from "@app/components/CollapsablePanel";
 import PanelHeader from "@app/components/PanelHeader";
 import { useChatContext } from "@app/context";
 import { Colors } from "@app/theme";
+import type { PangeaResponse } from "@src/types";
 
 import { highlight } from "./utils";
 
 import "react-json-view-lite/dist/index.css";
-import { PangeaResponse } from "@src/types";
 
 const reactJsonViewStyles = {
   ...darkStyles,
@@ -56,8 +56,7 @@ const SampleCode: FC = () => {
 };
 
 const ResponsesSidePanel: FC<Props> = ({ onClose }) => {
-  const { promptGuardResponse, aiGuardResponses, authzResponses, documents } =
-    useChatContext();
+  const { aiGuardResponses, authzResponses, documents } = useChatContext();
 
   return (
     <Stack
@@ -73,12 +72,6 @@ const ResponsesSidePanel: FC<Props> = ({ onClose }) => {
             <ViewSidebarOutlinedIcon sx={{ color: Colors.icons }} />
           </IconButton>
         </PanelHeader>
-
-        <CollapsablePanel title="Prompt Guard">
-          <Stack gap={1} py={1} fontFamily="monospace">
-            <JsonView data={promptGuardResponse} style={reactJsonViewStyles} />
-          </Stack>
-        </CollapsablePanel>
 
         <CollapsablePanel title="AI Guard">
           <Stack gap={1} py={1} fontFamily="monospace">
