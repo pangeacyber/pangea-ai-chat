@@ -17,10 +17,13 @@ export interface AIGuardDetector<T> {
 export interface AIGuardResult {
   detectors: {
     prompt_injection: AIGuardDetector<{
+      action: "detected" | "redacted" | "defanged" | "reported" | "blocked";
       analyzer_responses: { analyzer: string; confidence: number }[];
     }>;
     pii_entity?: AIGuardDetector<{
-      entities: { redacted: boolean }[];
+      entities: {
+        action: "detected" | "redacted" | "defanged" | "reported" | "blocked";
+      }[];
     }>;
     malicious_entity?: AIGuardDetector<{
       entities: unknown[];
@@ -28,6 +31,7 @@ export interface AIGuardResult {
   };
   prompt_text: string;
   prompt_messages: MessageFieldWithRole[];
+  blocked: boolean;
 }
 
 export interface Detector {
