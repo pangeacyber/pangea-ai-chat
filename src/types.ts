@@ -17,17 +17,14 @@ export interface AIGuardDetector<T> {
 export interface AIGuardResult {
   detectors: {
     prompt_injection: AIGuardDetector<{
-      action: "detected" | "redacted" | "defanged" | "reported" | "blocked";
+      action: string;
       analyzer_responses: { analyzer: string; confidence: number }[];
     }>;
-    pii_entity?: AIGuardDetector<{
-      entities: {
-        action: "detected" | "redacted" | "defanged" | "reported" | "blocked";
-      }[];
-    }>;
-    malicious_entity?: AIGuardDetector<{
-      entities: unknown[];
-    }>;
+    pii_entity?: AIGuardDetector<{ entities: { action: string }[] }>;
+    malicious_entity?: AIGuardDetector<{ entities: unknown[] }>;
+    secrets_detection?: AIGuardDetector<{ entities: unknown[] }>;
+    code_detection?: AIGuardDetector<{ language: string; action: string }>;
+    language_detection?: AIGuardDetector<{ language: string; action: string }>;
   };
   prompt_text: string;
   prompt_messages: MessageFieldWithRole[];
@@ -41,10 +38,15 @@ export interface Detector {
 }
 
 export interface DetectorOverrides {
-  prompt_injection: { action: "detect_only" | "block" };
+  code_detection: { disabled?: boolean; action?: "report" | "block" };
+  language_detection: { disabled?: boolean };
+  prompt_injection: { disabled?: boolean; action?: "report" | "block" };
   malicious_entity: {
-    domain_action: "detect_only" | "defang" | "disabled" | "block";
-    ip_address_action: "detect_only" | "defang" | "disabled" | "block";
-    url_action: "detect_only" | "defang" | "disabled" | "block";
+    disabled?: boolean;
+    domain?: "report" | "defang" | "disabled" | "block";
+    ip_address?: "report" | "defang" | "disabled" | "block";
+    url?: "report" | "defang" | "disabled" | "block";
   };
+  pii_entity: { disabled?: boolean };
+  secrets_detection: { disabled?: boolean };
 }

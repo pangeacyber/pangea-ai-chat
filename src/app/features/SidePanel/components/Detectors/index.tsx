@@ -10,7 +10,14 @@ import {
   Tooltip,
   Link,
 } from "@mui/material";
-import { AssignmentInd, FormatIndentIncrease } from "@mui/icons-material";
+import {
+  AssignmentIndRounded,
+  SettingsAccessibilityRounded,
+  VpnKeyRounded,
+  LanguageRounded,
+  TerminalRounded,
+  ReadMoreRounded,
+} from "@mui/icons-material";
 import type { ReactElement, ReactNode } from "react";
 
 import { useChatContext } from "@src/app/context";
@@ -27,14 +34,41 @@ const DETECTORS: readonly Detector[] = [
     key: "prompt_injection",
     name: "Prompt Injection",
     description: "Detects prompt injection and jailbreak attempts in text.",
-    icon: <FormatIndentIncrease />,
+    icon: <ReadMoreRounded />,
   },
   {
     key: "malicious_entity",
     name: "Malicious Entity",
     description:
       "Detect entities in text and run intelligence checks to determine if values are malicious.",
-    icon: <AssignmentInd />,
+    icon: <AssignmentIndRounded />,
+  },
+  {
+    key: "pii_entity",
+    name: "Confidential and PII Entity",
+    description:
+      "Detect confidential and PII entity data within text leveraging out-of-box Redact rules.",
+    icon: <SettingsAccessibilityRounded />,
+  },
+  {
+    key: "secrets_detection",
+    name: "Secret and Key Entity",
+    description:
+      "Detect API secret and key entities within text leveraging out-of-box Redact rules.",
+    icon: <VpnKeyRounded />,
+  },
+  {
+    key: "language_detection",
+    name: "Language",
+    description:
+      "Detect languages within text and block based on the configured allow or block list.",
+    icon: <LanguageRounded />,
+  },
+  {
+    key: "code_detection",
+    name: "Code",
+    description: "Detect usage of a programming language in the text.",
+    icon: <TerminalRounded />,
   },
 ];
 

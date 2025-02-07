@@ -147,20 +147,12 @@ const ChatWindow = () => {
       profile: user!.profile,
     });
     const overrides: DetectorOverrides = {
-      prompt_injection: {
-        action: detectors.prompt_injection ? "block" : "detect_only",
-      },
-      malicious_entity: detectors.malicious_entity
-        ? {
-            domain_action: "block",
-            ip_address_action: "block",
-            url_action: "block",
-          }
-        : {
-            domain_action: "disabled",
-            ip_address_action: "disabled",
-            url_action: "disabled",
-          },
+      code_detection: { disabled: !detectors.code_detection },
+      language_detection: { disabled: !detectors.language_detection },
+      malicious_entity: { disabled: !detectors.malicious_entity },
+      pii_entity: { disabled: !detectors.pii_entity },
+      prompt_injection: { disabled: !detectors.prompt_injection },
+      secrets_detection: { disabled: !detectors.secrets_detection },
     };
     let guardedInput: PangeaResponse<AIGuardResult>;
 
@@ -222,7 +214,11 @@ const ChatWindow = () => {
     setProcessing("Checking LLM response with AI Guard");
 
     try {
-      const dataResp = await callResponseDataGuard(token, llmResponse);
+      const dataResp = await callResponseDataGuard(
+        token,
+        llmResponse,
+        overrides,
+      );
       setAiGuardResponses([guardedInput!, dataResp]);
       const dgrMsg: ChatMessage = {
         hash: hashCode(JSON.stringify(dataResp)),
