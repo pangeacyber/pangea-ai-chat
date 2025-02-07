@@ -28,8 +28,12 @@ export interface ChatContextProps {
   authzResponses: readonly PangeaResponse<unknown>[];
   documents: readonly DocumentInterface[];
   detectors: Readonly<{
-    prompt_injection: boolean;
+    code_detection: boolean;
+    language_detection: boolean;
     malicious_entity: boolean;
+    pii_entity: boolean;
+    prompt_injection: boolean;
+    secrets_detection: boolean;
     [x: string]: boolean;
   }>;
   setLoading: (value: boolean) => void;
@@ -47,8 +51,12 @@ export interface ChatContextProps {
   setDocuments: (value: readonly DocumentInterface[]) => void;
   setDetectors: (
     value: Readonly<{
-      prompt_injection: boolean;
+      code_detection: boolean;
+      language_detection: boolean;
       malicious_entity: boolean;
+      pii_entity: boolean;
+      prompt_injection: boolean;
+      secrets_detection: boolean;
     }>,
   ) => void;
 }
@@ -66,8 +74,12 @@ const ChatContext = createContext<ChatContextProps>({
   authzResponses: [],
   documents: [],
   detectors: {
-    prompt_injection: true,
+    code_detection: true,
+    language_detection: true,
     malicious_entity: true,
+    pii_entity: true,
+    prompt_injection: true,
+    secrets_detection: true,
   },
   setLoading: () => {},
   setSystemPrompt: () => {},
@@ -125,12 +137,20 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
   const [documents, setDocuments] = useState<readonly DocumentInterface[]>([]);
   const [detectors, setDetectors] = useState<
     Readonly<{
-      prompt_injection: boolean;
+      code_detection: boolean;
+      language_detection: boolean;
       malicious_entity: boolean;
+      pii_entity: boolean;
+      prompt_injection: boolean;
+      secrets_detection: boolean;
     }>
   >({
-    prompt_injection: true,
+    code_detection: true,
+    language_detection: true,
     malicious_entity: true,
+    pii_entity: true,
+    prompt_injection: true,
+    secrets_detection: true,
   });
 
   useEffect(() => {

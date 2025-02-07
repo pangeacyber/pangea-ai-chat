@@ -85,6 +85,9 @@ export const AiGuardMessage: FC<AiGuardProps> = ({ findings }) => {
     findingsJSON?.pii_entity?.data?.entities?.filter(
       (entity) => entity.action === "redacted",
     ).length || 0;
+  const secrets = findingsJSON?.secrets_detection?.data?.entities?.length || 0;
+  const language = findingsJSON?.language_detection?.data?.language;
+  const code = findingsJSON?.code_detection?.data?.language;
 
   let result = "Findings: ";
   let addPipe = false;
@@ -106,7 +109,25 @@ export const AiGuardMessage: FC<AiGuardProps> = ({ findings }) => {
     addPipe = true;
   }
 
-  if (!(redacted || injection || malicious)) {
+  if (secrets) {
+    if (addPipe) result += " | ";
+    result += `${secrets} secret${secrets > 1 ? "s" : ""}`;
+    addPipe = true;
+  }
+
+  if (language) {
+    if (addPipe) result += " | ";
+    result += "Language";
+    addPipe = true;
+  }
+
+  if (code) {
+    if (addPipe) result += " | ";
+    result += "Programming language";
+    addPipe = true;
+  }
+
+  if (!(redacted || injection || malicious || secrets)) {
     result += "None";
   }
 
