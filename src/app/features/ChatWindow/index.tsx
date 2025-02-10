@@ -1,5 +1,6 @@
 import type { DocumentInterface } from "@langchain/core/documents";
 import SendIcon from "@mui/icons-material/Send";
+import RestartAlt from "@mui/icons-material/RestartAlt";
 import {
   Alert,
   Box,
@@ -338,7 +339,26 @@ const ChatWindow = () => {
   return (
     <Stack width="100%" height="100%">
       <Paper sx={{ height: "100%" }}>
-        <Stack height="100%" alignItems="center" justifyContent="space-between">
+        <Stack
+          height="100%"
+          alignItems="center"
+          justifyContent="space-between"
+          position="relative"
+        >
+          <IconButton
+            aria-label="clear"
+            title="Clear chat"
+            onClick={() => setMessages([])}
+            size="small"
+            disableRipple
+            sx={{
+              position: "absolute",
+              top: "0.35em",
+              right: "0.45em",
+            }}
+          >
+            <RestartAlt />
+          </IconButton>
           <Typography
             variant="h1"
             sx={{
