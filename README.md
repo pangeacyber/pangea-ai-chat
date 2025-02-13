@@ -8,7 +8,7 @@ services.
 - Node.js v20 or v22.
 - yarn v4.5.1 (or greater).
 - A [Pangea account][Pangea signup] with AI Guard, Prompt Guard, AuthN, AuthZ,
-  and Secure Audit Log enabled.
+  Redact, and Secure Audit Log enabled.
 - A Google Drive folder containing spreadsheets.
 
   - Note down the ID of the folder for later (see [the LangChain docs][retrieve-the-google-docs]

@@ -36,6 +36,7 @@ import {
   callResponseDataGuard,
   fetchDocuments,
   generateCompletions,
+  unredact,
 } from "./utils";
 
 function hashCode(str: string) {
@@ -232,6 +233,16 @@ const ChatWindow = () => {
     } catch (err) {
       const status = err instanceof Response ? err.status : 0;
       processingError("AI Guard call failed, please try again", status);
+    }
+
+    // Unredact if a FPE context was returned.
+    if (guardedInput.result.fpe_context) {
+      const unredacted = await unredact(
+        token,
+        llmResponse,
+        guardedInput.result.fpe_context,
+      );
+      llmResponse = unredacted.result.data;
     }
 
     const llmMsg: ChatMessage = {

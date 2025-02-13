@@ -29,6 +29,7 @@ export interface AIGuardResult {
   prompt_text: string;
   prompt_messages: MessageFieldWithRole[];
   blocked: boolean;
+  fpe_context?: string;
 }
 
 export interface Detector {
@@ -49,4 +50,8 @@ export interface DetectorOverrides {
   };
   pii_entity: { disabled?: boolean };
   secrets_detection: { disabled?: boolean };
+}
+
+export interface UnredactResult {
+  data: string;
 }
