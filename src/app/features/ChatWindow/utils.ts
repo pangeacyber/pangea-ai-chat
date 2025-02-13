@@ -5,6 +5,7 @@ import {
   auditProxyRequest,
   dataGuardProxyRequest,
   docsProxyRequest,
+  unredactProxyRequest,
 } from "@src/app/proxy";
 import type { DetectorOverrides } from "@src/types";
 
@@ -55,6 +56,19 @@ export const callResponseDataGuard = async (
   };
 
   return await dataGuardProxyRequest(token, payload);
+};
+
+export const unredact = async (
+  token: string,
+  redacted: string,
+  fpe_context: string,
+) => {
+  const payload = {
+    redacted_data: redacted,
+    fpe_context,
+  };
+
+  return await unredactProxyRequest(token, payload);
 };
 
 export const auditUserPrompt = async (

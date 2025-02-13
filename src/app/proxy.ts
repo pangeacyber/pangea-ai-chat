@@ -4,7 +4,8 @@ import type { AuthZ } from "pangea-node-sdk";
 import type { RequestBody as AiRequestBody } from "@src/app/api/ai/route";
 import type { RequestBody as AiGuardRequestBody } from "@src/app/api/data/route";
 import type { RequestBody as DocsRequestBody } from "@src/app/api/docs/route";
-import type { AIGuardResult, PangeaResponse } from "@src/types";
+import type { RequestBody as UnredactRequestBody } from "@src/app/api/unredact/route";
+import type { AIGuardResult, PangeaResponse, UnredactResult } from "@src/types";
 
 export const docsProxyRequest = async (
   token: string,
@@ -21,6 +22,13 @@ export const dataGuardProxyRequest = async (
   body: AiGuardRequestBody,
 ): Promise<PangeaResponse<AIGuardResult>> => {
   return baseProxyRequest(token, "data", "", body);
+};
+
+export const unredactProxyRequest = async (
+  token: string,
+  body: UnredactRequestBody,
+): Promise<PangeaResponse<UnredactResult>> => {
+  return baseProxyRequest(token, "unredact", "", body);
 };
 
 export const auditProxyRequest = async (
