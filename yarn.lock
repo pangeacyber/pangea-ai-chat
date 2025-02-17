@@ -799,7 +799,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/react@npm:^11.13.5":
+"@emotion/react@npm:^11.14.0":
   version: 11.14.0
   resolution: "@emotion/react@npm:11.14.0"
   dependencies:
@@ -840,7 +840,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/styled@npm:^11.13.5":
+"@emotion/styled@npm:^11.14.0":
   version: 11.14.0
   resolution: "@emotion/styled@npm:11.14.0"
   dependencies:
@@ -6668,8 +6668,8 @@ __metadata:
   dependencies:
     "@dotenvx/dotenvx": "npm:1.29.0"
     "@emotion/css": "npm:11.13.5"
-    "@emotion/react": "npm:^11.13.5"
-    "@emotion/styled": "npm:^11.13.5"
+    "@emotion/react": "npm:^11.14.0"
+    "@emotion/styled": "npm:^11.14.0"
     "@googleapis/docs": "npm:3.3.0"
     "@googleapis/drive": "npm:8.14.0"
     "@googleapis/sheets": "npm:9.3.1"
