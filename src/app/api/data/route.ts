@@ -15,7 +15,7 @@ import {
 } from "../requests";
 
 const SERVICE_NAME = "ai-guard";
-const API_VERSION = "v1beta";
+const API_VERSION = "v1";
 
 export type RequestBody = (
   | {
