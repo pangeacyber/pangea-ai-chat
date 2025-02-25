@@ -67,10 +67,10 @@ export async function POST(request: NextRequest) {
 
     const auditLogData = {
       event: {
-        event_input: body.userPrompt,
-        event_output: text,
-        event_type: "llm_response",
-        event_context: JSON.stringify({
+        input: body.userPrompt,
+        output: text,
+        type: "llm_response",
+        context: JSON.stringify({
           system_prompt: systemPrompt,
         }),
         actor: username,

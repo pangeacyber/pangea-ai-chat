@@ -14,44 +14,44 @@ import { useChatContext } from "@app/context";
 import { auditProxyRequest } from "@src/app/proxy";
 
 const visibilityModel: any = {
-  timestamp: true,
-  event_type: true,
-  event_input: true,
-  event_findings: true,
+  start_time: true,
+  type: true,
+  input: true,
+  findings: true,
 };
 
 const schema: any = {
   tamper_proofing: false,
   fields: [
     {
-      id: "timestamp",
-      name: "Timestamp",
+      id: "start_time",
+      name: "Start Time Stamp",
       size: 128,
       type: "datetime",
       required: true,
     },
     {
-      id: "event_type",
-      name: "Event Type",
+      id: "type",
+      name: "Type",
       required: true,
     },
     {
-      id: "event_input",
+      id: "input",
       name: "Input",
       required: true,
     },
     {
-      id: "event_output",
+      id: "output",
       name: "Output",
     },
     {
-      id: "event_findings",
+      id: "findings",
       name: "Findings",
       type: "string",
       required: false,
     },
     {
-      id: "event_context",
+      id: "context",
       name: "Context",
       required: false,
     },

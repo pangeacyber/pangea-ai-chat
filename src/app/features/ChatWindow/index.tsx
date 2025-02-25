@@ -32,8 +32,8 @@ import ChatScroller from "./components/ChatScroller";
 import {
   auditSearch,
   auditUserPrompt,
-  callInputDataGuard,
-  callResponseDataGuard,
+  callInputAIGuard,
+  callResponseAIGuard,
   fetchDocuments,
   generateCompletions,
   unredact,
@@ -103,9 +103,9 @@ const ChatWindow = () => {
 
     const logEvent = {
       event: {
-        event_type: "user_prompt",
-        event_input: userPrompt,
-        event_context: JSON.stringify({
+        type: "user_prompt",
+        input: userPrompt,
+        context: JSON.stringify({
           system_prompt: systemPrompt,
         }),
       },
@@ -161,7 +161,7 @@ const ChatWindow = () => {
     setProcessing("Checking user prompt with AI Guard");
 
     try {
-      guardedInput = await callInputDataGuard(token, llmInput, overrides);
+      guardedInput = await callInputAIGuard(token, llmInput, overrides);
       setAiGuardResponses([
         guardedInput,
         {} as PangeaResponse<AIGuard.TextGuardResult<never>>,
@@ -193,7 +193,7 @@ const ChatWindow = () => {
 
     setProcessing("Waiting for LLM response");
 
-    const dataGuardMessages: ChatMessage[] = [];
+    const aiGuardMessages: ChatMessage[] = [];
     let llmResponse = "";
 
     try {
@@ -216,7 +216,7 @@ const ChatWindow = () => {
     setProcessing("Checking LLM response with AI Guard");
 
     try {
-      const dataResp = await callResponseDataGuard(
+      const dataResp = await callResponseAIGuard(
         token,
         llmResponse,
         overrides,
@@ -227,7 +227,7 @@ const ChatWindow = () => {
         type: "ai_guard",
         findings: JSON.stringify(dataResp.result.detectors),
       };
-      dataGuardMessages.push(dgrMsg);
+      aiGuardMessages.push(dgrMsg);
 
       llmResponse = dataResp.result.prompt_text;
     } catch (err) {
@@ -254,7 +254,7 @@ const ChatWindow = () => {
     setMessages((prevMessages) => [
       ...prevMessages,
       llmMsg,
-      ...dataGuardMessages,
+      ...aiGuardMessages,
     ]);
     setProcessing("");
   };
@@ -319,11 +319,11 @@ const ChatWindow = () => {
         const messages_: ChatMessage[] = response.events.map((event: any) => {
           const message: ChatMessage = {
             hash: event.hash,
-            type: event.envelope.event.event_type,
-            context: event.envelope.event.event_context,
-            input: event.envelope.event.event_input,
-            output: event.envelope.event.event_output,
-            findings: event.envelope.event.event_findings,
+            type: event.envelope.event.type,
+            context: event.envelope.event.context,
+            input: event.envelope.event.input,
+            output: event.envelope.event.output,
+            findings: event.envelope.event.findings,
             malicious_count: event.envelope.event.malicious_entity_count,
           };
           return message;

@@ -36,8 +36,8 @@ export async function auditLogRequest(data: {
   const url = getUrl("audit", "v1/log");
   const now = new Date();
 
-  // Add timestamp to event
-  data.event.timestamp = now.toISOString();
+  // Add start time to event
+  data.event.start_time = now.toISOString();
 
   const { success, response } = await postRequest(url, {
     config_id: process.env.PANGEA_AUDIT_CONFIG_ID,

@@ -83,7 +83,7 @@ There are several values that need to be filled out in `.env.local`:
   noted earlier.
 - `PANGEA_SERVICE_TOKEN`: Pangea API token with access to AI Guard and Prompt
   Guard.
-- `PANGEA_AUDIT_CONFIG_ID`: Pangea Secure Audit Log configuration ID.
+- `PANGEA_AUDIT_CONFIG_ID`: Pangea Secure Audit Log configuration ID for the "AI Activity Audit Log Schema".
 - `AWS_ACCESS_KEY_ID`: AWS access key.
 - `AWS_SECRET_ACCESS_KEY`: Secret key associated with the AWS access key
 - `GOOGLE_DRIVE_CREDENTIALS`: Google service account credentials as a compacted
