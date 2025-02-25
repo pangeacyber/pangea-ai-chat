@@ -73,7 +73,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/client-bedrock-agent-runtime@npm:^3.616.0":
+"@aws-sdk/client-bedrock-agent-runtime@npm:^3.749.0":
   version: 3.755.0
   resolution: "@aws-sdk/client-bedrock-agent-runtime@npm:3.755.0"
   dependencies:
@@ -123,7 +123,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/client-bedrock-runtime@npm:^3.602.0":
+"@aws-sdk/client-bedrock-runtime@npm:^3.749.0":
   version: 3.755.0
   resolution: "@aws-sdk/client-bedrock-runtime@npm:3.755.0"
   dependencies:
@@ -176,7 +176,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/client-kendra@npm:^3.352.0":
+"@aws-sdk/client-kendra@npm:^3.749.0":
   version: 3.750.0
   resolution: "@aws-sdk/client-kendra@npm:3.750.0"
   dependencies:
@@ -342,7 +342,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/credential-provider-node@npm:3.750.0, @aws-sdk/credential-provider-node@npm:^3.600.0":
+"@aws-sdk/credential-provider-node@npm:3.750.0, @aws-sdk/credential-provider-node@npm:^3.749.0":
   version: 3.750.0
   resolution: "@aws-sdk/credential-provider-node@npm:3.750.0"
   dependencies:
@@ -1276,19 +1276,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@langchain/aws@npm:0.1.2":
-  version: 0.1.2
-  resolution: "@langchain/aws@npm:0.1.2"
+"@langchain/aws@npm:0.1.4":
+  version: 0.1.4
+  resolution: "@langchain/aws@npm:0.1.4"
   dependencies:
-    "@aws-sdk/client-bedrock-agent-runtime": "npm:^3.616.0"
-    "@aws-sdk/client-bedrock-runtime": "npm:^3.602.0"
-    "@aws-sdk/client-kendra": "npm:^3.352.0"
-    "@aws-sdk/credential-provider-node": "npm:^3.600.0"
+    "@aws-sdk/client-bedrock-agent-runtime": "npm:^3.749.0"
+    "@aws-sdk/client-bedrock-runtime": "npm:^3.749.0"
+    "@aws-sdk/client-kendra": "npm:^3.749.0"
+    "@aws-sdk/credential-provider-node": "npm:^3.749.0"
     zod: "npm:^3.23.8"
     zod-to-json-schema: "npm:^3.22.5"
   peerDependencies:
     "@langchain/core": ">=0.2.21 <0.4.0"
-  checksum: 10c0/ad526806ff617d0ce6ddc895c1bb1f5b941b950c513e59cbd00d30591c32da49f609e09810935e8f6be129534461d2d7d91628a4b3b496df97b8510d1e4d5f45
+  checksum: 10c0/b579eb0a7cf8d687233e597045a81bf7a1a3a6a9802ccb00676d9b09f97769b4f83a50b364d2ab72015ca3edf24a2a62e6e7f5e778cf10cbf838d08555445622
   languageName: node
   linkType: hard
 
@@ -6673,7 +6673,7 @@ __metadata:
     "@googleapis/docs": "npm:3.3.0"
     "@googleapis/drive": "npm:8.14.0"
     "@googleapis/sheets": "npm:9.3.1"
-    "@langchain/aws": "npm:0.1.2"
+    "@langchain/aws": "npm:0.1.4"
     "@langchain/core": "npm:0.3.23"
     "@mui/icons-material": "npm:6.4.3"
     "@mui/material": "npm:6.4.3"
