@@ -164,7 +164,7 @@ const ChatWindow = () => {
       guardedInput = await callInputDataGuard(token, llmInput, overrides);
       setAiGuardResponses([
         guardedInput,
-        {} as PangeaResponse<AIGuard.TextGuardResult>,
+        {} as PangeaResponse<AIGuard.TextGuardResult<never>>,
       ]);
       const dgiMsg: ChatMessage = {
         hash: hashCode(JSON.stringify(guardedInput)),
