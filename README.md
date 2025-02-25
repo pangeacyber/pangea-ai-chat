@@ -9,6 +9,7 @@ services.
 - yarn v4.5.1 (or greater).
 - A [Pangea account][Pangea signup] with AI Guard, Prompt Guard, AuthN, AuthZ,
   Redact, and Secure Audit Log enabled.
+- An AWS account with access to Bedrock.
 - A Google Drive folder containing spreadsheets.
 
   - Note down the ID of the folder for later (see [the LangChain docs][retrieve-the-google-docs]
