@@ -20,13 +20,13 @@ import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 
 import { ChatMessage, useChatContext } from "@src/app/context";
 import { Colors } from "@src/app/theme";
-import { DAILY_MAX_MESSAGES, PROMPT_MAX_CHARS } from "@src/const";
 import type {
   AIGuardResult,
   DetectorOverrides,
   PangeaResponse,
 } from "@src/types";
-import { constructLlmInput, rateLimitQuery } from "@src/utils";
+import { constructLlmInput, rateLimitQuery, constructLlmSystemAndContextMessages, constructLlmChatHistoryMessages } from "@src/utils";
+import type { MessageFieldWithRole } from "@langchain/core/messages";
 
 import ChatScroller from "./components/ChatScroller";
 import {
@@ -38,6 +38,7 @@ import {
   generateCompletions,
   unredact,
 } from "./utils";
+import { NetworkCellOutlined } from "@mui/icons-material";
 
 function hashCode(str: string) {
   let hash = 0;
@@ -56,6 +57,10 @@ const ChatWindow = () => {
     systemPrompt,
     userPrompt,
     detectors,
+    chatInputRecipe,
+    chatOutputRecipe,
+    setChatInputRecipe,
+    setChatOutputRecipe,
     setUserPrompt,
     setLoading,
     setLoginOpen,
@@ -65,8 +70,6 @@ const ChatWindow = () => {
   } = useChatContext();
   const { authenticated, user, logout } = useAuth();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [remaining, setRemaining] = useState(DAILY_MAX_MESSAGES);
-  const [overlimit, setOverLimit] = useState(false);
   const [processing, setProcessing] = useState("");
   const [error, setError] = useState("");
   const [open, setOpen] = useState(false);
@@ -85,6 +88,13 @@ const ChatWindow = () => {
     }
   };
 
+  // llmChatHistoryMessages is the chat history of the user and assistant messages
+  const [llmChatHistoryMessages, setLlmUserMessages] = useState<MessageFieldWithRole[]>([]);
+  // llmSystemMessages is the system prompt and context messages (which may change based on contents of docs or logged in user)
+  const [llmSystemMessages, setLlmSystemAndContextMessages] = useState<MessageFieldWithRole[]>([]);
+  
+  const [llmInput, setLlmInput] = useState<MessageFieldWithRole[]>([]);
+
   const handleSubmit = async () => {
     // require authentication
     if (!authenticated) {
@@ -93,7 +103,7 @@ const ChatWindow = () => {
     }
 
     // don't accept empty prompts
-    if (!userPrompt || loading || !!processing || overlimit || remaining <= 0) {
+    if (!userPrompt || loading || !!processing) {
       return;
     }
 
@@ -142,12 +152,30 @@ const ChatWindow = () => {
       setDocuments([]);
     }
 
-    let llmInput = constructLlmInput({
-      systemPrompt,
+    const newSystemAndContextMessages = constructLlmSystemAndContextMessages({
       userPrompt,
+      systemPrompt,
       documents: docs,
       profile: user!.profile,
     });
+    setLlmSystemAndContextMessages(newSystemAndContextMessages);
+
+    const newChatHistoryMessages = constructLlmChatHistoryMessages({
+      chatPrompt: { role: "user", content: userPrompt },
+      chatHistory: llmChatHistoryMessages,
+    });
+    setLlmUserMessages(newChatHistoryMessages);
+
+    const newLlmInput = constructLlmInput({
+      systemAndContextMessages: newSystemAndContextMessages,
+      chatHistoryMessages: newChatHistoryMessages,
+    });
+    
+    setLlmInput(newLlmInput);
+
+    console.log("newLlmInput:", newLlmInput);
+
+
     const overrides: DetectorOverrides = {
       code_detection: { disabled: !detectors.code_detection },
       language_detection: { disabled: !detectors.language_detection },
@@ -160,8 +188,9 @@ const ChatWindow = () => {
 
     setProcessing("Checking user prompt with AI Guard");
 
+    let updatedChatHistoryMessages: MessageFieldWithRole[] = [];
     try {
-      guardedInput = await callInputAIGuard(token, llmInput, overrides);
+      guardedInput = await callInputAIGuard(token, chatInputRecipe, newLlmInput, overrides);
       setAiGuardResponses([
         guardedInput,
         {} as PangeaResponse<AIGuard.TextGuardResult<never>>,
@@ -171,18 +200,21 @@ const ChatWindow = () => {
         type: "ai_guard",
         findings: JSON.stringify(guardedInput.result.detectors),
       };
-      setMessages((prevMessages) => [...prevMessages, dgiMsg]);
+      setMessages((prevMessages) => [...prevMessages, dgiMsg]); 
 
-      llmInput = guardedInput.result.prompt_messages;
+      // Update llmInput with guardedInput.result.prompt_messages which is the full history of system, user, and assistant messages (including context)
+      // Update the ChatHistoryMessages with any modified messages from the AI Guard.  
+      const tempFullMessagesHistory : MessageFieldWithRole[] = guardedInput.result.prompt_messages;
+      updatedChatHistoryMessages = tempFullMessagesHistory.filter(
+        (msg) => msg.role !== "system" && !newSystemAndContextMessages.some((contextMsg) => contextMsg.content === msg.content)
+      );
+      setLlmUserMessages(updatedChatHistoryMessages);    
 
       // Halt early if any enabled detector detected something.
-      if (
-        (detectors.prompt_injection &&
-          guardedInput.result.detectors.prompt_injection.detected) ||
-        (detectors.malicious_entity &&
-          guardedInput.result.detectors.malicious_entity?.detected)
-      ) {
-        processingError("Processing halted: suspicious prompt");
+      if ( guardedInput.result.blocked )
+      {
+        const summary = guardedInput.summary;
+        processingError("Processing halted: " + summary);
         return;
       }
     } catch (err) {
@@ -199,14 +231,11 @@ const ChatWindow = () => {
     try {
       const llmResponseObj = await generateCompletions(
         token,
-        llmInput,
+        guardedInput.result.prompt_messages,
         systemPrompt,
         userPrompt,
       );
       llmResponse = llmResponseObj.content;
-
-      // decrement daily remaining count
-      setRemaining((curVal) => curVal - 1);
     } catch (err) {
       const status = err instanceof Response ? err.status : 0;
       processingError("LLM call failed, please try again", status);
@@ -218,6 +247,7 @@ const ChatWindow = () => {
     try {
       const dataResp = await callResponseAIGuard(
         token,
+        chatOutputRecipe,
         llmResponse,
         overrides,
       );
@@ -251,6 +281,14 @@ const ChatWindow = () => {
       output: llmResponse,
     };
 
+    const updatedChatHistoryMessagesAssistant = constructLlmChatHistoryMessages({
+      chatPrompt: { role: "assistant", content: llmResponse },
+      chatHistory: updatedChatHistoryMessages,
+    });
+    setLlmUserMessages(updatedChatHistoryMessagesAssistant);
+
+    console.log("Updated ChatHistoryMessages using llmResponse:", updatedChatHistoryMessagesAssistant);
+
     setMessages((prevMessages) => [
       ...prevMessages,
       llmMsg,
@@ -275,23 +313,13 @@ const ChatWindow = () => {
   };
 
   useEffect(() => {
-    setOverLimit(userPrompt.length + systemPrompt.length > PROMPT_MAX_CHARS);
-  }, [userPrompt, systemPrompt]);
-
-  useEffect(() => {
     if (!authenticated) {
       setError("");
-    } else if (remaining <= 0) {
-      setError("Your daily quota has been exceeded");
-      setOpen(true);
-    } else if (overlimit) {
-      setError("Your prompt exceeds the maximum limit");
-      setOpen(true);
     } else {
       setError("");
       setOpen(false);
     }
-  }, [authenticated, remaining, overlimit]);
+  }, [authenticated]);
 
   useEffect(() => {
     const loadSearchData = async () => {
@@ -311,7 +339,6 @@ const ChatWindow = () => {
           },
         );
         const count = searchResp?.count || 0;
-        setRemaining(DAILY_MAX_MESSAGES - count);
 
         // Load Chat history from audit log
         const response = await auditSearch(token, { limit: 50 });
@@ -359,7 +386,7 @@ const ChatWindow = () => {
           <IconButton
             aria-label="clear"
             title="Clear chat"
-            onClick={() => setMessages([])}
+            onClick={() => { setMessages([]); setLlmInput([]); setLlmSystemAndContextMessages([]); setLlmUserMessages([]); }}
             size="small"
             disableRipple
             sx={{
@@ -439,7 +466,7 @@ const ChatWindow = () => {
                   <IconButton
                     onClick={handleSubmit}
                     disabled={
-                      loading || !!processing || overlimit || remaining <= 0
+                      loading || !!processing 
                     }
                   >
                     <SendIcon />
@@ -482,8 +509,6 @@ const ChatWindow = () => {
                 variant="body2"
                 sx={{ fontSize: "12px", lineHeight: "20px", height: "20px" }}
               >
-                Message count: {remaining} remaining | You can send{" "}
-                {DAILY_MAX_MESSAGES} messages a day
               </Typography>
             )}
           </Stack>

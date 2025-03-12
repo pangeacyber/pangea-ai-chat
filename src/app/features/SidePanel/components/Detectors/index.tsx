@@ -9,6 +9,7 @@ import {
   Typography,
   Tooltip,
   Link,
+  TextField,
 } from "@mui/material";
 import {
   AssignmentIndRounded,
@@ -19,6 +20,7 @@ import {
   ReadMoreRounded,
 } from "@mui/icons-material";
 import type { ReactElement, ReactNode } from "react";
+import { useState } from "react";
 
 import { useChatContext } from "@src/app/context";
 
@@ -110,7 +112,14 @@ const InfoTooltip = ({
 );
 
 const Detectors = () => {
-  const { detectors, setDetectors } = useChatContext();
+  const {
+    detectors,
+    setDetectors,
+    chatInputRecipe,
+    setChatInputRecipe,
+    chatOutputRecipe,
+    setChatOutputRecipe,
+  } = useChatContext();
 
   return (
     <>
@@ -143,6 +152,24 @@ const Detectors = () => {
           </ListItem>
         ))}
       </List>
+
+      <Box sx={{ mt: 2 }}>
+        <TextField
+          label="Chat Input Recipe"
+          variant="outlined"
+          fullWidth
+          value={chatInputRecipe}
+          onChange={(e) => setChatInputRecipe(e.target.value)}
+          sx={{ mb: 2 }}
+        />
+        <TextField
+          label="Chat Output Recipe"
+          variant="outlined"
+          fullWidth
+          value={chatOutputRecipe}
+          onChange={(e) => setChatOutputRecipe(e.target.value)}
+        />
+      </Box>
     </>
   );
 };

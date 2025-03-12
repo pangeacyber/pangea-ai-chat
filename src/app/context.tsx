@@ -49,6 +49,12 @@ export interface ChatContextProps {
   ) => void;
   setAuthzResponses: (value: readonly PangeaResponse<unknown>[]) => void;
   setDocuments: (value: readonly DocumentInterface[]) => void;
+
+  chatInputRecipe: string;
+  setChatInputRecipe: (recipe: string) => void;
+  chatOutputRecipe: string;
+  setChatOutputRecipe: (recipe: string) => void;
+
   setDetectors: (
     value: Readonly<{
       code_detection: boolean;
@@ -81,6 +87,10 @@ const ChatContext = createContext<ChatContextProps>({
     prompt_injection: true,
     secrets_detection: true,
   },
+  chatInputRecipe: "",
+  setChatInputRecipe: () => {},
+  chatOutputRecipe: "",
+  setChatOutputRecipe: () => {},
   setLoading: () => {},
   setSystemPrompt: () => {},
   setUserPrompt: () => {},
@@ -135,6 +145,10 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
     readonly PangeaResponse<unknown>[]
   >([]);
   const [documents, setDocuments] = useState<readonly DocumentInterface[]>([]);
+  const [chatInputRecipe, setChatInputRecipe] = useState("pangea_prompt_guard");
+  const [chatOutputRecipe, setChatOutputRecipe] = useState("pangea_llm_response_guard");
+  // const [chatInputRecipe, setChatInputRecipe] = useState<string>("");
+  // const [chatOutputRecipe, setChatOutputRecipe] = useState("");
   const [detectors, setDetectors] = useState<
     Readonly<{
       code_detection: boolean;
@@ -177,6 +191,64 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
     localStorage.setItem(USER_PROMPT_KEY, userPrompt);
   }, [userPrompt]);
 
+  // const memoData = useMemo(
+  //   () => ({
+  //     loading,
+  //     systemPrompt,
+  //     userPrompt,
+  //     authzEnabled,
+  //     sidePanelOpen,
+  //     rightPanelOpen,
+  //     auditPanelOpen,
+  //     loginOpen,
+  //     aiGuardResponses,
+  //     authzResponses,
+  //     documents,
+  //     detectors,
+  //     chatInputRecipe,
+  //     chatOutputRecipe,
+  //     setLoading,
+  //     setSystemPrompt,
+  //     setUserPrompt,
+  //     setAuthzEnabled,
+  //     setSidePanelOpen,
+  //     setRightPanelOpen,
+  //     setAuditPanelOpen,
+  //     setLoginOpen,
+  //     setAiGuardResponses,
+  //     setAuthzResponses,
+  //     setDocuments,
+  //     setDetectors,
+  //     setChatInputRecipe,
+  //     setChatOutputRecipe,
+  //   }),
+  //   [
+  //     loading,
+  //     systemPrompt,
+  //     userPrompt,
+  //     authzEnabled,
+  //     sidePanelOpen,
+  //     rightPanelOpen,
+  //     auditPanelOpen,
+  //     loginOpen,
+  //     aiGuardResponses,
+  //     authzResponses,
+  //     documents,
+  //     detectors,
+  //     setLoading,
+  //     setSystemPrompt,
+  //     setUserPrompt,
+  //     setAuthzEnabled,
+  //     setSidePanelOpen,
+  //     setRightPanelOpen,
+  //     setAuditPanelOpen,
+  //     setLoginOpen,
+  //     setDetectors,
+  //     setChatInputRecipe,
+  //     setChatOutputRecipe,
+  //   ],
+  // );
+
   const memoData = useMemo(
     () => ({
       loading,
@@ -191,6 +263,8 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
       authzResponses,
       documents,
       detectors,
+      chatInputRecipe,
+      chatOutputRecipe,
       setLoading,
       setSystemPrompt,
       setUserPrompt,
@@ -203,6 +277,8 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
       setAuthzResponses,
       setDocuments,
       setDetectors,
+      setChatInputRecipe,
+      setChatOutputRecipe,
     }),
     [
       loading,
@@ -217,15 +293,8 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
       authzResponses,
       documents,
       detectors,
-      setLoading,
-      setSystemPrompt,
-      setUserPrompt,
-      setAuthzEnabled,
-      setSidePanelOpen,
-      setRightPanelOpen,
-      setAuditPanelOpen,
-      setLoginOpen,
-      setDetectors,
+      chatInputRecipe,
+      chatOutputRecipe,
     ],
   );
 
@@ -235,5 +304,9 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
 };
 
 export const useChatContext = () => {
-  return useContext(ChatContext);
+  const context = useContext(ChatContext);
+  if (context === undefined) {
+    throw new Error("useChatContext must be used within a ChatProvider");
+  }
+  return context;
 };

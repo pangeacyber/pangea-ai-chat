@@ -32,11 +32,12 @@ export const generateCompletions = async (
 
 export const callInputAIGuard = async (
   token: string,
+  recipe: string,
   messages: readonly MessageFieldWithRole[],
   overrides?: DetectorOverrides,
 ) => {
   const payload = {
-    recipe: "pangea_prompt_guard",
+    recipe: recipe,
     messages,
     overrides,
   };
@@ -46,11 +47,12 @@ export const callInputAIGuard = async (
 
 export const callResponseAIGuard = async (
   token: string,
+  recipe: string,
   llmResponse: string,
   overrides?: DetectorOverrides,
 ) => {
   const payload = {
-    recipe: "pangea_llm_response_guard",
+    recipe: recipe,
     text: llmResponse,
     overrides,
   };

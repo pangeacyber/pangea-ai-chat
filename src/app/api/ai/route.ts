@@ -9,7 +9,6 @@ import {
   validateToken,
 } from "../requests";
 import { rateLimitQuery } from "@src/utils";
-import { DAILY_MAX_MESSAGES, PROMPT_MAX_CHARS } from "@src/const";
 
 const TEMP = 0.5;
 const MAX_TOKENS = 512;
@@ -46,18 +45,12 @@ export async function POST(request: NextRequest) {
   const body: RequestBody = await request.json();
   const systemPrompt = body.systemPrompt || "";
 
-  if (body.userPrompt.length + systemPrompt.length > PROMPT_MAX_CHARS) {
-    return new Response(`{"error": "Maximum prompt size exceeded"}`, {
-      status: 400,
-    });
-  }
-
   const limitSearch = rateLimitQuery();
   limitSearch.search_restriction = { actor: [username] };
   const result = await auditSearchRequest(limitSearch);
 
-  if (result?.error || (result?.count || 0) >= DAILY_MAX_MESSAGES) {
-    return new Response(`{"error": "Daily limit exceeded"}`, {
+  if (result?.error) {
+    return new Response(`{"error": "Audit Search Error: ${result.error}"}`, {
       status: 400,
     });
   }
