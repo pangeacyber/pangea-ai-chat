@@ -3,7 +3,7 @@ import type { MessageFieldWithRole } from "@langchain/core/messages";
 import {
   aiProxyRequest,
   auditProxyRequest,
-  dataGuardProxyRequest,
+  aiGuardProxyRequest,
   docsProxyRequest,
   unredactProxyRequest,
 } from "@src/app/proxy";
@@ -30,32 +30,34 @@ export const generateCompletions = async (
   });
 };
 
-export const callInputDataGuard = async (
+export const callInputAIGuard = async (
   token: string,
+  recipe: string,
   messages: readonly MessageFieldWithRole[],
   overrides?: DetectorOverrides,
 ) => {
   const payload = {
-    recipe: "pangea_llm_prompt_guard",
+    recipe: recipe,
     messages,
     overrides,
   };
 
-  return await dataGuardProxyRequest(token, payload);
+  return await aiGuardProxyRequest(token, payload);
 };
 
-export const callResponseDataGuard = async (
+export const callResponseAIGuard = async (
   token: string,
+  recipe: string,
   llmResponse: string,
   overrides?: DetectorOverrides,
 ) => {
   const payload = {
-    recipe: "pangea_llm_response_guard",
+    recipe: recipe,
     text: llmResponse,
     overrides,
   };
 
-  return await dataGuardProxyRequest(token, payload);
+  return await aiGuardProxyRequest(token, payload);
 };
 
 export const unredact = async (

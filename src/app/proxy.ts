@@ -17,7 +17,7 @@ export const docsProxyRequest = async (
   return baseProxyRequest(token, "docs", "", body);
 };
 
-export const dataGuardProxyRequest = async (
+export const aiGuardProxyRequest = async (
   token: string,
   body: AiGuardRequestBody,
 ): Promise<PangeaResponse<AIGuardResult>> => {

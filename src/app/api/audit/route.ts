@@ -48,6 +48,7 @@ export async function POST(request: NextRequest) {
       return new Response(JSON.stringify(response.result));
     } else {
       console.log("AUDIT LOG ERROR:", success, response.result.errors);
+      console.log("  PANGEA_AUDIT_CONFIG_ID:", process.env.PANGEA_AUDIT_CONFIG_ID)
       return new Response(JSON.stringify(response.result), { status: 400 });
     }
   } catch (err) {
