@@ -16,7 +16,7 @@
     "@googleapis/docs": "3.3.0",
     "@googleapis/drive": "8.14.0",
     "@googleapis/sheets": "9.3.1",
-    "@langchain/aws": "0.1.2",
+    "@langchain/aws": "0.1.7",
     "@langchain/core": "0.3.23",
     "@mui/icons-material": "6.4.3",
     "@mui/material": "6.4.3",
