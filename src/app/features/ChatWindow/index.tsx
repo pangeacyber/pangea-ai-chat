@@ -14,7 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { useAuth } from "@pangeacyber/react-auth";
+import { type AuthUser, useAuth } from "@pangeacyber/react-auth";
 import type { AIGuard } from "pangea-node-sdk";
 import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 
@@ -46,6 +46,12 @@ function hashCode(str: string) {
     hash = (hash << 5) - hash + char;
   }
   return (hash >>> 0).toString(36).padStart(7, "0") + Date.now();
+}
+
+/** Returns whether or not the given user is a Pangean. */
+function isPangean(user: AuthUser): boolean {
+  // Email is assumed to have been verified by the social auth provider.
+  return user.email.endsWith("@pangea.cloud");
 }
 
 const ChatWindow = () => {
@@ -205,8 +211,10 @@ const ChatWindow = () => {
       );
       llmResponse = llmResponseObj.content;
 
-      // decrement daily remaining count
-      setRemaining((curVal) => curVal - 1);
+      // Decrement daily remaining count if not a Pangean.
+      if (user && !isPangean(user)) {
+        setRemaining((curVal) => curVal - 1);
+      }
     } catch (err) {
       const status = err instanceof Response ? err.status : 0;
       processingError("LLM call failed, please try again", status);
@@ -299,19 +307,21 @@ const ChatWindow = () => {
       if (token) {
         setLoading(true);
 
-        // Get LLM responses for the last 24-hours
-        const limitSearch = rateLimitQuery();
-        limitSearch.search_restriction = { actor: [user?.username] };
-        const searchResp = await auditSearch(token, limitSearch).catch(
-          (err) => {
-            const status = err instanceof Response ? err.status : 0;
-            processingError("", status);
-            setLoading(false);
-            throw err;
-          },
-        );
-        const count = searchResp?.count || 0;
-        setRemaining(DAILY_MAX_MESSAGES - count);
+        // Rate limit for non-Pangeans.
+        if (user && !isPangean(user)) {
+          const limitSearch = rateLimitQuery();
+          limitSearch.search_restriction = { actor: [user?.username] };
+          const searchResp = await auditSearch(token, limitSearch).catch(
+            (err) => {
+              const status = err instanceof Response ? err.status : 0;
+              processingError("", status);
+              setLoading(false);
+              throw err;
+            },
+          );
+          const count = searchResp?.count || 0;
+          setRemaining(DAILY_MAX_MESSAGES - count);
+        }
 
         // Load Chat history from audit log
         const response = await auditSearch(token, { limit: 50 });
@@ -477,10 +487,12 @@ const ChatWindow = () => {
             justifyContent="center"
             mb="12px"
           >
-            {!loading && authenticated && (
+            {!loading && authenticated && user && !isPangean(user) && (
               <Typography
                 variant="body2"
-                sx={{ fontSize: "12px", lineHeight: "20px", height: "20px" }}
+                fontSize="12px"
+                lineHeight="20px"
+                height="20px"
               >
                 Message count: {remaining} remaining | You can send{" "}
                 {DAILY_MAX_MESSAGES} messages a day
