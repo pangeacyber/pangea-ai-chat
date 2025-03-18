@@ -52,14 +52,18 @@ export async function POST(request: NextRequest) {
     });
   }
 
-  const limitSearch = rateLimitQuery();
-  limitSearch.search_restriction = { actor: [username] };
-  const result = await auditSearchRequest(limitSearch);
+  // Rate limit for non-Pangeans. Email addresses are assumed to have been
+  // verified by the social auth providers.
+  if (!username.endsWith("@pangea.cloud")) {
+    const limitSearch = rateLimitQuery();
+    limitSearch.search_restriction = { actor: [username] };
+    const result = await auditSearchRequest(limitSearch);
 
-  if (result?.error || (result?.count || 0) >= DAILY_MAX_MESSAGES) {
-    return new Response(`{"error": "Daily limit exceeded"}`, {
-      status: 400,
-    });
+    if (result?.error || (result?.count || 0) >= DAILY_MAX_MESSAGES) {
+      return new Response(`{"error": "Daily limit exceeded"}`, {
+        status: 400,
+      });
+    }
   }
 
   try {
