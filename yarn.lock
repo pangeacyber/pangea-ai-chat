@@ -2544,7 +2544,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^22.10.1":
+"@types/node@npm:*":
   version: 22.13.5
   resolution: "@types/node@npm:22.13.5"
   dependencies:
@@ -2559,6 +2559,15 @@ __metadata:
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: 10c0/8c7f01be218c6e3c1e643173662af27e9a2b568f36c0fe83e4295cf7674fe2a0abb4a1c5d7c7abd3345b9114581387dfd3f14b6d0338daebdce9273cd7ba59ab
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^22.13.14":
+  version: 22.13.14
+  resolution: "@types/node@npm:22.13.14"
+  dependencies:
+    undici-types: "npm:~6.20.0"
+  checksum: 10c0/fa2ab5b8277bfbcc86c42e46a3ea9871b0d559894cc9d955685d17178c9499f0b1bf03d1d1ea8d92ef2dda818988f4035acb8abf9dc15423a998fa56173ab804
   languageName: node
   linkType: hard
 
@@ -6679,7 +6688,7 @@ __metadata:
     "@mui/material": "npm:6.4.3"
     "@pangeacyber/react-auth": "npm:^0.0.14"
     "@pangeacyber/react-mui-audit-log-viewer": "npm:^1.0.5"
-    "@types/node": "npm:^22.10.1"
+    "@types/node": "npm:^22.13.14"
     "@types/react": "npm:^18.3.14"
     "@types/react-dom": "npm:^18.3.2"
     citty: "npm:0.1.6"
