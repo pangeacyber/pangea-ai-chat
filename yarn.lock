@@ -6880,7 +6880,7 @@ __metadata:
     pangea-node-sdk: "npm:4.4.0"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
-    react-json-view-lite: "npm:2.0.1"
+    react-json-view-lite: "npm:2.4.1"
     shiki: "npm:1.24.2"
     tsx: "npm:4.19.2"
     typescript: "npm:^5.7.2"
@@ -7187,12 +7187,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-json-view-lite@npm:2.0.1":
-  version: 2.0.1
-  resolution: "react-json-view-lite@npm:2.0.1"
+"react-json-view-lite@npm:2.4.1":
+  version: 2.4.1
+  resolution: "react-json-view-lite@npm:2.4.1"
   peerDependencies:
-    react: ^18.0.0
-  checksum: 10c0/2d06c7173dc5d4a1bd9caeadf3363a9f3b4473317a50d2d60afe8cfd129b7768d061291e49bac5c7ad1d96e14e28a05b36c11559c20e3990b7cec69dc7da17ab
+    react: ^18.0.0 || ^19.0.0
+  checksum: 10c0/cc171d8cca04683b97292ffdd8bad4970d77ccb929ed1eff3d40d46893c69e569226742f3330c090be88f894bd8e97352286ff16989c1e765f9fda487ca44ee8
   languageName: node
   linkType: hard
 
