@@ -1772,17 +1772,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pangeacyber/react-auth@npm:^0.0.14":
-  version: 0.0.14
-  resolution: "@pangeacyber/react-auth@npm:0.0.14"
+"@pangeacyber/react-auth@npm:^0.0.17":
+  version: 0.0.17
+  resolution: "@pangeacyber/react-auth@npm:0.0.17"
   dependencies:
-    axios: "npm:^1.7.5"
-    jose: "npm:^5.7.0"
+    "@pangeacyber/vanilla-js": "npm:^0.1.13"
+    jose: "npm:^6.0.10"
     lodash: "npm:^4.17.21"
   peerDependencies:
-    react: ^17.0.2 || ^18.2.0
-    react-dom: ^17.0.2 || ^18.2.0
-  checksum: 10c0/681e88f2ac47c20218b8af38e03f95f6882de3b7146e2a3cc331b2e92004e1db92cf80ad1ed35074079d4c5560914a6a25e6b31013186f7ddb286a998586dbae
+    react: ^17.0.2 || ^18.2.0 || ^19.0.0
+    react-dom: ^17.0.2 || ^18.2.0 || ^19.0.0
+  checksum: 10c0/cd6e908e307bdda856617a717f2504df68674bc0e488851f9f06b05485b1af031f036c46f5a2d350635eef4aa0098c8fc5b698a10e6681bf0efd50fdc16feb1b
   languageName: node
   linkType: hard
 
@@ -1828,6 +1828,15 @@ __metadata:
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
   checksum: 10c0/edcee4a6f0d0ec0bffe4f21350d8d29890b6215873aef2066c9231bc5422b214473eb3bfcdc010c2b8c7133fc6a84198394423d40482f4a2be4351f014d4b616
+  languageName: node
+  linkType: hard
+
+"@pangeacyber/vanilla-js@npm:^0.1.13":
+  version: 0.1.13
+  resolution: "@pangeacyber/vanilla-js@npm:0.1.13"
+  dependencies:
+    lodash: "npm:^4.17.21"
+  checksum: 10c0/4179dcaea39eb08ce684492d67f5cfff5dfca94dbb3f25fdaa92f72e33f877ff0c0666f55adc05e6d2829a8fec5977e02f3c1befad1b01556d20a7371d85c7fc
   languageName: node
   linkType: hard
 
@@ -3037,17 +3046,6 @@ __metadata:
   version: 4.10.2
   resolution: "axe-core@npm:4.10.2"
   checksum: 10c0/0e20169077de96946a547fce0df39d9aeebe0077f9d3eeff4896518b96fde857f80b98f0d4279274a7178791744dd5a54bb4f322de45b4f561ffa2586ff9a09d
-  languageName: node
-  linkType: hard
-
-"axios@npm:^1.7.5":
-  version: 1.7.9
-  resolution: "axios@npm:1.7.9"
-  dependencies:
-    follow-redirects: "npm:^1.15.6"
-    form-data: "npm:^4.0.0"
-    proxy-from-env: "npm:^1.1.0"
-  checksum: 10c0/b7a41e24b59fee5f0f26c1fc844b45b17442832eb3a0fb42dd4f1430eb4abc571fe168e67913e8a1d91c993232bd1d1ab03e20e4d1fee8c6147649b576fc1b0b
   languageName: node
   linkType: hard
 
@@ -4428,16 +4426,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.15.6":
-  version: 1.15.9
-  resolution: "follow-redirects@npm:1.15.9"
-  peerDependenciesMeta:
-    debug:
-      optional: true
-  checksum: 10c0/5829165bd112c3c0e82be6c15b1a58fa9dcfaede3b3c54697a82fe4a62dd5ae5e8222956b448d2f98e331525f05d00404aba7d696de9e761ef6e42fdc780244f
-  languageName: node
-  linkType: hard
-
 "for-each@npm:^0.3.3":
   version: 0.3.5
   resolution: "for-each@npm:0.3.5"
@@ -5359,10 +5347,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jose@npm:^5.7.0":
-  version: 5.10.0
-  resolution: "jose@npm:5.10.0"
-  checksum: 10c0/e20d9fc58d7e402f2e5f04e824b8897d5579aae60e64cb88ebdea1395311c24537bf4892f7de413fab1acf11e922797fb1b42269bc8fc65089a3749265ccb7b0
+"jose@npm:^6.0.10":
+  version: 6.0.10
+  resolution: "jose@npm:6.0.10"
+  checksum: 10c0/d1327afd7fe6011a6648b570b8a220dd89c3d427d6fb3225825650df3249b58bf0f76494179a34a0f7ad185832fb083d6402092d3c7f880c677d0dd38cc75eae
   languageName: node
   linkType: hard
 
@@ -6677,7 +6665,7 @@ __metadata:
     "@langchain/core": "npm:0.3.23"
     "@mui/icons-material": "npm:6.4.3"
     "@mui/material": "npm:6.4.3"
-    "@pangeacyber/react-auth": "npm:^0.0.14"
+    "@pangeacyber/react-auth": "npm:^0.0.17"
     "@pangeacyber/react-mui-audit-log-viewer": "npm:^1.0.5"
     "@types/node": "npm:^22.10.1"
     "@types/react": "npm:^18.3.14"
@@ -6882,13 +6870,6 @@ __metadata:
   version: 6.5.0
   resolution: "property-information@npm:6.5.0"
   checksum: 10c0/981e0f9cc2e5acdb414a6fd48a99dd0fd3a4079e7a91ab41cf97a8534cf43e0e0bc1ffada6602a1b3d047a33db8b5fc2ef46d863507eda712d5ceedac443f0ef
-  languageName: node
-  linkType: hard
-
-"proxy-from-env@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "proxy-from-env@npm:1.1.0"
-  checksum: 10c0/fe7dd8b1bdbbbea18d1459107729c3e4a2243ca870d26d34c2c1bcd3e4425b7bcc5112362df2d93cc7fb9746f6142b5e272fd1cc5c86ddf8580175186f6ad42b
   languageName: node
   linkType: hard
 
