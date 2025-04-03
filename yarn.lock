@@ -1312,17 +1312,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@langchain/openai@npm:>=0.1.0 <0.4.0":
-  version: 0.3.14
-  resolution: "@langchain/openai@npm:0.3.14"
+"@langchain/openai@npm:>=0.1.0 <0.5.0":
+  version: 0.4.9
+  resolution: "@langchain/openai@npm:0.4.9"
   dependencies:
     js-tiktoken: "npm:^1.0.12"
-    openai: "npm:^4.71.0"
+    openai: "npm:^4.87.3"
     zod: "npm:^3.22.4"
     zod-to-json-schema: "npm:^3.22.3"
   peerDependencies:
-    "@langchain/core": ">=0.2.26 <0.4.0"
-  checksum: 10c0/03cdd457d83b0efee1a780e78b0804a2c27a85a10d57d6182f7abdd2b90bc672e0ad5b94c7b127e63e624de96e1b4472ae95a3423cc8d2f5436198e546ad6e9b
+    "@langchain/core": ">=0.3.39 <0.4.0"
+  checksum: 10c0/456db6d039fad521caf9c2dab547075120d1156282c9eb891430b83f34d617121f4d97fda2be7954558910ddac8d235effe6071a002b93e60f460111318466d2
   languageName: node
   linkType: hard
 
@@ -3228,7 +3228,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^4.0.0":
+"chalk@npm:^4.0.0, chalk@npm:^4.1.2":
   version: 4.1.2
   resolution: "chalk@npm:4.1.2"
   dependencies:
@@ -3353,6 +3353,15 @@ __metadata:
   version: 3.2.3
   resolution: "consola@npm:3.2.3"
   checksum: 10c0/c606220524ec88a05bb1baf557e9e0e04a0c08a9c35d7a08652d99de195c4ddcb6572040a7df57a18ff38bbc13ce9880ad032d56630cef27bef72768ef0ac078
+  languageName: node
+  linkType: hard
+
+"console-table-printer@npm:^2.12.1":
+  version: 2.12.1
+  resolution: "console-table-printer@npm:2.12.1"
+  dependencies:
+    simple-wcswidth: "npm:^1.0.1"
+  checksum: 10c0/8f28e9c0ae5df77f5d60da3da002ecd95ebe1812b0b9e0a6d2795c81b5121b39774f32506bccf68830a838ca4d8fbb2ab8824e729dba2c5e30cdeb9df4dd5f2b
   languageName: node
   linkType: hard
 
@@ -5520,16 +5529,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"langchain@npm:0.3.7":
-  version: 0.3.7
-  resolution: "langchain@npm:0.3.7"
+"langchain@npm:0.3.19":
+  version: 0.3.19
+  resolution: "langchain@npm:0.3.19"
   dependencies:
-    "@langchain/openai": "npm:>=0.1.0 <0.4.0"
+    "@langchain/openai": "npm:>=0.1.0 <0.5.0"
     "@langchain/textsplitters": "npm:>=0.0.0 <0.2.0"
     js-tiktoken: "npm:^1.0.12"
     js-yaml: "npm:^4.1.0"
     jsonpointer: "npm:^5.0.1"
-    langsmith: "npm:^0.2.8"
+    langsmith: "npm:>=0.2.8 <0.4.0"
     openapi-types: "npm:^12.1.3"
     p-retry: "npm:4"
     uuid: "npm:^10.0.0"
@@ -5539,13 +5548,17 @@ __metadata:
   peerDependencies:
     "@langchain/anthropic": "*"
     "@langchain/aws": "*"
+    "@langchain/cerebras": "*"
     "@langchain/cohere": "*"
     "@langchain/core": ">=0.2.21 <0.4.0"
+    "@langchain/deepseek": "*"
     "@langchain/google-genai": "*"
     "@langchain/google-vertexai": "*"
+    "@langchain/google-vertexai-web": "*"
     "@langchain/groq": "*"
     "@langchain/mistralai": "*"
     "@langchain/ollama": "*"
+    "@langchain/xai": "*"
     axios: "*"
     cheerio: "*"
     handlebars: ^4.7.8
@@ -5556,17 +5569,25 @@ __metadata:
       optional: true
     "@langchain/aws":
       optional: true
+    "@langchain/cerebras":
+      optional: true
     "@langchain/cohere":
+      optional: true
+    "@langchain/deepseek":
       optional: true
     "@langchain/google-genai":
       optional: true
     "@langchain/google-vertexai":
+      optional: true
+    "@langchain/google-vertexai-web":
       optional: true
     "@langchain/groq":
       optional: true
     "@langchain/mistralai":
       optional: true
     "@langchain/ollama":
+      optional: true
+    "@langchain/xai":
       optional: true
     axios:
       optional: true
@@ -5578,7 +5599,27 @@ __metadata:
       optional: true
     typeorm:
       optional: true
-  checksum: 10c0/3a06664290aac5fa9af900449a44ce8db35d471877e9b7e7a5e249fe00750ef534074770a473edd2e12e25cfc708de428f2807f1c367ab5cba5252e1c9a08a9e
+  checksum: 10c0/251d743a0bcaf88b2837e93de5655c0edcd61cfb3b75bbbde60c50ae8ec2855781c533e8001fbdaef1ffffdbd4ae1bef2832ee7fcd476603b146c49e14a766bf
+  languageName: node
+  linkType: hard
+
+"langsmith@npm:>=0.2.8 <0.4.0":
+  version: 0.3.15
+  resolution: "langsmith@npm:0.3.15"
+  dependencies:
+    "@types/uuid": "npm:^10.0.0"
+    chalk: "npm:^4.1.2"
+    console-table-printer: "npm:^2.12.1"
+    p-queue: "npm:^6.6.2"
+    p-retry: "npm:4"
+    semver: "npm:^7.6.3"
+    uuid: "npm:^10.0.0"
+  peerDependencies:
+    openai: "*"
+  peerDependenciesMeta:
+    openai:
+      optional: true
+  checksum: 10c0/90d6d97040dced879fb8675082ffd9c49360decaafed80d4bc5b8dd9b0fc0934af8d0a6131207dded3a2de9fcfee86c3b96e983609600f3f5f612e7fb8a03b42
   languageName: node
   linkType: hard
 
@@ -6540,9 +6581,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"openai@npm:^4.71.0":
-  version: 4.76.2
-  resolution: "openai@npm:4.76.2"
+"openai@npm:^4.87.3":
+  version: 4.91.1
+  resolution: "openai@npm:4.91.1"
   dependencies:
     "@types/node": "npm:^18.11.18"
     "@types/node-fetch": "npm:^2.6.4"
@@ -6552,13 +6593,16 @@ __metadata:
     formdata-node: "npm:^4.3.2"
     node-fetch: "npm:^2.6.7"
   peerDependencies:
+    ws: ^8.18.0
     zod: ^3.23.8
   peerDependenciesMeta:
+    ws:
+      optional: true
     zod:
       optional: true
   bin:
     openai: bin/cli
-  checksum: 10c0/d78af0c2dd64ad24a2ce92deb92656b742b8120012e554fd562095f237ce06d84764217e040b437f955c6f26b7675f9321862a8937c8537f28ed6ead4b674559
+  checksum: 10c0/f858df4455d664ff9c1969cf2937b5a60ad50d94f5223b31d62d731f9bd94fb85d29ed2b95a7b1bb28c249cf2781bfd29e65eb5e4da7b4ac6ce3ad7e1c847ca7
   languageName: node
   linkType: hard
 
@@ -6686,7 +6730,7 @@ __metadata:
     eslint: "npm:^9.20.1"
     eslint-config-next: "npm:14.2.20"
     hast-util-to-jsx-runtime: "npm:2.3.2"
-    langchain: "npm:0.3.7"
+    langchain: "npm:0.3.19"
     markdown-table: "npm:3.0.4"
     next: "npm:14.2.21"
     pangea-node-sdk: "npm:4.4.0"
@@ -7481,6 +7525,13 @@ __metadata:
   version: 4.1.0
   resolution: "signal-exit@npm:4.1.0"
   checksum: 10c0/41602dce540e46d599edba9d9860193398d135f7ff72cab629db5171516cfae628d21e7bfccde1bbfdf11c48726bc2a6d1a8fb8701125852fbfda7cf19c6aa83
+  languageName: node
+  linkType: hard
+
+"simple-wcswidth@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "simple-wcswidth@npm:1.0.1"
+  checksum: 10c0/2befead4c97134424aa3fba593a81daa9934fd61b9e4c65374b57ac5eecc2f2be1984b017bbdbc919923e19b77f2fcbdb94434789b9643fa8c3fde3a2a6a4b6f
   languageName: node
   linkType: hard
 
