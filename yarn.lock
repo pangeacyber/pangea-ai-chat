@@ -2633,7 +2633,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^22.10.1":
+"@types/node@npm:*, @types/node@npm:^22.14.0":
   version: 22.14.0
   resolution: "@types/node@npm:22.14.0"
   dependencies:
@@ -3412,9 +3412,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001579":
-  version: 1.0.30001709
-  resolution: "caniuse-lite@npm:1.0.30001709"
-  checksum: 10c0/0acf91f59f52661fc47042e4eee1b527deb54044ae4c79ae7464d0789b79146ad587153a76d78b09157261b9fad89235eb161cd8ea7a58d36fc7f25a2e937df5
+  version: 1.0.30001712
+  resolution: "caniuse-lite@npm:1.0.30001712"
+  checksum: 10c0/b3df8bdcc3335969380c2e47acb36c89bfc7f8fb4ef7ee2a5380e30ba46aa69e9d411654bc29894a06c201a1d60d490ab9b92787f3b66d7a7a38d71360e68215
   languageName: node
   linkType: hard
 
@@ -6852,7 +6852,7 @@ __metadata:
     "@mui/material": "npm:6.4.10"
     "@pangeacyber/react-auth": "npm:^0.0.14"
     "@pangeacyber/react-mui-audit-log-viewer": "npm:^1.0.5"
-    "@types/node": "npm:^22.10.1"
+    "@types/node": "npm:^22.14.0"
     "@types/react": "npm:^18.3.14"
     "@types/react-dom": "npm:^18.3.2"
     citty: "npm:0.1.6"
@@ -8120,22 +8120,22 @@ __metadata:
   linkType: hard
 
 "typescript@npm:^5.7.2":
-  version: 5.8.2
-  resolution: "typescript@npm:5.8.2"
+  version: 5.8.3
+  resolution: "typescript@npm:5.8.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10c0/5c4f6fbf1c6389b6928fe7b8fcd5dc73bb2d58cd4e3883f1d774ed5bd83b151cbac6b7ecf11723de56d4676daeba8713894b1e9af56174f2f9780ae7848ec3c6
+  checksum: 10c0/5f8bb01196e542e64d44db3d16ee0e4063ce4f3e3966df6005f2588e86d91c03e1fb131c2581baf0fb65ee79669eea6e161cd448178986587e9f6844446dbb48
   languageName: node
   linkType: hard
 
 "typescript@patch:typescript@npm%3A^5.7.2#optional!builtin<compat/typescript>":
-  version: 5.8.2
-  resolution: "typescript@patch:typescript@npm%3A5.8.2#optional!builtin<compat/typescript>::version=5.8.2&hash=5786d5"
+  version: 5.8.3
+  resolution: "typescript@patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10c0/5448a08e595cc558ab321e49d4cac64fb43d1fa106584f6ff9a8d8e592111b373a995a1d5c7f3046211c8a37201eb6d0f1566f15cdb7a62a5e3be01d087848e2
+  checksum: 10c0/39117e346ff8ebd87ae1510b3a77d5d92dae5a89bde588c747d25da5c146603a99c8ee588c7ef80faaf123d89ed46f6dbd918d534d641083177d5fac38b8a1cb
   languageName: node
   linkType: hard
 
