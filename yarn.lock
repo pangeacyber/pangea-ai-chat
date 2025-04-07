@@ -2654,16 +2654,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*":
-  version: 19.1.0
-  resolution: "@types/react@npm:19.1.0"
-  dependencies:
-    csstype: "npm:^3.0.2"
-  checksum: 10c0/632fd20ee176e55801a61c5f854141b043571a3e363ef106b047b766a813a12735cbb37abb3d61d126346979f530f2ed269a60c8ef3cdee54e5e9fe4174e5dad
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^18.3.14":
+"@types/react@npm:*, @types/react@npm:^18.3.14":
   version: 18.3.20
   resolution: "@types/react@npm:18.3.20"
   dependencies:
@@ -3384,7 +3375,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^4.0.0, chalk@npm:^4.1.2":
+"chalk@npm:^4.0.0":
   version: 4.1.2
   resolution: "chalk@npm:4.1.2"
   dependencies:
@@ -3509,15 +3500,6 @@ __metadata:
   version: 3.4.2
   resolution: "consola@npm:3.4.2"
   checksum: 10c0/7cebe57ecf646ba74b300bcce23bff43034ed6fbec9f7e39c27cee1dc00df8a21cd336b466ad32e304ea70fba04ec9e890c200270de9a526ce021ba8a7e4c11a
-  languageName: node
-  linkType: hard
-
-"console-table-printer@npm:^2.12.1":
-  version: 2.12.1
-  resolution: "console-table-printer@npm:2.12.1"
-  dependencies:
-    simple-wcswidth: "npm:^1.0.1"
-  checksum: 10c0/8f28e9c0ae5df77f5d60da3da002ecd95ebe1812b0b9e0a6d2795c81b5121b39774f32506bccf68830a838ca4d8fbb2ab8824e729dba2c5e30cdeb9df4dd5f2b
   languageName: node
   linkType: hard
 
@@ -4266,7 +4248,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^9.23.0":
+"eslint@npm:^9.24.0":
   version: 9.24.0
   resolution: "eslint@npm:9.24.0"
   dependencies:
@@ -5731,27 +5713,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"langsmith@npm:>=0.2.8 <0.4.0":
-  version: 0.3.15
-  resolution: "langsmith@npm:0.3.15"
-  dependencies:
-    "@types/uuid": "npm:^10.0.0"
-    chalk: "npm:^4.1.2"
-    console-table-printer: "npm:^2.12.1"
-    p-queue: "npm:^6.6.2"
-    p-retry: "npm:4"
-    semver: "npm:^7.6.3"
-    uuid: "npm:^10.0.0"
-  peerDependencies:
-    openai: "*"
-  peerDependenciesMeta:
-    openai:
-      optional: true
-  checksum: 10c0/90d6d97040dced879fb8675082ffd9c49360decaafed80d4bc5b8dd9b0fc0934af8d0a6131207dded3a2de9fcfee86c3b96e983609600f3f5f612e7fb8a03b42
-  languageName: node
-  linkType: hard
-
-"langsmith@npm:^0.2.8":
+"langsmith@npm:>=0.2.8 <0.4.0, langsmith@npm:^0.2.8":
   version: 0.2.15
   resolution: "langsmith@npm:0.2.15"
   dependencies:
@@ -6855,7 +6817,7 @@ __metadata:
     "@types/react": "npm:^18.3.14"
     "@types/react-dom": "npm:^18.3.2"
     citty: "npm:0.1.6"
-    eslint: "npm:^9.23.0"
+    eslint: "npm:^9.24.0"
     eslint-config-next: "npm:15.2.4"
     hast-util-to-jsx-runtime: "npm:2.3.2"
     langchain: "npm:0.3.20"
@@ -7649,13 +7611,6 @@ __metadata:
   version: 4.1.0
   resolution: "signal-exit@npm:4.1.0"
   checksum: 10c0/41602dce540e46d599edba9d9860193398d135f7ff72cab629db5171516cfae628d21e7bfccde1bbfdf11c48726bc2a6d1a8fb8701125852fbfda7cf19c6aa83
-  languageName: node
-  linkType: hard
-
-"simple-wcswidth@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "simple-wcswidth@npm:1.0.1"
-  checksum: 10c0/2befead4c97134424aa3fba593a81daa9934fd61b9e4c65374b57ac5eecc2f2be1984b017bbdbc919923e19b77f2fcbdb94434789b9643fa8c3fde3a2a6a4b6f
   languageName: node
   linkType: hard
 
