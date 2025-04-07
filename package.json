@@ -33,7 +33,7 @@
     "shiki": "1.24.2"
   },
   "devDependencies": {
-    "@dotenvx/dotenvx": "1.29.0",
+    "@dotenvx/dotenvx": "1.39.1",
     "@types/node": "^22.14.0",
     "@types/react": "^18.3.14",
     "@types/react-dom": "^18.3.2",
