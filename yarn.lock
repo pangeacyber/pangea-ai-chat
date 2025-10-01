@@ -5713,9 +5713,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"langchain@npm:0.3.34":
-  version: 0.3.34
-  resolution: "langchain@npm:0.3.34"
+"langchain@npm:0.3.35":
+  version: 0.3.35
+  resolution: "langchain@npm:0.3.35"
   dependencies:
     "@langchain/openai": "npm:>=0.1.0 <0.7.0"
     "@langchain/textsplitters": "npm:>=0.0.0 <0.2.0"
@@ -5782,7 +5782,7 @@ __metadata:
       optional: true
     typeorm:
       optional: true
-  checksum: 10c0/b03778563cafd260393cf8cdf3f239043fa469a34cba287d19f2ae0f8aff306ba02dd3e4e5a7f9a56ea754186208de1d3ddff83963a85033d6f0d9d0ab2df9c5
+  checksum: 10c0/8d3c0ca1b9946f7ccaccef0376079502a147e3910f242cfb67bf54cf1f088198e8d6a9b3d75a672853c0eea560c82847ca54908381d1bb5cc3d06bedf654399a
   languageName: node
   linkType: hard
 
@@ -6891,7 +6891,7 @@ __metadata:
     eslint: "npm:9.36.0"
     eslint-config-next: "npm:15.2.4"
     hast-util-to-jsx-runtime: "npm:2.3.2"
-    langchain: "npm:0.3.34"
+    langchain: "npm:0.3.35"
     markdown-table: "npm:3.0.4"
     next: "npm:14.2.21"
     pangea-node-sdk: "npm:4.4.0"
