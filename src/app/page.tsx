@@ -26,7 +26,7 @@ export default function Home() {
       loginUrl={LOGIN_URL}
       useStrictStateCheck={false}
     >
-      <ThemeProvider theme={PangeaDark}>
+      <ThemeProvider theme={PangeaDark()}>
         <CssBaseline />
         <ChatProvider>
           <Layout />
