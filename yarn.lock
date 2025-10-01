@@ -911,7 +911,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/react@npm:^11.14.0":
+"@emotion/react@npm:11.14.0":
   version: 11.14.0
   resolution: "@emotion/react@npm:11.14.0"
   dependencies:
@@ -952,7 +952,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/styled@npm:^11.14.1":
+"@emotion/styled@npm:11.14.1":
   version: 11.14.1
   resolution: "@emotion/styled@npm:11.14.1"
   dependencies:
@@ -1684,6 +1684,29 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10c0/0afec2280e8dde4ff34686481497c4b3ced8193f0038bf8984fd502808c053ba8464c35409def0380424cade1d282f647fac1db7c55046b2b232b0d2c52a589d
+  languageName: node
+  linkType: hard
+
+"@mui/material-nextjs@npm:7.3.2":
+  version: 7.3.2
+  resolution: "@mui/material-nextjs@npm:7.3.2"
+  dependencies:
+    "@babel/runtime": "npm:^7.28.3"
+  peerDependencies:
+    "@emotion/cache": ^11.11.0
+    "@emotion/react": ^11.11.4
+    "@emotion/server": ^11.11.0
+    "@types/react": ^17.0.0 || ^18.0.0 || ^19.0.0
+    next: ^13.0.0 || ^14.0.0 || ^15.0.0
+    react: ^17.0.0 || ^18.0.0 || ^19.0.0
+  peerDependenciesMeta:
+    "@emotion/cache":
+      optional: true
+    "@emotion/server":
+      optional: true
+    "@types/react":
+      optional: true
+  checksum: 10c0/305f69d1e6b7766d42d72a41cf1900ea2b1d0104c9bad0806a32f566ee69b749e5155ea67f65ccc4aa130003b33e85aaeec9afcbd11bc2837d48dcb3819f18fb
   languageName: node
   linkType: hard
 
@@ -2807,7 +2830,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/next@npm:^2.0.3":
+"@tsconfig/next@npm:2.0.3":
   version: 2.0.3
   resolution: "@tsconfig/next@npm:2.0.3"
   checksum: 10c0/57aea3cf6ceedd3dae6713180559211b02a453668fd01f40e197759b6fc583eb11a3acc57a39d237c8c3e8e5fdcb243d3d761b9713c7ded45af071399fb34f11
@@ -7108,8 +7131,8 @@ __metadata:
   dependencies:
     "@dotenvx/dotenvx": "npm:1.51.0"
     "@emotion/css": "npm:11.13.5"
-    "@emotion/react": "npm:^11.14.0"
-    "@emotion/styled": "npm:^11.14.1"
+    "@emotion/react": "npm:11.14.0"
+    "@emotion/styled": "npm:11.14.1"
     "@googleapis/docs": "npm:6.0.0"
     "@googleapis/drive": "npm:17.0.0"
     "@googleapis/sheets": "npm:12.0.0"
@@ -7117,9 +7140,10 @@ __metadata:
     "@langchain/core": "npm:0.3.78"
     "@mui/icons-material": "npm:6.5.0"
     "@mui/material": "npm:6.5.0"
+    "@mui/material-nextjs": "npm:7.3.2"
     "@pangeacyber/react-auth": "npm:^0.0.18"
     "@pangeacyber/react-mui-audit-log-viewer": "npm:^2.0.3"
-    "@tsconfig/next": "npm:^2.0.3"
+    "@tsconfig/next": "npm:2.0.3"
     "@types/node": "npm:22.18.8"
     "@types/react": "npm:18.3.25"
     "@types/react-dom": "npm:18.3.7"
