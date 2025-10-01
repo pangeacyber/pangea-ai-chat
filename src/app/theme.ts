@@ -142,7 +142,7 @@ const PangeaDark = () => {
             color: Colors.icons,
             variants: [
               {
-                props: { color: "active" },
+                props: { color: "primary" },
                 style: {
                   color: Colors.secondary,
                 },
