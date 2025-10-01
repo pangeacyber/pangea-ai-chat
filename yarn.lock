@@ -1288,12 +1288,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@googleapis/sheets@npm:9.3.1":
-  version: 9.3.1
-  resolution: "@googleapis/sheets@npm:9.3.1"
+"@googleapis/sheets@npm:9.8.0":
+  version: 9.8.0
+  resolution: "@googleapis/sheets@npm:9.8.0"
   dependencies:
     googleapis-common: "npm:^7.0.0"
-  checksum: 10c0/4bf7ca6732ca9bffa98a462195b5c3fcd0e5c0a5ce4e834b42932c3e6c03b659dbc143ad48e6f8df9c32fde613477dda4e69d9f747293beb271b7932b276498b
+  checksum: 10c0/bdc83d4775fb9a917215683b8831cf590061d20d8ea24e761971a81e6cbc63e99bffc49b028f765ff236e8e08aaa1298abe4284ac7b8164af69034df899a5467
   languageName: node
   linkType: hard
 
@@ -6868,7 +6868,7 @@ __metadata:
     "@emotion/styled": "npm:^11.14.1"
     "@googleapis/docs": "npm:3.4.0"
     "@googleapis/drive": "npm:8.14.0"
-    "@googleapis/sheets": "npm:9.3.1"
+    "@googleapis/sheets": "npm:9.8.0"
     "@langchain/aws": "npm:0.1.15"
     "@langchain/core": "npm:0.3.78"
     "@mui/icons-material": "npm:6.4.10"
