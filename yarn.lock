@@ -2807,6 +2807,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tsconfig/next@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@tsconfig/next@npm:2.0.3"
+  checksum: 10c0/57aea3cf6ceedd3dae6713180559211b02a453668fd01f40e197759b6fc583eb11a3acc57a39d237c8c3e8e5fdcb243d3d761b9713c7ded45af071399fb34f11
+  languageName: node
+  linkType: hard
+
 "@tybys/wasm-util@npm:^0.10.0":
   version: 0.10.1
   resolution: "@tybys/wasm-util@npm:0.10.1"
@@ -7112,6 +7119,7 @@ __metadata:
     "@mui/material": "npm:6.5.0"
     "@pangeacyber/react-auth": "npm:^0.0.18"
     "@pangeacyber/react-mui-audit-log-viewer": "npm:^2.0.3"
+    "@tsconfig/next": "npm:^2.0.3"
     "@types/node": "npm:22.18.8"
     "@types/react": "npm:18.3.25"
     "@types/react-dom": "npm:18.3.7"
