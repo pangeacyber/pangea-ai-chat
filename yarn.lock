@@ -1399,9 +1399,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@langchain/core@npm:0.3.77":
-  version: 0.3.77
-  resolution: "@langchain/core@npm:0.3.77"
+"@langchain/core@npm:0.3.78":
+  version: 0.3.78
+  resolution: "@langchain/core@npm:0.3.78"
   dependencies:
     "@cfworker/json-schema": "npm:^4.0.2"
     ansi-styles: "npm:^5.0.0"
@@ -1415,7 +1415,7 @@ __metadata:
     uuid: "npm:^10.0.0"
     zod: "npm:^3.25.32"
     zod-to-json-schema: "npm:^3.22.3"
-  checksum: 10c0/37ae6b6828f5ec6e2542236513c139425f416b2086ab5065b84766fc8d8cd8b37900982bbd0c017a6b778d8aaf6076e26e984a5fd30cf9bf8f72dea9bb265167
+  checksum: 10c0/6bccc3f4fdae5068cf98814d402847cb7ab8b10a163cb034096e13644ecb81e5932bf748793f9305aafbb8e59e3a7bf82443d95de3913e15e1be86e9f836fa33
   languageName: node
   linkType: hard
 
@@ -6870,7 +6870,7 @@ __metadata:
     "@googleapis/drive": "npm:8.14.0"
     "@googleapis/sheets": "npm:9.3.1"
     "@langchain/aws": "npm:0.1.15"
-    "@langchain/core": "npm:0.3.77"
+    "@langchain/core": "npm:0.3.78"
     "@mui/icons-material": "npm:6.4.10"
     "@mui/material": "npm:6.4.10"
     "@pangeacyber/react-auth": "npm:^0.0.18"
