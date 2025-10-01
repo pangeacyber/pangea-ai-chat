@@ -3775,6 +3775,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"decode-uri-component@npm:^0.2.2":
+  version: 0.2.2
+  resolution: "decode-uri-component@npm:0.2.2"
+  checksum: 10c0/1f4fa54eb740414a816b3f6c24818fbfcabd74ac478391e9f4e2282c994127db02010ce804f3d08e38255493cfe68608b3f5c8e09fd6efc4ae46c807691f7a31
+  languageName: node
+  linkType: hard
+
 "deep-is@npm:^0.1.3":
   version: 0.1.4
   resolution: "deep-is@npm:0.1.4"
@@ -4651,6 +4658,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"filter-obj@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "filter-obj@npm:1.1.0"
+  checksum: 10c0/071e0886b2b50238ca5026c5bbf58c26a7c1a1f720773b8c7813d16ba93d0200de977af14ac143c5ac18f666b2cfc83073f3a5fe6a4e996c49e0863d5500fccf
+  languageName: node
+  linkType: hard
+
 "find-root@npm:^1.1.0":
   version: 1.1.0
   resolution: "find-root@npm:1.1.0"
@@ -4716,7 +4730,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"form-data-encoder@npm:^4.0.2":
+"form-data-encoder@npm:^4.1.0":
   version: 4.1.0
   resolution: "form-data-encoder@npm:4.1.0"
   checksum: 10c0/cbd655aa8ffff6f7c2733b1d8e95fa9a2fe8a88a90bde29fb54b8e02c9406e51f32a014bfe8297d67fbac9f77614d14a8b4bbc4fd0352838e67e97a881d06332
@@ -6916,7 +6930,7 @@ __metadata:
     langchain: "npm:0.3.35"
     markdown-table: "npm:3.0.4"
     next: "npm:14.2.33"
-    pangea-node-sdk: "npm:4.4.0"
+    pangea-node-sdk: "npm:5.5.1"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     react-json-view-lite: "npm:2.5.0"
@@ -6926,18 +6940,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pangea-node-sdk@npm:4.4.0":
-  version: 4.4.0
-  resolution: "pangea-node-sdk@npm:4.4.0"
+"pangea-node-sdk@npm:5.5.1":
+  version: 5.5.1
+  resolution: "pangea-node-sdk@npm:5.5.1"
   dependencies:
     "@aws-crypto/crc32c": "npm:^5.2.0"
     crypto-js: "npm:^4.2.0"
-    form-data-encoder: "npm:^4.0.2"
+    form-data-encoder: "npm:^4.1.0"
     formdata-node: "npm:^6.0.3"
     json-canon: "npm:^1.0.1"
     merkle-tools: "npm:^1.4.1"
-    promise-retry: "npm:^2.0.1"
-  checksum: 10c0/3b8a0b52e9631d1119b1ccb15b457a373ea8c9db9164fec212f1423335f5b3b256c59690dd6f0f58f875a90ba5ba98f249eb4e688f63d2346e4997e8421aa11a
+    proper-url-join: "npm:^2.1.2"
+  checksum: 10c0/62f46fa6269673b9790d2d8d2f89e5505510093f3dec6e741e9ac175fe7df4369f22122d9ac0866493a47d6300633065c93a4a2fadcdb42eb384376dae5640ef
   languageName: node
   linkType: hard
 
@@ -7098,6 +7112,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"proper-url-join@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "proper-url-join@npm:2.1.2"
+  dependencies:
+    query-string: "npm:^7.1.3"
+  checksum: 10c0/cb0f219b35792ad77179529396508c7b73a92c7b43bb718cdcaef605210bacf43440e105875d18bb515eed46eb614a1e845b194ceac702ca7d5020f80b40595e
+  languageName: node
+  linkType: hard
+
 "property-expr@npm:^2.0.5":
   version: 2.0.6
   resolution: "property-expr@npm:2.0.6"
@@ -7139,6 +7162,18 @@ __metadata:
   dependencies:
     side-channel: "npm:^1.1.0"
   checksum: 10c0/8ea5d91bf34f440598ee389d4a7d95820e3b837d3fd9f433871f7924801becaa0cd3b3b4628d49a7784d06a8aea9bc4554d2b6d8d584e2d221dc06238a42909c
+  languageName: node
+  linkType: hard
+
+"query-string@npm:^7.1.3":
+  version: 7.1.3
+  resolution: "query-string@npm:7.1.3"
+  dependencies:
+    decode-uri-component: "npm:^0.2.2"
+    filter-obj: "npm:^1.1.0"
+    split-on-first: "npm:^1.0.0"
+    strict-uri-encode: "npm:^2.0.0"
+  checksum: 10c0/a896c08e9e0d4f8ffd89a572d11f668c8d0f7df9c27c6f49b92ab31366d3ba0e9c331b9a620ee747893436cd1f2f821a6327e2bc9776bde2402ac6c270b801b2
   languageName: node
   linkType: hard
 
@@ -7749,6 +7784,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"split-on-first@npm:^1.0.0":
+  version: 1.1.0
+  resolution: "split-on-first@npm:1.1.0"
+  checksum: 10c0/56df8344f5a5de8521898a5c090023df1d8b8c75be6228f56c52491e0fc1617a5236f2ac3a066adb67a73231eac216ccea7b5b4a2423a543c277cb2f48d24c29
+  languageName: node
+  linkType: hard
+
 "ssri@npm:^12.0.0":
   version: 12.0.0
   resolution: "ssri@npm:12.0.0"
@@ -7779,6 +7821,13 @@ __metadata:
   version: 1.1.0
   resolution: "streamsearch@npm:1.1.0"
   checksum: 10c0/fbd9aecc2621364384d157f7e59426f4bfd385e8b424b5aaa79c83a6f5a1c8fd2e4e3289e95de1eb3511cb96bb333d6281a9919fafce760e4edb35b2cd2facab
+  languageName: node
+  linkType: hard
+
+"strict-uri-encode@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "strict-uri-encode@npm:2.0.0"
+  checksum: 10c0/010cbc78da0e2cf833b0f5dc769e21ae74cdc5d5f5bd555f14a4a4876c8ad2c85ab8b5bdf9a722dc71a11dcd3184085e1c3c0bd50ec6bb85fffc0f28cf82597d
   languageName: node
   linkType: hard
 
