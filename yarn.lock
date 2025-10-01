@@ -1456,36 +1456,36 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/core-downloads-tracker@npm:^6.4.10":
+"@mui/core-downloads-tracker@npm:^6.5.0":
   version: 6.5.0
   resolution: "@mui/core-downloads-tracker@npm:6.5.0"
   checksum: 10c0/dea763c8d4b4f9415d6c6ac3a04115d04c249461ce5635f0012a75b91c38f43c0d0411201664a77c7ff10ff11ea12a0bfeea6562ec22ceec6bac82478b6384c3
   languageName: node
   linkType: hard
 
-"@mui/icons-material@npm:6.4.10":
-  version: 6.4.10
-  resolution: "@mui/icons-material@npm:6.4.10"
+"@mui/icons-material@npm:6.5.0":
+  version: 6.5.0
+  resolution: "@mui/icons-material@npm:6.5.0"
   dependencies:
     "@babel/runtime": "npm:^7.26.0"
   peerDependencies:
-    "@mui/material": ^6.4.10
+    "@mui/material": ^6.5.0
     "@types/react": ^17.0.0 || ^18.0.0 || ^19.0.0
     react: ^17.0.0 || ^18.0.0 || ^19.0.0
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10c0/ccfd36879dbc8c656a1467b1b83801670f4a1e7ae5c3a8acefeea8f186d472bfbdad813b7680bb6c125dd73a41e585ceb98252ac128b60b10d23c1ad5a31408a
+  checksum: 10c0/0afec2280e8dde4ff34686481497c4b3ced8193f0038bf8984fd502808c053ba8464c35409def0380424cade1d282f647fac1db7c55046b2b232b0d2c52a589d
   languageName: node
   linkType: hard
 
-"@mui/material@npm:6.4.10":
-  version: 6.4.10
-  resolution: "@mui/material@npm:6.4.10"
+"@mui/material@npm:6.5.0":
+  version: 6.5.0
+  resolution: "@mui/material@npm:6.5.0"
   dependencies:
     "@babel/runtime": "npm:^7.26.0"
-    "@mui/core-downloads-tracker": "npm:^6.4.10"
-    "@mui/system": "npm:^6.4.10"
+    "@mui/core-downloads-tracker": "npm:^6.5.0"
+    "@mui/system": "npm:^6.5.0"
     "@mui/types": "npm:~7.2.24"
     "@mui/utils": "npm:^6.4.9"
     "@popperjs/core": "npm:^2.11.8"
@@ -1498,7 +1498,7 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.5.0
     "@emotion/styled": ^11.3.0
-    "@mui/material-pigment-css": ^6.4.10
+    "@mui/material-pigment-css": ^6.5.0
     "@types/react": ^17.0.0 || ^18.0.0 || ^19.0.0
     react: ^17.0.0 || ^18.0.0 || ^19.0.0
     react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -1511,7 +1511,7 @@ __metadata:
       optional: true
     "@types/react":
       optional: true
-  checksum: 10c0/17e79cc4b255a8df683bb66964d1270872fa8358591ffee6396cfaa357f107ad6399a25dcac6df929cd3df51ee14ac140335aa119e5b1544ee92745da77f7fcf
+  checksum: 10c0/24dfb582fe4655cc8e15476637d60d17cc1be6326be36d7fbc8c9a99f044ba10e5b68841f292e2cd1ce7e1ca26bc1006e37e7bba1e6979992850c907aa4c17b4
   languageName: node
   linkType: hard
 
@@ -1555,7 +1555,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/system@npm:^6.4.10":
+"@mui/system@npm:^6.5.0":
   version: 6.5.0
   resolution: "@mui/system@npm:6.5.0"
   dependencies:
@@ -6871,8 +6871,8 @@ __metadata:
     "@googleapis/sheets": "npm:9.8.0"
     "@langchain/aws": "npm:0.1.15"
     "@langchain/core": "npm:0.3.78"
-    "@mui/icons-material": "npm:6.4.10"
-    "@mui/material": "npm:6.4.10"
+    "@mui/icons-material": "npm:6.5.0"
+    "@mui/material": "npm:6.5.0"
     "@pangeacyber/react-auth": "npm:^0.0.18"
     "@pangeacyber/react-mui-audit-log-viewer": "npm:^1.0.10"
     "@types/node": "npm:22.18.8"
