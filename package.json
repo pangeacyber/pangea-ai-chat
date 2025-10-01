@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@emotion/css": "11.13.5",
-    "@emotion/react": "^11.13.5",
-    "@emotion/styled": "^11.13.5",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@googleapis/docs": "3.3.0",
     "@googleapis/drive": "8.14.0",
     "@googleapis/sheets": "9.3.1",
