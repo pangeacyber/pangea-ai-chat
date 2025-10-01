@@ -1905,17 +1905,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pangeacyber/react-auth@npm:^0.0.14":
-  version: 0.0.14
-  resolution: "@pangeacyber/react-auth@npm:0.0.14"
+"@pangeacyber/react-auth@npm:^0.0.18":
+  version: 0.0.18
+  resolution: "@pangeacyber/react-auth@npm:0.0.18"
   dependencies:
-    axios: "npm:^1.7.5"
-    jose: "npm:^5.7.0"
+    "@pangeacyber/vanilla-js": "npm:0.1.14"
+    jose: "npm:^6.0.10"
     lodash: "npm:^4.17.21"
   peerDependencies:
-    react: ^17.0.2 || ^18.2.0
-    react-dom: ^17.0.2 || ^18.2.0
-  checksum: 10c0/681e88f2ac47c20218b8af38e03f95f6882de3b7146e2a3cc331b2e92004e1db92cf80ad1ed35074079d4c5560914a6a25e6b31013186f7ddb286a998586dbae
+    react: ^17.0.2 || ^18.2.0 || ^19.0.0
+    react-dom: ^17.0.2 || ^18.2.0 || ^19.0.0
+  checksum: 10c0/4a5a000d075aa4a4363f5c00f92ed5dff2b396f50448ee5300127efe48a60ad87a28b23210581600a1ef5cdd2af2c5ea3f824645d64d9f10b9b024fb51abc47b
   languageName: node
   linkType: hard
 
@@ -1961,6 +1961,15 @@ __metadata:
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
   checksum: 10c0/696c49496f8ba26e9f63ccc0eceac62a0b896a6a6b755a01bdb4acc9b94263685241b1305382ff84de68bd71a0785c7023cd8a67b202d6bb56f7531f8d0655b5
+  languageName: node
+  linkType: hard
+
+"@pangeacyber/vanilla-js@npm:0.1.14":
+  version: 0.1.14
+  resolution: "@pangeacyber/vanilla-js@npm:0.1.14"
+  dependencies:
+    lodash: "npm:^4.17.21"
+  checksum: 10c0/4915900d1cd3cf657c499f65228e696703b73a568c440809678e6fd287322d65fbea8360b40fe7e939439bc659d38f4f7e6c99a0283cdaa3e48331ef9372d37c
   languageName: node
   linkType: hard
 
@@ -3298,13 +3307,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"asynckit@npm:^0.4.0":
-  version: 0.4.0
-  resolution: "asynckit@npm:0.4.0"
-  checksum: 10c0/d73e2ddf20c4eb9337e1b3df1a0f6159481050a5de457c55b14ea2e5cb6d90bb69e004c9af54737a5ee0917fcf2c9e25de67777bbe58261847846066ba75bc9d
-  languageName: node
-  linkType: hard
-
 "available-typed-arrays@npm:^1.0.7":
   version: 1.0.7
   resolution: "available-typed-arrays@npm:1.0.7"
@@ -3318,17 +3320,6 @@ __metadata:
   version: 4.10.3
   resolution: "axe-core@npm:4.10.3"
   checksum: 10c0/1b1c24f435b2ffe89d76eca0001cbfff42dbf012ad9bd37398b70b11f0d614281a38a28bc3069e8972e3c90ec929a8937994bd24b0ebcbaab87b8d1e241ab0c7
-  languageName: node
-  linkType: hard
-
-"axios@npm:^1.7.5":
-  version: 1.12.2
-  resolution: "axios@npm:1.12.2"
-  dependencies:
-    follow-redirects: "npm:^1.15.6"
-    form-data: "npm:^4.0.4"
-    proxy-from-env: "npm:^1.1.0"
-  checksum: 10c0/80b063e318cf05cd33a4d991cea0162f3573481946f9129efb7766f38fde4c061c34f41a93a9f9521f02b7c9565ccbc197c099b0186543ac84a24580017adfed
   languageName: node
   linkType: hard
 
@@ -3593,15 +3584,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"combined-stream@npm:^1.0.8":
-  version: 1.0.8
-  resolution: "combined-stream@npm:1.0.8"
-  dependencies:
-    delayed-stream: "npm:~1.0.0"
-  checksum: 10c0/0dbb829577e1b1e839fa82b40c07ffaf7de8a09b935cadd355a73652ae70a88b4320db322f6634a4ad93424292fa80973ac6480986247f1734a1137debf271d5
-  languageName: node
-  linkType: hard
-
 "comma-separated-tokens@npm:^2.0.0":
   version: 2.0.3
   resolution: "comma-separated-tokens@npm:2.0.3"
@@ -3826,13 +3808,6 @@ __metadata:
     has-property-descriptors: "npm:^1.0.0"
     object-keys: "npm:^1.1.1"
   checksum: 10c0/88a152319ffe1396ccc6ded510a3896e77efac7a1bfbaa174a7b00414a1747377e0bb525d303794a47cf30e805c2ec84e575758512c6e44a993076d29fd4e6c3
-  languageName: node
-  linkType: hard
-
-"delayed-stream@npm:~1.0.0":
-  version: 1.0.0
-  resolution: "delayed-stream@npm:1.0.0"
-  checksum: 10c0/d758899da03392e6712f042bec80aa293bbe9e9ff1b2634baae6a360113e708b91326594c8a486d475c69d6259afb7efacdc3537bfcda1c6c648e390ce601b19
   languageName: node
   linkType: hard
 
@@ -4706,16 +4681,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.15.6":
-  version: 1.15.11
-  resolution: "follow-redirects@npm:1.15.11"
-  peerDependenciesMeta:
-    debug:
-      optional: true
-  checksum: 10c0/d301f430542520a54058d4aeeb453233c564aaccac835d29d15e050beb33f339ad67d9bddbce01739c5dc46a6716dbe3d9d0d5134b1ca203effa11a7ef092343
-  languageName: node
-  linkType: hard
-
 "for-each@npm:^0.3.3, for-each@npm:^0.3.5":
   version: 0.3.5
   resolution: "for-each@npm:0.3.5"
@@ -4739,19 +4704,6 @@ __metadata:
   version: 4.1.0
   resolution: "form-data-encoder@npm:4.1.0"
   checksum: 10c0/cbd655aa8ffff6f7c2733b1d8e95fa9a2fe8a88a90bde29fb54b8e02c9406e51f32a014bfe8297d67fbac9f77614d14a8b4bbc4fd0352838e67e97a881d06332
-  languageName: node
-  linkType: hard
-
-"form-data@npm:^4.0.4":
-  version: 4.0.4
-  resolution: "form-data@npm:4.0.4"
-  dependencies:
-    asynckit: "npm:^0.4.0"
-    combined-stream: "npm:^1.0.8"
-    es-set-tostringtag: "npm:^2.1.0"
-    hasown: "npm:^2.0.2"
-    mime-types: "npm:^2.1.12"
-  checksum: 10c0/373525a9a034b9d57073e55eab79e501a714ffac02e7a9b01be1c820780652b16e4101819785e1e18f8d98f0aee866cc654d660a435c378e16a72f2e7cac9695
   languageName: node
   linkType: hard
 
@@ -5607,10 +5559,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jose@npm:^5.7.0":
-  version: 5.10.0
-  resolution: "jose@npm:5.10.0"
-  checksum: 10c0/e20d9fc58d7e402f2e5f04e824b8897d5579aae60e64cb88ebdea1395311c24537bf4892f7de413fab1acf11e922797fb1b42269bc8fc65089a3749265ccb7b0
+"jose@npm:^6.0.10":
+  version: 6.1.0
+  resolution: "jose@npm:6.1.0"
+  checksum: 10c0/f4518579e907317e144facd15c7627acd06097bbea17735097437217498aa419564c039dd4020f6af5f2d024a7cee6b7be4648ccbbdc238aedb80a47c061217d
   languageName: node
   linkType: hard
 
@@ -6415,22 +6367,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mime-db@npm:1.52.0":
-  version: 1.52.0
-  resolution: "mime-db@npm:1.52.0"
-  checksum: 10c0/0557a01deebf45ac5f5777fe7740b2a5c309c6d62d40ceab4e23da9f821899ce7a900b7ac8157d4548ddbb7beffe9abc621250e6d182b0397ec7f10c7b91a5aa
-  languageName: node
-  linkType: hard
-
-"mime-types@npm:^2.1.12":
-  version: 2.1.35
-  resolution: "mime-types@npm:2.1.35"
-  dependencies:
-    mime-db: "npm:1.52.0"
-  checksum: 10c0/82fb07ec56d8ff1fc999a84f2f217aa46cb6ed1033fefaabd5785b9a974ed225c90dc72fff460259e66b95b73648596dbcc50d51ed69cdf464af2d237d3149b2
-  languageName: node
-  linkType: hard
-
 "mimic-fn@npm:^2.1.0":
   version: 2.1.0
   resolution: "mimic-fn@npm:2.1.0"
@@ -6947,7 +6883,7 @@ __metadata:
     "@langchain/core": "npm:0.3.23"
     "@mui/icons-material": "npm:6.4.10"
     "@mui/material": "npm:6.4.10"
-    "@pangeacyber/react-auth": "npm:^0.0.14"
+    "@pangeacyber/react-auth": "npm:^0.0.18"
     "@pangeacyber/react-mui-audit-log-viewer": "npm:^1.0.10"
     "@types/node": "npm:22.18.8"
     "@types/react": "npm:^18.3.14"
@@ -7159,13 +7095,6 @@ __metadata:
   version: 7.1.0
   resolution: "property-information@npm:7.1.0"
   checksum: 10c0/e0fe22cff26103260ad0e82959229106563fa115a54c4d6c183f49d88054e489cc9f23452d3ad584179dc13a8b7b37411a5df873746b5e4086c865874bfa968e
-  languageName: node
-  linkType: hard
-
-"proxy-from-env@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "proxy-from-env@npm:1.1.0"
-  checksum: 10c0/fe7dd8b1bdbbbea18d1459107729c3e4a2243ca870d26d34c2c1bcd3e4425b7bcc5112362df2d93cc7fb9746f6142b5e272fd1cc5c86ddf8580175186f6ad42b
   languageName: node
   linkType: hard
 
