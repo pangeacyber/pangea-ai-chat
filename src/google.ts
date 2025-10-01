@@ -1,5 +1,5 @@
 import { docs, type docs_v1 } from "@googleapis/docs";
-import { drive, type drive_v3, auth as gauth } from "@googleapis/drive";
+import { drive, type drive_v3 } from "@googleapis/drive";
 import { sheets, type sheets_v4 } from "@googleapis/sheets";
 import type { CallbackManagerForRetrieverRun } from "@langchain/core/callbacks/manager";
 import type { DocumentInterface } from "@langchain/core/documents";
@@ -7,14 +7,11 @@ import {
   BaseRetriever,
   type BaseRetrieverInput,
 } from "@langchain/core/retrievers";
-import type {
-  ExternalAccountClientOptions,
-  JWTInput,
-} from "google-auth-library";
+import { type JWTInput, JWT } from "google-auth-library";
 import { markdownTable } from "markdown-table";
 
 export interface GoogleDriveRetrieverArgs extends BaseRetrieverInput {
-  credentials: JWTInput | ExternalAccountClientOptions;
+  credentials: JWTInput;
   folderId: string;
   scopes: string[];
 }
@@ -36,10 +33,9 @@ export class GoogleDriveRetriever extends BaseRetriever {
     super(args);
     this.folderId = args.folderId;
 
-    const auth = new gauth.GoogleAuth({
-      credentials: args.credentials,
-      scopes: args.scopes,
-    });
+    const auth = new JWT({ scopes: args.scopes });
+    auth.fromJSON(args.credentials);
+
     this.documents = docs({ version: "v1", auth }).documents;
     this.files = drive({ version: "v3", auth }).files;
     this.spreadsheets = sheets({ version: "v4", auth }).spreadsheets;

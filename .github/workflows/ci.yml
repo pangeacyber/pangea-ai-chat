@@ -21,7 +21,8 @@ permissions:
 
 env:
   AWS_DEFAULT_REGION: placeholder
-  GOOGLE_DRIVE_CREDENTIALS: "{}"
+  GOOGLE_DRIVE_CREDENTIALS: |
+    {"type":"service_account","project_id":"placeholder","private_key_id":"placeholder","private_key":"placeholder","client_email":"placeholder","client_id":"placeholder","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_x509_cert_url":"placeholder","universe_domain":"googleapis.com"}
   NEXT_PUBLIC_PANGEA_BASE_DOMAIN: placeholder
   NEXT_PUBLIC_PANGEA_CLIENT_TOKEN: placeholder
   NEXT_TELEMETRY_DISABLED: 1

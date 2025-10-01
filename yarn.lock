@@ -1270,21 +1270,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@googleapis/docs@npm:6.0.0":
-  version: 6.0.0
-  resolution: "@googleapis/docs@npm:6.0.0"
+"@googleapis/docs@npm:7.0.0":
+  version: 7.0.0
+  resolution: "@googleapis/docs@npm:7.0.0"
   dependencies:
     googleapis-common: "npm:^8.0.0"
-  checksum: 10c0/dde265fbf36c8c3104cfed51ce2dc7ceedc5052b9b6b82f5e17a1123a2f31cb95b0797fbd7324c11fec0fb305e6d7cccdddf920c936dfa5ba86ff486a4b13585
+  checksum: 10c0/91549357475fe1bdfe8f3485283299c7c356fe2477268e881ca3de230821de3a28deb7e4490e33e881925c0ebcb27ef8ef1b2e2f00031043242b5bfeca45e4ed
   languageName: node
   linkType: hard
 
-"@googleapis/drive@npm:17.0.0":
-  version: 17.0.0
-  resolution: "@googleapis/drive@npm:17.0.0"
+"@googleapis/drive@npm:18.0.0":
+  version: 18.0.0
+  resolution: "@googleapis/drive@npm:18.0.0"
   dependencies:
     googleapis-common: "npm:^8.0.0"
-  checksum: 10c0/db2530b36fea05e77e98171437d5f666e07424563202621afb7fa281ef4a1e95b7395ef3afebad15f010f1c22b52db8de2bc5f9fcd81d5d207a57d11c1fd8e00
+  checksum: 10c0/4e311af54cf726107f53f46b6b52065e4f8878185dae7782c3c75cbeeaf547b08d885f23bfb0dcb8795bed67d04c5f615efb8d1125d2a0ff185c6594f540c7ea
   languageName: node
   linkType: hard
 
@@ -5186,7 +5186,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"google-auth-library@npm:^10.1.0":
+"google-auth-library@npm:10.4.0, google-auth-library@npm:^10.1.0":
   version: 10.4.0
   resolution: "google-auth-library@npm:10.4.0"
   dependencies:
@@ -7133,8 +7133,8 @@ __metadata:
     "@emotion/css": "npm:11.13.5"
     "@emotion/react": "npm:11.14.0"
     "@emotion/styled": "npm:11.14.1"
-    "@googleapis/docs": "npm:6.0.0"
-    "@googleapis/drive": "npm:17.0.0"
+    "@googleapis/docs": "npm:7.0.0"
+    "@googleapis/drive": "npm:18.0.0"
     "@googleapis/sheets": "npm:12.0.0"
     "@langchain/aws": "npm:0.1.15"
     "@langchain/core": "npm:0.3.78"
@@ -7150,6 +7150,7 @@ __metadata:
     citty: "npm:0.1.6"
     eslint: "npm:9.36.0"
     eslint-config-next: "npm:15.5.4"
+    google-auth-library: "npm:10.4.0"
     hast-util-to-jsx-runtime: "npm:2.3.2"
     langchain: "npm:0.3.35"
     markdown-table: "npm:3.0.4"
