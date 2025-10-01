@@ -35,8 +35,8 @@
   "devDependencies": {
     "@dotenvx/dotenvx": "1.39.1",
     "@types/node": "22.18.8",
-    "@types/react": "^18.3.14",
-    "@types/react-dom": "^18.3.2",
+    "@types/react": "18.3.25",
+    "@types/react-dom": "18.3.7",
     "citty": "0.1.6",
     "eslint": "9.36.0",
     "eslint-config-next": "15.2.4",
