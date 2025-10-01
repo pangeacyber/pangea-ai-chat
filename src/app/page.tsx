@@ -2,6 +2,7 @@
 
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { AuthProvider } from "@pangeacyber/react-auth";
 
 import Layout from "./features/Layout";
@@ -26,12 +27,14 @@ export default function Home() {
       loginUrl={LOGIN_URL}
       useStrictStateCheck={false}
     >
-      <ThemeProvider theme={PangeaDark()}>
-        <CssBaseline />
-        <ChatProvider>
-          <Layout />
-        </ChatProvider>
-      </ThemeProvider>
+      <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+        <ThemeProvider theme={PangeaDark()}>
+          <CssBaseline />
+          <ChatProvider>
+            <Layout />
+          </ChatProvider>
+        </ThemeProvider>
+      </AppRouterCacheProvider>
     </AuthProvider>
   );
 }
