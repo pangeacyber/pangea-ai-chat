@@ -7139,7 +7139,7 @@ __metadata:
     langchain: "npm:0.3.35"
     markdown-table: "npm:3.0.4"
     next: "npm:15.5.4"
-    pangea-node-sdk: "npm:5.5.1"
+    pangea-node-sdk: "npm:5.6.0"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     react-json-view-lite: "npm:2.5.0"
@@ -7149,9 +7149,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pangea-node-sdk@npm:5.5.1":
-  version: 5.5.1
-  resolution: "pangea-node-sdk@npm:5.5.1"
+"pangea-node-sdk@npm:5.6.0":
+  version: 5.6.0
+  resolution: "pangea-node-sdk@npm:5.6.0"
   dependencies:
     "@aws-crypto/crc32c": "npm:^5.2.0"
     crypto-js: "npm:^4.2.0"
@@ -7160,7 +7160,7 @@ __metadata:
     json-canon: "npm:^1.0.1"
     merkle-tools: "npm:^1.4.1"
     proper-url-join: "npm:^2.1.2"
-  checksum: 10c0/62f46fa6269673b9790d2d8d2f89e5505510093f3dec6e741e9ac175fe7df4369f22122d9ac0866493a47d6300633065c93a4a2fadcdb42eb384376dae5640ef
+  checksum: 10c0/7856ecd2701b2f55455b3b4e58793a95b999ea2481898708e2a857fbb204301f2ded21c0aee7b164982bb5883d20024d2067cc55a55e42eaa6e4c971358dbf07
   languageName: node
   linkType: hard
 
