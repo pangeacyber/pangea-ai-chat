@@ -737,7 +737,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.12.18, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.20.13, @babel/runtime@npm:^7.27.0, @babel/runtime@npm:^7.28.3, @babel/runtime@npm:^7.28.4, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.12.18, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.20.13, @babel/runtime@npm:^7.27.0, @babel/runtime@npm:^7.28.4, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
   version: 7.28.4
   resolution: "@babel/runtime@npm:7.28.4"
   checksum: 10c0/792ce7af9750fb9b93879cc9d1db175701c4689da890e6ced242ea0207c9da411ccf16dc04e689cc01158b28d7898c40d75598f4559109f761c12ce01e959bf7
@@ -1664,34 +1664,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/core-downloads-tracker@npm:^7.3.2":
+"@mui/core-downloads-tracker@npm:^7.3.4":
   version: 7.3.4
   resolution: "@mui/core-downloads-tracker@npm:7.3.4"
   checksum: 10c0/938037e8a1141edf9bef744248dcddd91277d08ddf9de0a24d027fd8debea7bf81da22f01902d5979df4f9d3ef4931069131f2ce6e0c0d8e82a286896a1e372c
   languageName: node
   linkType: hard
 
-"@mui/icons-material@npm:7.3.2":
-  version: 7.3.2
-  resolution: "@mui/icons-material@npm:7.3.2"
+"@mui/icons-material@npm:7.3.4":
+  version: 7.3.4
+  resolution: "@mui/icons-material@npm:7.3.4"
   dependencies:
-    "@babel/runtime": "npm:^7.28.3"
+    "@babel/runtime": "npm:^7.28.4"
   peerDependencies:
-    "@mui/material": ^7.3.2
+    "@mui/material": ^7.3.4
     "@types/react": ^17.0.0 || ^18.0.0 || ^19.0.0
     react: ^17.0.0 || ^18.0.0 || ^19.0.0
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10c0/25d1f0dcbbb4a35f320aac03317657b15631f9d5b9d48d07e34850d61253a2b4d8dd5e5ca624d76f44b5ceda471ea57d2611f6627fec1eef9fce78855ec01cbf
+  checksum: 10c0/09c5708f0a96979dafeefdfbaef4950463e987bdc283874831d67ae0ce32cbc946bf408ba5084bd7a8f57af0cb87c3fdfddcf4c21e0946bb5e17c34abfd49d80
   languageName: node
   linkType: hard
 
-"@mui/material-nextjs@npm:7.3.2":
-  version: 7.3.2
-  resolution: "@mui/material-nextjs@npm:7.3.2"
+"@mui/material-nextjs@npm:7.3.3":
+  version: 7.3.3
+  resolution: "@mui/material-nextjs@npm:7.3.3"
   dependencies:
-    "@babel/runtime": "npm:^7.28.3"
+    "@babel/runtime": "npm:^7.28.4"
   peerDependencies:
     "@emotion/cache": ^11.11.0
     "@emotion/react": ^11.11.4
@@ -1706,19 +1706,19 @@ __metadata:
       optional: true
     "@types/react":
       optional: true
-  checksum: 10c0/305f69d1e6b7766d42d72a41cf1900ea2b1d0104c9bad0806a32f566ee69b749e5155ea67f65ccc4aa130003b33e85aaeec9afcbd11bc2837d48dcb3819f18fb
+  checksum: 10c0/e8863196a74ae2ed28618d713df6be9f261bbbb87fb717279b126ecc52f31d298e6f15673647457ebec7f665e90dc53bb733d62f906498a3bbd2959cb9574b03
   languageName: node
   linkType: hard
 
-"@mui/material@npm:7.3.2":
-  version: 7.3.2
-  resolution: "@mui/material@npm:7.3.2"
+"@mui/material@npm:7.3.4":
+  version: 7.3.4
+  resolution: "@mui/material@npm:7.3.4"
   dependencies:
-    "@babel/runtime": "npm:^7.28.3"
-    "@mui/core-downloads-tracker": "npm:^7.3.2"
-    "@mui/system": "npm:^7.3.2"
-    "@mui/types": "npm:^7.4.6"
-    "@mui/utils": "npm:^7.3.2"
+    "@babel/runtime": "npm:^7.28.4"
+    "@mui/core-downloads-tracker": "npm:^7.3.4"
+    "@mui/system": "npm:^7.3.3"
+    "@mui/types": "npm:^7.4.7"
+    "@mui/utils": "npm:^7.3.3"
     "@popperjs/core": "npm:^2.11.8"
     "@types/react-transition-group": "npm:^4.4.12"
     clsx: "npm:^2.1.1"
@@ -1729,7 +1729,7 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.5.0
     "@emotion/styled": ^11.3.0
-    "@mui/material-pigment-css": ^7.3.2
+    "@mui/material-pigment-css": ^7.3.3
     "@types/react": ^17.0.0 || ^18.0.0 || ^19.0.0
     react: ^17.0.0 || ^18.0.0 || ^19.0.0
     react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -1742,7 +1742,7 @@ __metadata:
       optional: true
     "@types/react":
       optional: true
-  checksum: 10c0/4b82a65af93fe9517991f45c2f9dc127728199921f5c4c5cd7a8cd48e1c89ba17799011440f1b7e32993871c13b3044878a3170ddd9ce0e7cfe5ca0e7e3613f2
+  checksum: 10c0/bd6ad058c3505bb8b680113ade6ac2cb20b21f7bc6a53c202c89a950b3570586e16646a7a04930ef6ea707a77000440d73b246301ff0d09380b2fb392452b678
   languageName: node
   linkType: hard
 
@@ -1786,7 +1786,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/system@npm:^7.3.2":
+"@mui/system@npm:^7.3.3":
   version: 7.3.3
   resolution: "@mui/system@npm:7.3.3"
   dependencies:
@@ -1814,7 +1814,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/types@npm:^7.4.6, @mui/types@npm:^7.4.7":
+"@mui/types@npm:^7.4.7":
   version: 7.4.7
   resolution: "@mui/types@npm:7.4.7"
   dependencies:
@@ -1828,7 +1828,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/utils@npm:^7.0.2, @mui/utils@npm:^7.3.2, @mui/utils@npm:^7.3.3":
+"@mui/utils@npm:^7.0.2, @mui/utils@npm:^7.3.3":
   version: 7.3.3
   resolution: "@mui/utils@npm:7.3.3"
   dependencies:
@@ -7122,9 +7122,9 @@ __metadata:
     "@googleapis/sheets": "npm:12.0.0"
     "@langchain/aws": "npm:0.1.15"
     "@langchain/core": "npm:0.3.78"
-    "@mui/icons-material": "npm:7.3.2"
-    "@mui/material": "npm:7.3.2"
-    "@mui/material-nextjs": "npm:7.3.2"
+    "@mui/icons-material": "npm:7.3.4"
+    "@mui/material": "npm:7.3.4"
+    "@mui/material-nextjs": "npm:7.3.3"
     "@pangeacyber/react-auth": "npm:^0.0.18"
     "@pangeacyber/react-mui-audit-log-viewer": "npm:^2.0.3"
     "@tsconfig/next": "npm:2.0.3"
