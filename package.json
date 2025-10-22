@@ -23,7 +23,7 @@
     "@mui/material-nextjs": "7.3.3",
     "@pangeacyber/react-auth": "^0.0.18",
     "@pangeacyber/react-mui-audit-log-viewer": "^2.0.3",
-    "google-auth-library": "10.4.0",
+    "google-auth-library": "10.4.1",
     "hast-util-to-jsx-runtime": "2.3.6",
     "langchain": "0.3.36",
     "markdown-table": "3.0.4",
