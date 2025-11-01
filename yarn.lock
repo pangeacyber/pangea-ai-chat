@@ -1595,17 +1595,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@langchain/aws@npm:0.1.15":
-  version: 0.1.15
-  resolution: "@langchain/aws@npm:0.1.15"
+"@langchain/aws@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@langchain/aws@npm:1.0.0"
   dependencies:
     "@aws-sdk/client-bedrock-agent-runtime": "npm:^3.755.0"
     "@aws-sdk/client-bedrock-runtime": "npm:^3.840.0"
     "@aws-sdk/client-kendra": "npm:^3.750.0"
     "@aws-sdk/credential-provider-node": "npm:^3.750.0"
   peerDependencies:
-    "@langchain/core": ">=0.3.58 <0.4.0"
-  checksum: 10c0/0bf36e07d6c818e491528470ed07cc06605aef23c3a4b3f26f6c110b266a870cf8720e204a907ec5d08e6d30e7d46417f5ebfe2d31a33b9842a0ee19284b6c7f
+    "@langchain/core": ^1.0.0
+  checksum: 10c0/c900f4fd8e1fe95589aaedc8e3bff102b81baee9114fe913f5c892fa878a989f33606e353430f6d618aa2f5c647c21fde418455dee193d1a26b840175f33f707
   languageName: node
   linkType: hard
 
@@ -7148,7 +7148,7 @@ __metadata:
     "@googleapis/docs": "npm:8.1.0"
     "@googleapis/drive": "npm:19.1.0"
     "@googleapis/sheets": "npm:12.0.0"
-    "@langchain/aws": "npm:0.1.15"
+    "@langchain/aws": "npm:1.0.0"
     "@langchain/core": "npm:1.0.2"
     "@mui/icons-material": "npm:7.3.4"
     "@mui/material": "npm:7.3.4"
