@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server";
 import { BedrockEmbeddings } from "@langchain/aws";
-import { MemoryVectorStore } from "langchain/vectorstores/memory";
 import type { AuthZ } from "pangea-node-sdk";
+import { MemoryVectorStore } from "@langchain/classic/vectorstores/memory";
 
 import type { PangeaResponse } from "@src/types";
 import { GoogleDriveRetriever } from "@src/google";
