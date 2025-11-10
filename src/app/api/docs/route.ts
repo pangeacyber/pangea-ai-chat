@@ -2,16 +2,16 @@ import type { NextRequest } from "next/server";
 import { BedrockEmbeddings } from "@langchain/aws";
 import type { AuthZ } from "pangea-node-sdk";
 import { MemoryVectorStore } from "@langchain/classic/vectorstores/memory";
+import { DirectoryLoader } from "@langchain/classic/document_loaders/fs/directory";
+import { TextLoader } from "@langchain/classic/document_loaders/fs/text";
+import { basename } from "node:path";
 
 import type { PangeaResponse } from "@src/types";
-import { GoogleDriveRetriever } from "@src/google";
 
 import { authzCheckRequest, validateToken } from "../requests";
 
-const docsLoader = new GoogleDriveRetriever({
-  credentials: JSON.parse(process.env.GOOGLE_DRIVE_CREDENTIALS!),
-  folderId: process.env.GOOGLE_DRIVE_FOLDER_ID!,
-  scopes: ["https://www.googleapis.com/auth/drive.readonly"],
+const docsLoader = new DirectoryLoader(process.env.RAG_DOCS_PATH!, {
+  ".txt": (path) => new TextLoader(path),
 });
 
 const embeddingsModel = new BedrockEmbeddings({
@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
   const body: RequestBody = await request.json();
 
   const vectorStore = await MemoryVectorStore.fromDocuments(
-    await docsLoader.invoke(""), // Load all documents.
+    await docsLoader.load(), // Load all documents.
     embeddingsModel,
   );
   const retriever = vectorStore.asRetriever();
@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
         const response = await authzCheckRequest({
           subject: { type: "user", id: username },
           action: "read",
-          resource: { type: "file", id: doc.id },
+          resource: { type: "file", id: basename(doc.metadata.source) },
           debug: true,
         });
         if ("request_id" in response) {
