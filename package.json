@@ -13,7 +13,7 @@
     "@emotion/css": "11.13.5",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
-    "@googleapis/docs": "8.1.0",
+    "@googleapis/docs": "8.1.1",
     "@googleapis/drive": "19.1.0",
     "@googleapis/sheets": "12.0.0",
     "@langchain/aws": "1.0.0",
