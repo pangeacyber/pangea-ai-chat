@@ -36,7 +36,7 @@
     "shiki": "3.14.0"
   },
   "devDependencies": {
-    "@dotenvx/dotenvx": "1.51.0",
+    "@dotenvx/dotenvx": "1.51.1",
     "@tsconfig/next": "2.0.3",
     "@types/node": "24.10.0",
     "@types/react": "18.3.26",
