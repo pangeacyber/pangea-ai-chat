@@ -65,18 +65,13 @@ export async function POST(request: NextRequest) {
   if (success) {
     const auditLogData = {
       event: {
-        event_input: JSON.stringify(
-          "messages" in body ? body.messages : body.text,
-        ),
-        event_output: JSON.stringify(response.result.prompt_text),
-        event_type: "ai_guard",
-        event_context: JSON.stringify({
+        input: JSON.stringify("messages" in body ? body.messages : body.text),
+        output: JSON.stringify(response.result.prompt_text),
+        type: "ai_guard",
+        context: JSON.stringify({
           recipe: body.recipe,
         }),
-        event_findings: JSON.stringify(response.result.detectors),
-        malicious_entity_count:
-          response.result.detectors.malicious_entity?.data?.entities?.length ||
-          0,
+        findings: JSON.stringify(response.result.detectors),
         actor: username,
       },
     };

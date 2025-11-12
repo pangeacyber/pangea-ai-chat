@@ -24,34 +24,34 @@ const schema: any = {
   tamper_proofing: false,
   fields: [
     {
-      id: "timestamp",
+      id: "received_at",
       name: "Timestamp",
       size: 128,
       type: "datetime",
       required: true,
     },
     {
-      id: "event_type",
+      id: "type",
       name: "Event Type",
       required: true,
     },
     {
-      id: "event_input",
+      id: "input",
       name: "Input",
       required: true,
     },
     {
-      id: "event_output",
+      id: "output",
       name: "Output",
     },
     {
-      id: "event_findings",
+      id: "findings",
       name: "Findings",
       type: "string",
       required: false,
     },
     {
-      id: "event_context",
+      id: "context",
       name: "Context",
       required: false,
     },

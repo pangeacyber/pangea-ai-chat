@@ -109,11 +109,9 @@ const ChatWindow = () => {
 
     const logEvent = {
       event: {
-        event_type: "user_prompt",
-        event_input: userPrompt,
-        event_context: JSON.stringify({
-          system_prompt: systemPrompt,
-        }),
+        type: "user_prompt",
+        input: userPrompt,
+        context: JSON.stringify({ system_prompt: systemPrompt }),
       },
     };
 
@@ -329,12 +327,11 @@ const ChatWindow = () => {
         const messages_: ChatMessage[] = response.events.map((event: any) => {
           const message: ChatMessage = {
             hash: event.hash,
-            type: event.envelope.event.event_type,
-            context: event.envelope.event.event_context,
-            input: event.envelope.event.event_input,
-            output: event.envelope.event.event_output,
-            findings: event.envelope.event.event_findings,
-            malicious_count: event.envelope.event.malicious_entity_count,
+            type: event.envelope.event.type,
+            context: event.envelope.event.context,
+            input: event.envelope.event.input,
+            output: event.envelope.event.output,
+            findings: event.envelope.event.findings,
           };
           return message;
         });

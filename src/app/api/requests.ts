@@ -34,10 +34,6 @@ export async function auditLogRequest(data: {
   event: Record<string, string | number>;
 }) {
   const url = getUrl("audit", "v1/log");
-  const now = new Date();
-
-  // Add timestamp to event
-  data.event.timestamp = now.toISOString();
 
   const { success, response } = await postRequest(url, {
     config_id: process.env.PANGEA_AUDIT_CONFIG_ID,
@@ -145,7 +141,11 @@ export function getHeaders(useClientToken = false): any {
   const options = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${useClientToken ? process.env.NEXT_PUBLIC_PANGEA_CLIENT_TOKEN : process.env.PANGEA_SERVICE_TOKEN}`,
+      Authorization: `Bearer ${
+        useClientToken
+          ? process.env.NEXT_PUBLIC_PANGEA_CLIENT_TOKEN
+          : process.env.PANGEA_SERVICE_TOKEN
+      }`,
     },
   };
 
