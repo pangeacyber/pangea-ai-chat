@@ -16,7 +16,7 @@ export interface AIGuardDetector<T> {
 
 export interface AIGuardResult {
   detectors: {
-    prompt_injection: AIGuardDetector<{
+    prompt_injection?: AIGuardDetector<{
       action: string;
       analyzer_responses: { analyzer: string; confidence: number }[];
     }>;

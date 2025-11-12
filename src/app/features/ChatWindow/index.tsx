@@ -182,7 +182,7 @@ const ChatWindow = () => {
       // Halt early if any enabled detector detected something.
       if (
         (detectors.prompt_injection &&
-          guardedInput.result.detectors.prompt_injection.detected) ||
+          guardedInput.result.detectors.prompt_injection?.detected) ||
         (detectors.malicious_entity &&
           guardedInput.result.detectors.malicious_entity?.detected)
       ) {
