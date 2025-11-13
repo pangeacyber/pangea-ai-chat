@@ -32,22 +32,19 @@ export const constructLlmInput = ({
   profile: Profile;
 }): MessageFieldWithRole[] => {
   const context = documents.length
-    ? `PTO balances:\n${documents
+    ? `\n${documents
         .map(({ pageContent }) => pageContent)
-        .join("\n\n")})`
+        .join("\n\n")}`
     : "";
 
   return [
     {
       role: "system",
-      content: `${systemPrompt}
-User's first name: ${profile.first_name}
-User's last name: ${profile.last_name}
-Context: ${context}`,
+      content: `${systemPrompt}`,
     },
     {
       role: "user",
-      content: userPrompt,
+      content: "Context: " + `${context}` + "\n Prompt: " + userPrompt,
     },
   ];
 };
