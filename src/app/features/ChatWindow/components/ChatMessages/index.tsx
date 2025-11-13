@@ -127,7 +127,7 @@ export const AiGuardMessage: FC<AiGuardProps> = ({ findings }) => {
     addPipe = true;
   }
 
-  if (!(redacted || injection || malicious || secrets)) {
+  if (!(redacted || injection || malicious || secrets || language || code)) {
     result += "None";
   }
 
