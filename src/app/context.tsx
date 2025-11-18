@@ -16,6 +16,7 @@ export interface ChatContextProps {
   loading: boolean;
   systemPrompt: string;
   userPrompt: string;
+  aiGuardEnabled: boolean;
   authzEnabled: boolean;
   sidePanelOpen: boolean;
   rightPanelOpen: boolean;
@@ -39,6 +40,7 @@ export interface ChatContextProps {
   setLoading: (value: boolean) => void;
   setSystemPrompt: (value: string) => void;
   setUserPrompt: (value: string) => void;
+  setAiGuardEnabled: (value: boolean) => void;
   setAuthzEnabled: (value: boolean) => void;
   setSidePanelOpen: (value: boolean) => void;
   setRightPanelOpen: (value: boolean) => void;
@@ -65,6 +67,7 @@ const ChatContext = createContext<ChatContextProps>({
   loading: false,
   systemPrompt: "",
   userPrompt: "",
+  aiGuardEnabled: false,
   authzEnabled: false,
   sidePanelOpen: true,
   rightPanelOpen: false,
@@ -84,6 +87,7 @@ const ChatContext = createContext<ChatContextProps>({
   setLoading: () => {},
   setSystemPrompt: () => {},
   setUserPrompt: () => {},
+  setAiGuardEnabled: () => {},
   setAuthzEnabled: () => {},
   setSidePanelOpen: () => {},
   setRightPanelOpen: () => {},
@@ -120,6 +124,7 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
     "You're a helpful assistant.",
   );
   const [userPrompt, setUserPrompt] = useState("");
+  const [aiGuardEnabled, setAiGuardEnabled] = useState(false);
   const [authzEnabled, setAuthzEnabled] = useState(false);
   const [sidePanelOpen, setSidePanelOpen] = useState(true);
   const [rightPanelOpen, setRightPanelOpen] = useState(false);
@@ -182,6 +187,7 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
       loading,
       systemPrompt,
       userPrompt,
+      aiGuardEnabled,
       authzEnabled,
       sidePanelOpen,
       rightPanelOpen,
@@ -194,6 +200,7 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
       setLoading,
       setSystemPrompt,
       setUserPrompt,
+      setAiGuardEnabled,
       setAuthzEnabled,
       setSidePanelOpen,
       setRightPanelOpen,
@@ -208,6 +215,7 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
       loading,
       systemPrompt,
       userPrompt,
+      aiGuardEnabled,
       authzEnabled,
       sidePanelOpen,
       rightPanelOpen,
@@ -220,6 +228,7 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
       setLoading,
       setSystemPrompt,
       setUserPrompt,
+      setAiGuardEnabled,
       setAuthzEnabled,
       setSidePanelOpen,
       setRightPanelOpen,

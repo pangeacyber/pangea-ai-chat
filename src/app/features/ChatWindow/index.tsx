@@ -58,6 +58,7 @@ const ChatWindow = () => {
   const theme = useTheme();
   const {
     loading,
+    aiGuardEnabled,
     authzEnabled,
     systemPrompt,
     userPrompt,
@@ -152,6 +153,7 @@ const ChatWindow = () => {
       documents: docs,
       profile: user!.profile,
     });
+
     const overrides: DetectorOverrides = {
       code_detection: { disabled: !detectors.code_detection },
       language_detection: { disabled: !detectors.language_detection },
@@ -160,39 +162,41 @@ const ChatWindow = () => {
       prompt_injection: { disabled: !detectors.prompt_injection },
       secrets_detection: { disabled: !detectors.secrets_detection },
     };
-    let guardedInput: PangeaResponse<AIGuardResult>;
+    let guardedInput: PangeaResponse<AIGuardResult> | null = null;
 
-    setProcessing("Checking user prompt with AI Guard");
+    if (aiGuardEnabled) {
+      setProcessing("Checking user prompt with AI Guard");
 
-    try {
-      guardedInput = await callInputDataGuard(token, llmInput, overrides);
-      setAiGuardResponses([
-        guardedInput,
-        {} as PangeaResponse<AIGuard.TextGuardResult>,
-      ]);
-      const dgiMsg: ChatMessage = {
-        hash: hashCode(JSON.stringify(guardedInput)),
-        type: "ai_guard",
-        findings: JSON.stringify(guardedInput.result.detectors),
-      };
-      setMessages((prevMessages) => [...prevMessages, dgiMsg]);
+      try {
+        guardedInput = await callInputDataGuard(token, llmInput, overrides);
+        setAiGuardResponses([
+          guardedInput,
+          {} as PangeaResponse<AIGuard.TextGuardResult>,
+        ]);
+        const dgiMsg: ChatMessage = {
+          hash: hashCode(JSON.stringify(guardedInput)),
+          type: "ai_guard",
+          findings: JSON.stringify(guardedInput.result.detectors),
+        };
+        setMessages((prevMessages) => [...prevMessages, dgiMsg]);
 
-      llmInput = guardedInput.result.prompt_messages;
+        llmInput = guardedInput.result.prompt_messages;
 
-      // Halt early if any enabled detector detected something.
-      if (
-        (detectors.prompt_injection &&
-          guardedInput.result.detectors.prompt_injection?.detected) ||
-        (detectors.malicious_entity &&
-          guardedInput.result.detectors.malicious_entity?.detected)
-      ) {
-        processingError("Processing halted: suspicious prompt");
+        // Halt early if any enabled detector detected something.
+        if (
+          (detectors.prompt_injection &&
+            guardedInput.result.detectors.prompt_injection?.detected) ||
+          (detectors.malicious_entity &&
+            guardedInput.result.detectors.malicious_entity?.detected)
+        ) {
+          processingError("Processing halted: suspicious prompt");
+          return;
+        }
+      } catch (err) {
+        const status = err instanceof Response ? err.status : 0;
+        processingError("AI Guard call failed, please try again", status);
         return;
       }
-    } catch (err) {
-      const status = err instanceof Response ? err.status : 0;
-      processingError("AI Guard call failed, please try again", status);
-      return;
     }
 
     setProcessing("Waiting for LLM response");
@@ -219,36 +223,38 @@ const ChatWindow = () => {
       return;
     }
 
-    setProcessing("Checking LLM response with AI Guard");
+    if (aiGuardEnabled && guardedInput) {
+      setProcessing("Checking LLM response with AI Guard");
 
-    try {
-      const dataResp = await callResponseDataGuard(
-        token,
-        llmResponse,
-        overrides,
-      );
-      setAiGuardResponses([guardedInput!, dataResp]);
-      const dgrMsg: ChatMessage = {
-        hash: hashCode(JSON.stringify(dataResp)),
-        type: "ai_guard",
-        findings: JSON.stringify(dataResp.result.detectors),
-      };
-      dataGuardMessages.push(dgrMsg);
+      try {
+        const dataResp = await callResponseDataGuard(
+          token,
+          llmResponse,
+          overrides,
+        );
+        setAiGuardResponses([guardedInput!, dataResp]);
+        const dgrMsg: ChatMessage = {
+          hash: hashCode(JSON.stringify(dataResp)),
+          type: "ai_guard",
+          findings: JSON.stringify(dataResp.result.detectors),
+        };
+        dataGuardMessages.push(dgrMsg);
 
-      llmResponse = dataResp.result.prompt_text;
-    } catch (err) {
-      const status = err instanceof Response ? err.status : 0;
-      processingError("AI Guard call failed, please try again", status);
-    }
+        llmResponse = dataResp.result.prompt_text;
+      } catch (err) {
+        const status = err instanceof Response ? err.status : 0;
+        processingError("AI Guard call failed, please try again", status);
+      }
 
-    // Unredact if a FPE context was returned.
-    if (guardedInput.result.fpe_context) {
-      const unredacted = await unredact(
-        token,
-        llmResponse,
-        guardedInput.result.fpe_context,
-      );
-      llmResponse = unredacted.result.data;
+      // Unredact if a FPE context was returned.
+      if (guardedInput.result.fpe_context) {
+        const unredacted = await unredact(
+          token,
+          llmResponse,
+          guardedInput.result.fpe_context,
+        );
+        llmResponse = unredacted.result.data;
+      }
     }
 
     const llmMsg: ChatMessage = {
