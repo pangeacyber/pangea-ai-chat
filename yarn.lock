@@ -1725,9 +1725,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@langchain/core@npm:1.0.3":
-  version: 1.0.3
-  resolution: "@langchain/core@npm:1.0.3"
+"@langchain/core@npm:1.0.6":
+  version: 1.0.6
+  resolution: "@langchain/core@npm:1.0.6"
   dependencies:
     "@cfworker/json-schema": "npm:^4.0.2"
     ansi-styles: "npm:^5.0.0"
@@ -1740,7 +1740,7 @@ __metadata:
     p-retry: "npm:4"
     uuid: "npm:^10.0.0"
     zod: "npm:^3.25.76 || ^4"
-  checksum: 10c0/ff649a6004209deae5353efc675a16ff9be7388d34430092f79ba57f7b81de03c9897d12562fe8797728cbfbe776f13c1fb99a70f1024277a352fdbabe5a47e3
+  checksum: 10c0/5b8c9728a03a6d40c0684aa30bd3fcb2a99e57bb8c6c2370113f0bb6ef622f3f3be5b12eec5d71afeed611795ce8c65a386d4b3c6becc766e48dccba9be42ed9
   languageName: node
   linkType: hard
 
@@ -7389,7 +7389,7 @@ __metadata:
     "@googleapis/sheets": "npm:12.0.0"
     "@langchain/aws": "npm:1.0.0"
     "@langchain/classic": "npm:1.0.1"
-    "@langchain/core": "npm:1.0.3"
+    "@langchain/core": "npm:1.0.6"
     "@mui/icons-material": "npm:7.3.5"
     "@mui/material": "npm:7.3.5"
     "@mui/material-nextjs": "npm:7.3.5"
