@@ -6268,9 +6268,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"langchain@npm:1.0.3":
-  version: 1.0.3
-  resolution: "langchain@npm:1.0.3"
+"langchain@npm:1.1.1":
+  version: 1.1.1
+  resolution: "langchain@npm:1.1.1"
   dependencies:
     "@langchain/langgraph": "npm:^1.0.0"
     "@langchain/langgraph-checkpoint": "npm:^1.0.0"
@@ -6278,8 +6278,8 @@ __metadata:
     uuid: "npm:^10.0.0"
     zod: "npm:^3.25.76 || ^4"
   peerDependencies:
-    "@langchain/core": ^1.0.3
-  checksum: 10c0/657dd936a63fab6c60b6f5bc0eefb945077ac38ef2ae3eaa74f8bda70ac62a49be743c204ace420f19e41d237eb58a8b5ec1e3394f5ead510cd47a6cfae9b81b
+    "@langchain/core": 1.1.0
+  checksum: 10c0/bd8932982588fdf495cec3cc8d220cbd1c2be60260b54abb372bcbc6d6c0619df57e147cba71f3b6563e20aaf051e199207315e1685ccfa57463383e7ccb72ac
   languageName: node
   linkType: hard
 
@@ -7431,7 +7431,7 @@ __metadata:
     eslint-config-next: "npm:16.0.1"
     google-auth-library: "npm:10.5.0"
     hast-util-to-jsx-runtime: "npm:2.3.6"
-    langchain: "npm:1.0.3"
+    langchain: "npm:1.1.1"
     markdown-table: "npm:3.0.4"
     next: "npm:16.0.1"
     pangea-node-sdk: "npm:5.6.0"
