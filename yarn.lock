@@ -2315,17 +2315,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pangeacyber/react-auth@npm:^0.0.18":
-  version: 0.0.18
-  resolution: "@pangeacyber/react-auth@npm:0.0.18"
+"@pangeacyber/react-auth@npm:^0.0.21":
+  version: 0.0.21
+  resolution: "@pangeacyber/react-auth@npm:0.0.21"
   dependencies:
-    "@pangeacyber/vanilla-js": "npm:0.1.14"
-    jose: "npm:^6.0.10"
+    "@pangeacyber/vanilla-js": "npm:0.1.17"
+    jose: "npm:^6.1.0"
     lodash: "npm:^4.17.21"
   peerDependencies:
     react: ^17.0.2 || ^18.2.0 || ^19.0.0
     react-dom: ^17.0.2 || ^18.2.0 || ^19.0.0
-  checksum: 10c0/4a5a000d075aa4a4363f5c00f92ed5dff2b396f50448ee5300127efe48a60ad87a28b23210581600a1ef5cdd2af2c5ea3f824645d64d9f10b9b024fb51abc47b
+  checksum: 10c0/ec22534b314af7b24e6e9c3b1c119a58c8ff5042db7042067fdf3f8711dbae13c7b0c231fc0aa3d68d5eca3cdaf6935831fc1eed35a97ff792256b024f0b8034
   languageName: node
   linkType: hard
 
@@ -2374,12 +2374,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pangeacyber/vanilla-js@npm:0.1.14":
-  version: 0.1.14
-  resolution: "@pangeacyber/vanilla-js@npm:0.1.14"
+"@pangeacyber/vanilla-js@npm:0.1.17":
+  version: 0.1.17
+  resolution: "@pangeacyber/vanilla-js@npm:0.1.17"
   dependencies:
     lodash: "npm:^4.17.21"
-  checksum: 10c0/4915900d1cd3cf657c499f65228e696703b73a568c440809678e6fd287322d65fbea8360b40fe7e939439bc659d38f4f7e6c99a0283cdaa3e48331ef9372d37c
+  checksum: 10c0/bd7fb7491d73fbc3f98f3d859ab6a46adbfd1e32f426393ffaa6d1f7cafcae9e07cf967fed1e06873eabce3448a927c5a3bedbf93f8ca9cd23872d9f46cbf500
   languageName: node
   linkType: hard
 
@@ -6106,10 +6106,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jose@npm:^6.0.10":
-  version: 6.1.2
-  resolution: "jose@npm:6.1.2"
-  checksum: 10c0/55f79426f43e652ed6d5de938d50f66bb0a10dcae078db81a23f8d3303e889ce226f000e815f3211f9956bb84badce10da892d130d40fe2eca658045a6f1778e
+"jose@npm:^6.1.0":
+  version: 6.1.3
+  resolution: "jose@npm:6.1.3"
+  checksum: 10c0/b9577b4a7a5e84131011c23823db9f5951eae3ba796771a6a2401ae5dd50daf71104febc8ded9c38146aa5ebe94a92ac09c725e699e613ef26949b9f5a8bc30f
   languageName: node
   linkType: hard
 
@@ -7436,7 +7436,7 @@ __metadata:
     "@mui/icons-material": "npm:7.3.5"
     "@mui/material": "npm:7.3.5"
     "@mui/material-nextjs": "npm:7.3.5"
-    "@pangeacyber/react-auth": "npm:^0.0.18"
+    "@pangeacyber/react-auth": "npm:^0.0.21"
     "@pangeacyber/react-mui-audit-log-viewer": "npm:^2.0.3"
     "@tsconfig/next": "npm:2.0.4"
     "@types/node": "npm:24.10.1"
