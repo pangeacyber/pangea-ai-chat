@@ -44,7 +44,7 @@
     "citty": "0.1.6",
     "eslint": "9.39.1",
     "eslint-config-next": "16.0.6",
-    "tsx": "4.20.6",
+    "tsx": "4.21.0",
     "typescript": "5.9.3"
   },
   "packageManager": "yarn@4.12.0"
