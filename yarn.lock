@@ -3058,10 +3058,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/next@npm:2.0.4":
-  version: 2.0.4
-  resolution: "@tsconfig/next@npm:2.0.4"
-  checksum: 10c0/fca00be8a5cf206b52b789d35dd4436c5a7210763d106aa47e7466d169d3391c795b425a953a7b01249c3be312af993abace4ebe4b9c317c7f1d9910be9e1768
+"@tsconfig/next@npm:2.0.5":
+  version: 2.0.5
+  resolution: "@tsconfig/next@npm:2.0.5"
+  checksum: 10c0/d79fdbcbd31a2db896b9506a9344a18ff416d77d15b90658a5f64659d913464e8fb13a56242d4cbb341657dc518c5162c4f9192261ccd62e5cfa8efb05c0dc68
   languageName: node
   linkType: hard
 
@@ -7499,7 +7499,7 @@ __metadata:
     "@mui/material-nextjs": "npm:7.3.6"
     "@pangeacyber/react-auth": "npm:^0.0.21"
     "@pangeacyber/react-mui-audit-log-viewer": "npm:^2.0.3"
-    "@tsconfig/next": "npm:2.0.4"
+    "@tsconfig/next": "npm:2.0.5"
     "@types/node": "npm:24.10.4"
     "@types/react": "npm:18.3.27"
     "@types/react-dom": "npm:18.3.7"
