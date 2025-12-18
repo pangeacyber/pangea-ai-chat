@@ -1368,12 +1368,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@googleapis/drive@npm:19.2.1":
-  version: 19.2.1
-  resolution: "@googleapis/drive@npm:19.2.1"
+"@googleapis/drive@npm:20.0.0":
+  version: 20.0.0
+  resolution: "@googleapis/drive@npm:20.0.0"
   dependencies:
     googleapis-common: "npm:^8.0.0"
-  checksum: 10c0/5d3efe9981000e59da6b45487d6458b4f1b7c53564b067e65862ae681ac28a466051ae595d02292461c3a329307d426c399b78507354c68d3b20c9d8453a2ea8
+  checksum: 10c0/822921f1945fdb00d4e3081cab6f207aa62c6f9d7937e4a1836088e320cd1e6a172b5147d966acb47b052770353bf54b35faee70ab392bc69927a8c688584660
   languageName: node
   linkType: hard
 
@@ -7472,7 +7472,7 @@ __metadata:
     "@emotion/react": "npm:11.14.0"
     "@emotion/styled": "npm:11.14.1"
     "@googleapis/docs": "npm:9.0.0"
-    "@googleapis/drive": "npm:19.2.1"
+    "@googleapis/drive": "npm:20.0.0"
     "@googleapis/sheets": "npm:13.0.1"
     "@langchain/aws": "npm:1.1.0"
     "@langchain/classic": "npm:1.0.6"
