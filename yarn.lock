@@ -1774,21 +1774,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@langchain/core@npm:1.1.5":
-  version: 1.1.5
-  resolution: "@langchain/core@npm:1.1.5"
+"@langchain/core@npm:1.1.7":
+  version: 1.1.7
+  resolution: "@langchain/core@npm:1.1.7"
   dependencies:
     "@cfworker/json-schema": "npm:^4.0.2"
     ansi-styles: "npm:^5.0.0"
     camelcase: "npm:6"
     decamelize: "npm:1.2.0"
     js-tiktoken: "npm:^1.0.12"
-    langsmith: "npm:^0.3.82"
+    langsmith: "npm:>=0.4.0 <1.0.0"
     mustache: "npm:^4.2.0"
     p-queue: "npm:^6.6.2"
     uuid: "npm:^10.0.0"
     zod: "npm:^3.25.76 || ^4"
-  checksum: 10c0/82a2112b20a5c43c42c507d49c78a7b250887a15a062b23edda04425147a4fd2c761423918be2ed2e6a1471ef0484ed4ff71c5b9675ad19e76a11dd81a8b1fab
+  checksum: 10c0/c31286ad6734039bb2b9b47a9b9959cb99f4fecf4b0654a75fcd768e065579501ecc0737e9108b3a3835e2d157c1f09398ba3054804e125cb57c2fae4edd2e68
   languageName: node
   linkType: hard
 
@@ -6309,6 +6309,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"langsmith@npm:>=0.4.0 <1.0.0":
+  version: 0.4.0
+  resolution: "langsmith@npm:0.4.0"
+  dependencies:
+    "@types/uuid": "npm:^10.0.0"
+    chalk: "npm:^4.1.2"
+    console-table-printer: "npm:^2.12.1"
+    p-queue: "npm:^6.6.2"
+    semver: "npm:^7.6.3"
+    uuid: "npm:^10.0.0"
+  peerDependencies:
+    "@opentelemetry/api": "*"
+    "@opentelemetry/exporter-trace-otlp-proto": "*"
+    "@opentelemetry/sdk-trace-base": "*"
+    openai: "*"
+  peerDependenciesMeta:
+    "@opentelemetry/api":
+      optional: true
+    "@opentelemetry/exporter-trace-otlp-proto":
+      optional: true
+    "@opentelemetry/sdk-trace-base":
+      optional: true
+    openai:
+      optional: true
+  checksum: 10c0/aa2a136b01fa70ab113ad5f94b479be8037d7e827e1efe99877631e049ced0207f2292b9f122cbcc0304961809c459ae686c69ae9dc3f183e6997ca413cdd4e9
+  languageName: node
+  linkType: hard
+
 "langsmith@npm:^0.3.64, langsmith@npm:~0.3.74":
   version: 0.3.82
   resolution: "langsmith@npm:0.3.82"
@@ -6334,34 +6362,6 @@ __metadata:
     openai:
       optional: true
   checksum: 10c0/359cadb04616ecb233ca6a6b9bdd6fff0f423261c32d9d6f576c93d8c6ac53ed21770c68c779b861861e5efb3894966e8a3be4c71c9ae79292066fe1569465bd
-  languageName: node
-  linkType: hard
-
-"langsmith@npm:^0.3.82":
-  version: 0.3.87
-  resolution: "langsmith@npm:0.3.87"
-  dependencies:
-    "@types/uuid": "npm:^10.0.0"
-    chalk: "npm:^4.1.2"
-    console-table-printer: "npm:^2.12.1"
-    p-queue: "npm:^6.6.2"
-    semver: "npm:^7.6.3"
-    uuid: "npm:^10.0.0"
-  peerDependencies:
-    "@opentelemetry/api": "*"
-    "@opentelemetry/exporter-trace-otlp-proto": "*"
-    "@opentelemetry/sdk-trace-base": "*"
-    openai: "*"
-  peerDependenciesMeta:
-    "@opentelemetry/api":
-      optional: true
-    "@opentelemetry/exporter-trace-otlp-proto":
-      optional: true
-    "@opentelemetry/sdk-trace-base":
-      optional: true
-    openai:
-      optional: true
-  checksum: 10c0/eb1ac6baea51063b881a9dc9a61d2d699bfc9b7aa3443865e575775abe084d94704344275958c94f4e1f03154103e9dd896cde7285797e4afb6af570da6db3b8
   languageName: node
   linkType: hard
 
@@ -7476,7 +7476,7 @@ __metadata:
     "@googleapis/sheets": "npm:13.0.1"
     "@langchain/aws": "npm:1.1.0"
     "@langchain/classic": "npm:1.0.6"
-    "@langchain/core": "npm:1.1.5"
+    "@langchain/core": "npm:1.1.7"
     "@mui/icons-material": "npm:7.3.6"
     "@mui/material": "npm:7.3.6"
     "@mui/material-nextjs": "npm:7.3.6"
