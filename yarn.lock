@@ -6303,18 +6303,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"langchain@npm:1.2.0":
-  version: 1.2.0
-  resolution: "langchain@npm:1.2.0"
+"langchain@npm:1.2.3":
+  version: 1.2.3
+  resolution: "langchain@npm:1.2.3"
   dependencies:
     "@langchain/langgraph": "npm:^1.0.0"
     "@langchain/langgraph-checkpoint": "npm:^1.0.0"
-    langsmith: "npm:~0.3.74"
+    langsmith: "npm:>=0.4.0 <1.0.0"
     uuid: "npm:^10.0.0"
     zod: "npm:^3.25.76 || ^4"
   peerDependencies:
-    "@langchain/core": 1.1.5
-  checksum: 10c0/2f79e250d327eb520b9a8bafb898494a87391908f80c03991fd32eb092e2ae69aa2817dd1f4ccb0f1afa6ba8d7f5ccdc9ae3ffc8a8f669540647e4f8d796841a
+    "@langchain/core": 1.1.8
+  checksum: 10c0/440e5c5843412d642c9049766ce7cc9d5a6cfd5cb775501cba4d4ae580e7914435c3fa21fba04c7aa3873c47b38c66fa39e028a0ccaaeda8a143b6df1a5182b5
   languageName: node
   linkType: hard
 
@@ -6343,34 +6343,6 @@ __metadata:
     openai:
       optional: true
   checksum: 10c0/aa2a136b01fa70ab113ad5f94b479be8037d7e827e1efe99877631e049ced0207f2292b9f122cbcc0304961809c459ae686c69ae9dc3f183e6997ca413cdd4e9
-  languageName: node
-  linkType: hard
-
-"langsmith@npm:~0.3.74":
-  version: 0.3.82
-  resolution: "langsmith@npm:0.3.82"
-  dependencies:
-    "@types/uuid": "npm:^10.0.0"
-    chalk: "npm:^4.1.2"
-    console-table-printer: "npm:^2.12.1"
-    p-queue: "npm:^6.6.2"
-    semver: "npm:^7.6.3"
-    uuid: "npm:^10.0.0"
-  peerDependencies:
-    "@opentelemetry/api": "*"
-    "@opentelemetry/exporter-trace-otlp-proto": "*"
-    "@opentelemetry/sdk-trace-base": "*"
-    openai: "*"
-  peerDependenciesMeta:
-    "@opentelemetry/api":
-      optional: true
-    "@opentelemetry/exporter-trace-otlp-proto":
-      optional: true
-    "@opentelemetry/sdk-trace-base":
-      optional: true
-    openai:
-      optional: true
-  checksum: 10c0/359cadb04616ecb233ca6a6b9bdd6fff0f423261c32d9d6f576c93d8c6ac53ed21770c68c779b861861e5efb3894966e8a3be4c71c9ae79292066fe1569465bd
   languageName: node
   linkType: hard
 
@@ -7501,7 +7473,7 @@ __metadata:
     eslint-config-next: "npm:16.1.1"
     google-auth-library: "npm:10.5.0"
     hast-util-to-jsx-runtime: "npm:2.3.6"
-    langchain: "npm:1.2.0"
+    langchain: "npm:1.2.3"
     markdown-table: "npm:3.0.4"
     next: "npm:16.1.1"
     pangea-node-sdk: "npm:5.6.0"
