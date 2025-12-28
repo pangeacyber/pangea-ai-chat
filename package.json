@@ -26,7 +26,7 @@
     "@pangeacyber/react-mui-audit-log-viewer": "^2.0.3",
     "google-auth-library": "10.5.0",
     "hast-util-to-jsx-runtime": "2.3.6",
-    "langchain": "1.2.0",
+    "langchain": "1.2.3",
     "markdown-table": "3.0.4",
     "next": "16.1.1",
     "pangea-node-sdk": "5.6.0",
