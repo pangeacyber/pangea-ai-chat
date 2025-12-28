@@ -18,7 +18,7 @@
     "@googleapis/sheets": "13.0.1",
     "@langchain/aws": "1.1.0",
     "@langchain/classic": "1.0.7",
-    "@langchain/core": "1.1.5",
+    "@langchain/core": "1.1.8",
     "@mui/icons-material": "7.3.6",
     "@mui/material": "7.3.6",
     "@mui/material-nextjs": "7.3.6",
